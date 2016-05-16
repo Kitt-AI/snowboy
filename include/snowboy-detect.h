@@ -56,6 +56,7 @@ class SnowboyDetect {
   // CPU usage.
   //
   // Definition of return values:
+  // -2: Silence.
   // -1: Error.
   //  0: No event.
   //  1: Hotword 1 triggered.
