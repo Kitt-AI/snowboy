@@ -31,6 +31,9 @@ else
   # would like to be able to move the library to a machine without Atlas.
   LDLIBS := -lm -ldl -lf77blas -lcblas -llapack_atlas -latlas
   SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/ubuntu64/libsnowboy-detect.a
+  ifneq (,$(findstring arm,$(shell uname -m)))
+    SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/rpi/libsnowboy-detect.a
+  endif
 endif
 
 all: $(SNOWBOYSWIGLIBFILE) $(SNOWBOYDETECTSWIGLIBFILE)
