@@ -5,3 +5,6 @@ snowboydetect.py
 *.pyc
 *.o
 *.so
+
+/egs/C++/pa_stable_v19_20140130.tgz
+/egs/C++/portaudio
