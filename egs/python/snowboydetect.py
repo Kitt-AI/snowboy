@@ -1,1 +1,0 @@
-../../swig/python/snowboydetect.py
