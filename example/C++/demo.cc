@@ -1,4 +1,4 @@
-// egs/C++/demo.cc
+// example/C++/demo.cc
 
 // Copyright 2016  KITT.AI (author: Guoguo Chen)
 
