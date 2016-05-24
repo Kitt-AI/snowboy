@@ -1,7 +1,12 @@
 /lib/libsnowboy-detect.a
 snowboy-detect-swig.cc
 snowboydetect.py
+.DS_Store
 
 *.pyc
 *.o
 *.so
+
+/examples/C++/pa_stable_v19_20140130.tgz
+/examples/C++/portaudio
+/examples/C++/demo

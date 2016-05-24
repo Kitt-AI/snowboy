@@ -67,6 +67,20 @@ class SnowboyDetect {
   //                                  above for the supported data format.
   int RunDetection(const std::string& data);
 
+  // Various versions of RunDetection() that take different format of audio. If
+  // NumChannels() > 1, e.g., NumChannels() == 2, then the array is as follows:
+  //
+  //   d1c1, d1c2, d2c1, d2c2, d3c1, d3c2, ..., dNc1, dNc2
+  //
+  // where d1c1 means data point 1 of channel 1.
+  //
+  // @param [in]  data               Small chunk of data to be detected. See
+  //                                 above for the supported data format.
+  // @param [in]  array_length       Length of the data array.
+  int RunDetection(const float* const data, const int array_length);
+  int RunDetection(const int16_t* const data, const int array_length);
+  int RunDetection(const int32_t* const data, const int array_length);
+
   // Sets the sensitivity string for the loaded hotwords. A <sensitivity_str> is
   // a list of floating numbers between 0 and 1, and separated by comma. For
   // example, if there are 3 loaded hotwords, your string should looks something
