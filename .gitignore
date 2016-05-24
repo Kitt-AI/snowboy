@@ -1,6 +1,7 @@
 /lib/libsnowboy-detect.a
 snowboy-detect-swig.cc
 snowboydetect.py
+.DS_Store
 
 *.pyc
 *.o
