@@ -1,0 +1,38 @@
+--- Makefile.in	2016-01-09 14:05:04.096356637 -0500
++++ Makefile_new.in	2016-01-09 14:04:56.667925681 -0500
+@@ -193,6 +193,8 @@
+ 	for include in $(INCLUDES); do \
+ 		$(INSTALL_DATA) -m 644 $(top_srcdir)/include/$$include $(DESTDIR)$(includedir)/$$include; \
+ 	done
++	$(INSTALL_DATA) -m 644 $(top_srcdir)/src/common/pa_ringbuffer.h $(DESTDIR)$(includedir)/$$include
++	$(INSTALL_DATA) -m 644 $(top_srcdir)/src/common/pa_util.h $(DESTDIR)$(includedir)/$$include
+ 	$(INSTALL) -d $(DESTDIR)$(libdir)/pkgconfig
+ 	$(INSTALL) -m 644 portaudio-2.0.pc $(DESTDIR)$(libdir)/pkgconfig/portaudio-2.0.pc
+ 	@echo ""
+--- configure	2016-03-08 18:00:08.000000000 -0800
++++ configure_new	2016-03-08 17:59:21.000000000 -0800
+@@ -15787,7 +15787,7 @@
+         $as_echo "#define PA_USE_COREAUDIO 1" >>confdefs.h
+ 
+ 
+-        CFLAGS="$CFLAGS -I\$(top_srcdir)/src/os/unix -Werror"
++        CFLAGS="$CFLAGS -I\$(top_srcdir)/src/os/unix -Wall"
+         LIBS="-framework CoreAudio -framework AudioToolbox -framework AudioUnit -framework Carbon"
+ 
+         if test "x$enable_mac_universal" = "xyes" ; then
+@@ -15819,8 +15819,14 @@
+               elif xcodebuild -version -sdk macosx10.9 Path >/dev/null 2>&1 ; then
+                  mac_version_min="-mmacosx-version-min=10.4"
+                  mac_sysroot="-isysroot `xcodebuild -version -sdk macosx10.9 Path`"
++              elif xcodebuild -version -sdk macosx10.10 Path >/dev/null 2>&1 ; then
++                 mac_version_min="-mmacosx-version-min=10.4"
++                 mac_sysroot="-isysroot `xcodebuild -version -sdk macosx10.10 Path`"
++              elif xcodebuild -version -sdk macosx10.11 Path >/dev/null 2>&1 ; then
++                 mac_version_min="-mmacosx-version-min=10.4"
++                 mac_sysroot="-isysroot `xcodebuild -version -sdk macosx10.11 Path`"
+               else
+-                 as_fn_error $? "Couldn't find 10.5, 10.6, 10.7, 10.8 or 10.9 SDK" "$LINENO" 5
++                 as_fn_error $? "Couldn't find 10.5, 10.6, 10.7, 10.8, 10.9, 10.10 or 10.11 SDK" "$LINENO" 5
+               fi
+            esac
+ 

@@ -1,4 +1,4 @@
-// swig/snowboy-detect-swig.i
+// swig/Python/snowboy-detect-swig.i
 
 // Copyright 2016  KITT.AI (author: Guoguo Chen)
 
