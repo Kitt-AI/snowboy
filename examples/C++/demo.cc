@@ -1,8 +1,9 @@
-// egs/C++/demo.cc
+// example/C++/demo.cc
 
 // Copyright 2016  KITT.AI (author: Guoguo Chen)
 
 #include <cassert>
+#include <csignal>
 #include <iostream>
 #include <pa_ringbuffer.h>
 #include <pa_util.h>
@@ -29,7 +30,8 @@ class PortAudioWrapper {
   }
 
   // Reads data from ring buffer.
-  void Read(std::string* data) {
+  template<typename T>
+  void Read(std::vector<T>* data) {
     assert(data != NULL);
 
     // Checks ring buffer overflow.
@@ -50,24 +52,13 @@ class PortAudioWrapper {
     }
 
     // Reads data.
-    std::vector<int16_t> buffer(num_available_samples);
     num_available_samples = PaUtil_GetRingBufferReadAvailable(&pa_ringbuffer_);
+    data->resize(num_available_samples);
     ring_buffer_size_t num_read_samples = PaUtil_ReadRingBuffer(
-        &pa_ringbuffer_, buffer.data(), num_available_samples);
+        &pa_ringbuffer_, data->data(), num_available_samples);
     if (num_read_samples != num_available_samples) {
       std::cerr << num_available_samples << " samples were available,  but "
           << "only " << num_read_samples << " samples were read." << std::endl;
-    }
-
-    // Converts int16 to string. This is temporary. In the next release the
-    // RunDetection() function will support int16 directly. Also, hard-coded
-    // int16 at this point.
-    *data = "";
-    char tmp[2];
-    for (int i = 0; i < buffer.size(); ++i) {
-      *(reinterpret_cast<int16_t*>(tmp)) = buffer[i];
-      *data += tmp[0];
-      *data += tmp[1];
     }
   }
 
@@ -179,6 +170,11 @@ int PortAudioCallback(const void* input,
   return paContinue;
 }
 
+void SignalHandler(int signal){
+  std::cerr << "Caught signal " << signal << ", terminating..." << std::endl;
+  exit(0);
+}
+
 int main(int argc, char* argv[]) {
   std::string usage =
       "Example that shows how to use Snowboy in C++. Parameters are\n"
@@ -186,13 +182,20 @@ int main(int argc, char* argv[]) {
       "more details. Audio is captured by PortAudio.\n"
       "\n"
       "To run the example:\n"
-      "  make; ./demo\n";
+      "  ./demo\n";
 
   // Checks the command.
   if (argc > 1) {
     std::cerr << usage;
     exit(1);
   }
+
+  // Configures signal handling.
+   struct sigaction sig_int_handler;
+   sig_int_handler.sa_handler = SignalHandler;
+   sigemptyset(&sig_int_handler.sa_mask);
+   sig_int_handler.sa_flags = 0;
+   sigaction(SIGINT, &sig_int_handler, NULL);
 
   // Parameter section.
   // If you have multiple hotword models (e.g., 2), you should set
@@ -202,7 +205,7 @@ int main(int argc, char* argv[]) {
   std::string resource_filename = "resources/common.res";
   std::string model_filename = "resources/snowboy.umdl";
   std::string sensitivity_str = "0.4";
-  float audio_gain = 2;
+  float audio_gain = 1;
 
   // Initializes Snowboy detector.
   snowboy::SnowboyDetect detector(resource_filename, model_filename);
@@ -214,11 +217,14 @@ int main(int argc, char* argv[]) {
                               detector.NumChannels(), detector.BitsPerSample());
 
   // Runs the detection.
-  std::string data;
+  // Note: I hard-coded <int16_t> as data type because detector.BitsPerSample()
+  //       returns 16.
+  std::cout << "Listening... Press Ctrl+C to exit" << std::endl;
+  std::vector<int16_t> data;
   while (true) {
     pa_wrapper.Read(&data);
-    if (data != "") {
-      int result = detector.RunDetection(data);
+    if (data.size() != 0) {
+      int result = detector.RunDetection(data.data(), data.size());
       if (result > 0) {
         std::cout << "Hotword " << result << " detected!" << std::endl;
       }

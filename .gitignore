@@ -6,5 +6,6 @@ snowboydetect.py
 *.o
 *.so
 
-/egs/C++/pa_stable_v19_20140130.tgz
-/egs/C++/portaudio
+/examples/C++/pa_stable_v19_20140130.tgz
+/examples/C++/portaudio
+/examples/C++/demo
