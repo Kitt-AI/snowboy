@@ -30,7 +30,8 @@ else ifeq ($(shell uname), Linux)
   CXXFLAGS += -I$(TOPDIR) -std=c++0x -Wall -Wno-sign-compare \
       -Wno-unused-local-typedefs -Winit-self -rdynamic \
       -DHAVE_POSIX_MEMALIGN -I$(PORTAUDIOINC)
-  LDLIBS += -ldl -lm -Wl,-Bstatic -Wl,-Bdynamic -lrt -lpthread $(PORTAUDIOLIBS)
+  LDLIBS += -ldl -lm -Wl,-Bstatic -Wl,-Bdynamic -lrt -lpthread $(PORTAUDIOLIBS)\
+      -L/usr/lib/atlas-base -lf77blas -lcblas -llapack_atlas -latlas
   ifneq ($(wildcard $(PORTAUDIOINC)/pa_linux_alsa.h),)
     LDLIBS += -lasound
   endif
