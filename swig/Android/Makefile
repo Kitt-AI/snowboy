@@ -9,7 +9,7 @@
 SWIG := swig
 
 # Please specify your NDK root directory here.
-NDKROOT := /Users/guoguo/Tools/android-ndk-r11c/
+NDKROOT :=
 APILEVEL := 17
 
 SNOWBOYDETECTSWIGITF = snowboy-detect-swig.i
