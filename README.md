@@ -167,6 +167,7 @@ See [Full Documentation](https://snowboy.kitt.ai/docs).
 * Updated universal `snowboy.umdl` model to make it more robust in non-speech environment.
 * Fixed bug when using float as input data.
 * Added library support for Android ARMV7 architecture.
+* Added library for iOS.
 
 **v1.0.2, 5/24/2016**
 
