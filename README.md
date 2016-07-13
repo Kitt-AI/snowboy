@@ -163,6 +163,12 @@ See [Full Documentation](https://snowboy.kitt.ai/docs).
 
 ## Change Log
 
+**v1.0.4, 7/13/2016**
+
+* Updated universal `snowboy.umdl` model to make it more robust.
+* Various improvements to speed up the detection.
+* Bug fixes.
+
 **v1.0.3, 6/4/2016**
 
 * Updated universal `snowboy.umdl` model to make it more robust in non-speech environment.
