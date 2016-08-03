@@ -29,7 +29,7 @@ class RingBuffer(object):
 
     def get(self):
         """Retrieves data from the beginning of buffer and clears it"""
-        tmp = ''.join(self._buf)
+        tmp = bytes(bytearray(self._buf))
         self._buf.clear()
         return tmp
 
@@ -88,7 +88,7 @@ class HotwordDetector(object):
         model_str = ",".join(decoder_model)
 
         self.detector = snowboydetect.SnowboyDetect(
-            resource_filename=resource, model_str=model_str)
+            resource_filename=resource.encode(), model_str=model_str.encode())
         self.detector.SetAudioGain(audio_gain)
         self.num_hotwords = self.detector.NumHotwords()
 
@@ -100,7 +100,7 @@ class HotwordDetector(object):
                 "(%d) does not match" % (self.num_hotwords, len(sensitivity))
         sensitivity_str = ",".join([str(t) for t in sensitivity])
         if len(sensitivity) != 0:
-            self.detector.SetSensitivity(sensitivity_str);
+            self.detector.SetSensitivity(sensitivity_str.encode())
 
         self.ring_buffer = RingBuffer(
             self.detector.NumChannels() * self.detector.SampleRate() * 5)

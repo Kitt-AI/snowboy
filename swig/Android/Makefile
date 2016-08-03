@@ -4,8 +4,7 @@
 # When you extract Android toolchain from Android NDK, make sure you supply
 # --stl=libc++ option. This Makefile is optimized for armv7-a architecture.
 
-# Some versions of swig does not work well. We prefer compiling swig from source
-# code. We have tested swig-3.0.7.tar.gz. 
+# Please use swig-3.0.10 or up.
 SWIG := swig
 
 # Please specify your NDK root directory here.
