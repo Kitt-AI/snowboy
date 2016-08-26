@@ -4,7 +4,7 @@ by [KITT.AI](http://kitt.ai).
 
 [Home Page](https://snowboy.kitt.ai)
 
-[Full Documentation](https://docs.kitt.ai/snowboy)
+[Full Documentation](http://docs.kitt.ai/snowboy)
 
 
 Version: 1.0.4 (7/13/2016)
@@ -80,7 +80,7 @@ Make sure that you can record audio with your microphone:
 
     rec t.wav
         
-If you need extra setup on your audio (especially on a Raspberry Pi), please see the [full documentation](https://docs.kitt.ai/snowboy).
+If you need extra setup on your audio (especially on a Raspberry Pi), please see the [full documentation](http://docs.kitt.ai/snowboy).
 
 ## Compile a Python Wrapper
 
@@ -165,7 +165,7 @@ You are probably using an old version of SWIG. Please upgrade. We have tested wi
 
 ## Advanced Usages & Demos
 
-See [Full Documentation](https://docs.kitt.ai/snowboy).
+See [Full Documentation](http://docs.kitt.ai/snowboy).
 
 ## Change Log
 
