@@ -1,0 +1,19 @@
+{
+  "name": "snowboy-detect",
+  "version": "1.0.4",
+  "description": "Snowboy is a customizable hotword detection engine",
+  "main": "lib/node/index.js",
+  "scripts": {
+    "install": "node-gyp rebuild"
+  },
+  "author": "Kitt-AI <snowboy@kitt.ai>",
+  "contributors": [
+    "Leandre Gohy <leandre.gohy@hexeo.be>"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "bindings": "^1.2.1",
+    "nan": "^2.4.0",
+    "node-gyp": "^3.4.0"
+  }
+}
