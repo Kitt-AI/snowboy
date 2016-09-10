@@ -18,3 +18,4 @@ snowboydetect.py
 
 /build
 /node_modules
+/lib/node/binding
