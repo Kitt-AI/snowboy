@@ -1,10 +1,17 @@
 const record = require('node-record-lpcm16');
-const SnowboyDetect = require('../../');
+const {Detector, Models} = require('../../');
 
-const d = new SnowboyDetect({
+const m = new Models();
+
+m.add({
+  file: 'resources/snowboy.umdl',
+  sensitivity: '0.5',
+  hotword : 'snowboy'
+});
+
+const d = new Detector({
   resource: "resources/common.res",
-  model: "resources/snowboy.umdl",
-  sensitivity: "0.5",
+  models: m,
   audioGain: 2.0
 });
 
