@@ -29,7 +29,15 @@
         ],
         'cflags': [
             '-std=c++11',
-            '-stdlib=libc++'
+            '-fexceptions',
+            '-Wall',
+            '-D_GLIBCXX_USE_CXX11_ABI=0'
+        ],
+        'cflags!': [
+            '-fno-exceptions'
+        ],
+        'cflags_cc!': [
+            '-fno-exceptions'
         ],
         'include_dirs': [
             "<!(node -e \"require('nan')\")",
@@ -37,9 +45,6 @@
         ],
         'libraries': [
             '-lcblas'
-        ],
-        'cflags': [
-            '-Wall'
         ],
         'xcode_settings': {
             'MACOSX_DEPLOYMENT_TARGET': '10.11',
