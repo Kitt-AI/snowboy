@@ -1,8 +1,8 @@
 {
     'targets': [{
-        'target_name': 'SnowboyDetect',
+        'target_name': 'snowboy',
         'sources': [
-            'swig/Node/snowboy-detect.cc'
+            'swig/Node/snowboy.cc'
         ],
         'conditions': [
             ['OS=="mac"', {
@@ -49,5 +49,16 @@
                 '-stdlib=libc++'
             ]
         }
+    },
+    {
+      "target_name": "action_after_build",
+      "type": "none",
+      "dependencies": [ "<(module_name)" ],
+      "copies": [
+        {
+          "files": [ "<(PRODUCT_DIR)/<(module_name).node" ],
+          "destination": "<(module_path)"
+        }
+      ]
     }]
 }
