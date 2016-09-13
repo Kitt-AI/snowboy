@@ -11,7 +11,7 @@ SNOWBOYDETECTSWIGCC = snowboy-detect-swig.cc
 SNOWBOYDETECTSWIGLIBFILE = _snowboydetect.so
 
 TOPDIR := ../../
-CXXFLAGS := -I$(TOPDIR) -O3 -fPIC
+CXXFLAGS := -I$(TOPDIR) -O3 -fPIC -D_GLIBCXX_USE_CXX11_ABI=0
 LDFLAGS :=
 
 ifeq ($(shell uname), Darwin)
