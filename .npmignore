@@ -7,14 +7,17 @@ snowboydetect.py
 *.o
 *.so
 
-/examples/C++/pa_stable_v19_20140130.tgz
-/examples/C++/portaudio
-/examples/C++/demo
+/examples/C++/*
+/examples/Python/*
 
-/swig/Android/OpenBLAS-0.2.18.tar.gz
-/swig/Android/OpenBLAS-Android/
-/swig/Android/java/
-/swig/Android/jniLibs/
+/swig/Android/*
+/swig/Python/*
 
 /build
 /node_modules
+
+/lib/node/*.ts
+/lib/node/*.d.ts
+
+.npmignore
+.travis.yml
