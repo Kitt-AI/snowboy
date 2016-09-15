@@ -7,7 +7,7 @@ by [KITT.AI](http://kitt.ai).
 [Full Documentation](http://docs.kitt.ai/snowboy)
 
 
-Version: 1.0.4 (7/13/2016)
+Version: 1.1.0 (9/14/2016)
 
 Snowboy is a customizable hotword detection engine for you to create your own
 hotword like "OK Google" or "Alexa". It is powered by deep neural networks and
@@ -38,6 +38,15 @@ pull request!
 
 If you want support on other hardware/OS, please send your request to
 [snowboy@kitt.ai](mailto:snowboy.kitt.ai)
+
+## Precompiled node module
+
+Snowboy is available in the form of a native node module precompiled for: 64 bit Ubuntu, MacOS X, and the Raspberry Pi (Raspbian 8.0+).
+For quick installation run:
+
+    npm install --save snowboy
+
+For sample usage see the `examples/Node` folder.
 
 ## Precompiled Binaries with Python Demo
 * 64 bit Ubuntu [12.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1204-x86_64-1.0.4.tar.bz2)
@@ -81,6 +90,15 @@ Make sure that you can record audio with your microphone:
     rec t.wav
         
 If you need extra setup on your audio (especially on a Raspberry Pi), please see the [full documentation](http://docs.kitt.ai/snowboy).
+
+## Compile a Node addon
+Compiling a node addon for Linux and the Raspberry Pi requires the installation of the following dependencies:
+
+    sudo apt-get install libmagic-dev libatlas-base-dev
+
+Then to compile the addon run the following from the root of the snowboy repository:
+
+    node-pre-gyp clean configure build
 
 ## Compile a Python Wrapper
 
@@ -168,6 +186,10 @@ You are probably using an old version of SWIG. Please upgrade. We have tested wi
 See [Full Documentation](http://docs.kitt.ai/snowboy).
 
 ## Change Log
+
+**v1.1.0, 9/14/2016**
+
+* Added library for Node.
 
 **v1.0.4, 7/13/2016**
 
