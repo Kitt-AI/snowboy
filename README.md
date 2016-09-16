@@ -6,6 +6,9 @@ by [KITT.AI](http://kitt.ai).
 
 [Full Documentation](http://docs.kitt.ai/snowboy)
 
+[Discussion Group](https://groups.google.com/a/kitt.ai/forum/#!forum/snowboy-discussion) (or send email to snowboy-discussion@kitt.ai)
+
+(The discussion group is new since September 2016 as we are getting many messages every day. Please send general questions there. For bugs, use Github issues.)
 
 Version: 1.0.4 (7/13/2016)
 
