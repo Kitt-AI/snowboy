@@ -9,7 +9,7 @@ const SnowboyDetectNative: SnowboyDetectNativeInterface = require(bindingPath).S
 enum DetectionResult {
   SILENCE = -2,
   ERROR = -1,
-  NOISE = 0
+  SOUND = 0
 }
 
 enum ModelType {
@@ -177,8 +177,8 @@ export class SnowboyDetect extends stream.Writable implements SnowboyDetectInter
         this.emit('silence');
         break;
 
-      case DetectionResult.NOISE:
-        this.emit('noise');
+      case DetectionResult.SOUND:
+        this.emit('sound');
         break;
 
       default:

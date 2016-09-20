@@ -20,8 +20,8 @@ detector.on('silence', function () {
   console.log('silence');
 });
 
-detector.on('noise', function () {
-  console.log('noise');
+detector.on('sound', function () {
+  console.log('sound');
 });
 
 detector.on('error', function () {
