@@ -1,0 +1,87 @@
+language: cpp
+
+# Cache node dependencies
+cache:
+  directories:
+    - node_modules
+
+# Ubuntu 14.04 Trusty support
+sudo: required
+dist: trusty
+
+addons:
+  apt:
+    sources:
+    # add PPAs with more up-to-date toolchains
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-precise-3.9
+    packages:
+    # install toolchains
+    - libmagic-dev
+    - libatlas-base-dev
+    - gcc-5
+    - g++-5
+    - clang-3.8
+
+os:
+- linux
+- osx
+
+env:
+  global:
+    - secure: i1H9nLTmwznGjZNrX2dYf8NmeMnHQRqZPErXenMe67zhI1NWZNd5Q4dkZKKMUUmZZa/aLPT9biYzeVsoxyX2zbbHl8cruVLqh67FwKdedf/m4quzn1U5MRznPFdzEb9LzyU6IKGJQYLDzCTlBpoZe8LQEIxwx/Fn7H5DxPXIQN2+YP4euDNdSdjr3PB3IaOf719gwmTbLnxpdUr2/u7ZUTu+0Q3AdG4NQ0oDaSYCbYsMET1zxz+nLDh0nZdq4+26X5FlFa4r5QEzFZMxxvK+vd7npHnrdhUQo1JFUZuO0MWhBpZfmJpSmsYF5leYWHBhC6VOfCRI8Ej15CNmBk9U/tmaF8H9Ho6PjYplIaAUQ9QhL3Y1lXSclBHQF+WEumKEgDhy8ZVdvpilIOMvj0/mCtD9XKNZFNcc0223FMYDf/polzjjssMIH6gltKR9VrDzmSbq5M5xkFKOcpH7C6uu754mLSUHt/+xNATBUsKQsNLqUuuj4WPjv6KB/p3/ruGk0xwCR6W+UY+Ji7BZunToZjF2R53DlWVL965dK40H3hKVOu4IXrjjNytHFORmwrgTfjLcq5i+vnzN6yThBtG+dg7Ek6cHc7MQQbngx2aqyW5P3ljnr8EbWdEB1nSOlImKX1Tu8Ln4+BMpLm5dmvMyI3h9IGWKS09nvOE4C4dFRM8=
+    - secure: PWkLgkYW8UuuuUUbhh7ytQu8Qe92DfccPm0f2dlJP+9A7TuPyfusnA5/SrCeNbMF+QDbwMXuxLmbDwvhiFZPXBI0KDl5kPfZbPPF9tUrPR7n2ZU7gFt+f9BeCCJsjkOxBw6j60T1T+bkqH0Z4Yj8IaB9vtfTVao8936CbEbfJwQItWpzAwjQYP5v5m8WtKDZjC0ZPSaNU20wEnw9Yce7Oz0OLIXhJzi4clN/fwLJJK3/3L233R6SOHibhgu/WLdMpulDylXXtzwU+Q5C3QEkL4gTQZlKpbz0+mVgaKrhSeQW8H5A2Q7mCapVDxN61Vs/nTQ6DijCuxKI54efXS0zD/o/4fhEoegfOETYwALPcGNTKKZ9tFjo9ZPPdN1yDUOwxLg7yHrncKX4DXGNdq0bpv2qxla/CoVALzigcXQeQPJwhfFXhYdTH94TwxNcABNZdUEw4Oljhx+D23I70QXboqSCng+BwdPDsRNMeJagO2hbamB7BTYJ/UsOhhF+d5cFikiZsWM7DtwqyYvzHlIMWFiGeXLsfnEiP4cD+yF8Vv4Uzehp5o6pGjV9l/Nna0TpNFNx4JG0VVyu/zitXpkyb5JokWBZ9GO6yRt2V4VgHamZ853xcDHyuj7X2YHPLgnCKcM5kIxxzQkEa/ZtyFjM2/XWkABwYLXQ8mdbXmSMUH8=
+  matrix:
+    - NODE_VERSION="4.0.0"
+    - NODE_VERSION="5.0.0"
+    - NODE_VERSION="6.0.0"
+
+before_install:
+# use the correct version of node
+- rm -rf ~/.nvm/ && git clone --depth 1 https://github.com/creationix/nvm.git ~/.nvm
+- source ~/.nvm/nvm.sh
+- nvm install $NODE_VERSION
+- nvm use $NODE_VERSION
+# get commit message
+- COMMIT_MESSAGE=$(git show -s --format=%B $TRAVIS_COMMIT | tr -d '\n')
+# put local node-pre-gyp on PATH
+- export PATH=./node_modules/.bin/:$PATH
+# put global node-gyp on PATH
+- npm install node-gyp -g
+# install aws-sdk so it is available for publishing
+- npm install aws-sdk
+# figure out if we should publish or republish
+- PUBLISH_BINARY=false
+- REPUBLISH_BINARY=false
+# if we are building a tag then publish
+- if [[ $TRAVIS_BRANCH == `git describe --tags --always HEAD` ]]; then PUBLISH_BINARY=true; fi;
+# or if we put [publish binary] in the commit message
+- if test "${COMMIT_MESSAGE#*'[publish binary]'}" != "$COMMIT_MESSAGE"; then PUBLISH_BINARY=true; fi;
+# alternativly we can [republish binary] which will replace any existing binary
+- if test "${COMMIT_MESSAGE#*'[republish binary]'}" != "$COMMIT_MESSAGE"; then PUBLISH_BINARY=true && REPUBLISH_BINARY=true; fi;
+install:
+# ensure source install works
+- npm install --build-from-source
+# test our module
+- node lib/node/index.js
+
+before_script:
+# if publishing, do it
+- if [[ $REPUBLISH_BINARY == true ]]; then node-pre-gyp package unpublish; fi;
+- if [[ $PUBLISH_BINARY == true ]]; then node-pre-gyp package publish; fi;
+# cleanup
+- node-pre-gyp clean
+- node-gyp clean
+
+script:
+# if publishing, test installing from remote
+- INSTALL_RESULT=0
+- if [[ $PUBLISH_BINARY == true ]]; then INSTALL_RESULT=$(npm install --fallback-to-build=false > /dev/null)$? || true; fi;
+# if install returned non zero (errored) then we first unpublish and then call false so travis will bail at this line
+- if [[ $INSTALL_RESULT != 0 ]]; then echo "returned $INSTALL_RESULT";node-pre-gyp unpublish;false; fi
+# If success then we arrive here so lets clean up
+- node-pre-gyp clean
+
+after_success:
+# if success then query and display all published binaries
+- node-pre-gyp info
