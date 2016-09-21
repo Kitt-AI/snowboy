@@ -7,7 +7,8 @@ class SnowboyDetect : public Nan::ObjectWrap {
     static NAN_MODULE_INIT(Init);
 
   private:
-    explicit SnowboyDetect(const std::string& resource_filename, const std::string& model_str);
+    explicit SnowboyDetect(const std::string& resource_filename,
+                           const std::string& model_str);
     ~SnowboyDetect();
 
     static NAN_METHOD(New);
@@ -29,7 +30,8 @@ class SnowboyDetect : public Nan::ObjectWrap {
 
 Nan::Persistent<v8::Function> SnowboyDetect::constructor;
 
-SnowboyDetect::SnowboyDetect(const std::string& resource_filename, const std::string& model_str) {
+SnowboyDetect::SnowboyDetect(const std::string& resource_filename,
+                             const std::string& model_str) {
   try {
     this->detector = new snowboy::SnowboyDetect(resource_filename, model_str);
   } catch (std::runtime_error e) {
@@ -65,7 +67,8 @@ NAN_MODULE_INIT(SnowboyDetect::Init) {
 
 NAN_METHOD(SnowboyDetect::New) {
   if (!info.IsConstructCall()) {
-    Nan::ThrowError("Cannot call constructor as function, you need to use 'new' keyword");
+    Nan::ThrowError("Cannot call constructor as function, you need to use "
+                    "'new' keyword");
     return;
   } else if (!info[0]->IsString()) {
     Nan::ThrowTypeError("resource must be a string");

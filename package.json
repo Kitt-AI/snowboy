@@ -1,6 +1,6 @@
 {
   "name": "snowboy",
-  "version": "1.1.0",
+  "version": "1.0.11",
   "description": "Snowboy is a customizable hotword detection engine",
   "main": "lib/node/index.js",
   "binary": {
@@ -8,7 +8,7 @@
     "module_path": "./lib/node/binding/{configuration}/{node_abi}-{platform}-{arch}/",
     "remote_path": "./{module_name}/v{version}/{configuration}/",
     "package_name": "{module_name}-v{version}-{node_abi}-{platform}-{arch}.tar.gz",
-    "host": "https://evancohen-snowboy.s3-us-west-2.amazonaws.com"
+    "host": "https://snowboy-release-node.s3-us-west-2.amazonaws.com"
   },
   "scripts": {
     "preinstall": "npm install node-pre-gyp",
@@ -16,7 +16,7 @@
     "test": "node index.js",
     "prepublish": "tsc --listFiles"
   },
-  "author": "Kitt-AI <snowboy@kitt.ai>",
+  "author": "KITT.AI <snowboy@kitt.ai>",
   "contributors": [
     "Leandre Gohy <leandre.gohy@hexeo.be>",
     "Evan Cohen <evanbtcohen@gmail.com>"
