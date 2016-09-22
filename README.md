@@ -194,7 +194,8 @@ See [Full Documentation](http://docs.kitt.ai/snowboy).
 
 * Added library for Node.
 * Added support for Python3.
-* Updated universal `snowboy.umdl` model so that it works in noisy environment.
+* Added universal model `alexa.umdl`
+* Updated universal model `snowboy.umdl` so that it works in noisy environment.
 
 **v1.0.4, 7/13/2016**
 
