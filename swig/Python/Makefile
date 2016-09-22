@@ -1,8 +1,7 @@
 # Example Makefile that converts snowboy c++ library (snowboy-detect.a) to
 # python library (_snowboydetect.so, snowboydetect.py), using swig.
 
-# Some versions of swig does not work well. We prefer compiling swig from source
-# code. We have tested swig-3.0.7.tar.gz. 
+# Please use swig-3.0.10 or up.
 SWIG := swig
 
 SNOWBOYDETECTSWIGITF = snowboy-detect-swig.i
@@ -16,8 +15,8 @@ LDFLAGS :=
 
 ifeq ($(shell uname), Darwin)
   CXX := clang++
-  PYINC := $(shell /usr/bin/python2.7-config --includes)
-  PYLIBS := $(shell /usr/bin/python2.7-config --ldflags)
+  PYINC := $(shell python-config --includes)
+  PYLIBS := $(shell python-config --ldflags)
   SWIGFLAGS := -bundle -flat_namespace -undefined suppress
   LDLIBS := -lm -ldl -framework Accelerate
   SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/osx/libsnowboy-detect.a

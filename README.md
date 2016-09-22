@@ -10,7 +10,7 @@ by [KITT.AI](http://kitt.ai).
 
 (The discussion group is new since September 2016 as we are getting many messages every day. Please send general questions there. For bugs, use Github issues.)
 
-Version: 1.0.4 (7/13/2016)
+Version: 1.1.0 (9/20/2016)
 
 Snowboy is a customizable hotword detection engine for you to create your own
 hotword like "OK Google" or "Alexa". It is powered by deep neural networks and
@@ -42,12 +42,24 @@ pull request!
 If you want support on other hardware/OS, please send your request to
 [snowboy@kitt.ai](mailto:snowboy.kitt.ai)
 
+## Precompiled node module
+
+Snowboy is available in the form of a native node module precompiled for:
+64 bit Ubuntu, MacOS X, and the Raspberry Pi (Raspbian 8.0+). For quick
+installation run:
+
+    npm install --save snowboy
+
+For sample usage see the `examples/Node` folder. You may have to install
+dependencies like `fs`, `wav` or `node-record-lpcm16` depending on which script
+you use.
+
 ## Precompiled Binaries with Python Demo
-* 64 bit Ubuntu [12.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1204-x86_64-1.0.4.tar.bz2)
-  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.0.4.tar.bz2)
-* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.0.4.tar.bz2)
+* 64 bit Ubuntu [12.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1204-x86_64-1.1.0.tar.bz2)
+  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.1.0.tar.bz2)
+* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.1.0.tar.bz2)
 * Raspberry Pi with Raspbian 8.0, all versions
-  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.0.4.tar.bz2))
+  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.1.0.tar.bz2))
   
 If you want to compile a version against your own environment/language, read on.
 
@@ -84,6 +96,15 @@ Make sure that you can record audio with your microphone:
     rec t.wav
         
 If you need extra setup on your audio (especially on a Raspberry Pi), please see the [full documentation](http://docs.kitt.ai/snowboy).
+
+## Compile a Node addon
+Compiling a node addon for Linux and the Raspberry Pi requires the installation of the following dependencies:
+
+    sudo apt-get install libmagic-dev libatlas-base-dev
+
+Then to compile the addon run the following from the root of the snowboy repository:
+
+    node-pre-gyp clean configure build
 
 ## Compile a Python Wrapper
 
@@ -171,6 +192,13 @@ You are probably using an old version of SWIG. Please upgrade. We have tested wi
 See [Full Documentation](http://docs.kitt.ai/snowboy).
 
 ## Change Log
+
+**v1.1.0, 9/20/2016**
+
+* Added library for Node.
+* Added support for Python3.
+* Added universal model `alexa.umdl`
+* Updated universal model `snowboy.umdl` so that it works in noisy environment.
 
 **v1.0.4, 7/13/2016**
 

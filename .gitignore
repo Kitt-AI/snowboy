@@ -16,3 +16,7 @@ snowboydetect.py
 /swig/Android/java/
 /swig/Android/jniLibs/
 
+/build
+/node_modules
+/lib/node/binding
+/lib/node/index.js
