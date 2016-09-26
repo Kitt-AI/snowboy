@@ -12,9 +12,9 @@ by [KITT.AI](http://kitt.ai).
 
 Version: 1.1.0 (9/20/2016)
 
-**New!**
+## New!
 
-Snowboy now offers Hotword as a Service through the ``https://snowboy.kitt.ai/api/v1/train/``
+Snowboy now offers **Hotword as a Service** through the ``https://snowboy.kitt.ai/api/v1/train/``
 endpoint. Check out the [Full Documentation](http://docs.kitt.ai/snowboy) here.
 
 ## Introduction
