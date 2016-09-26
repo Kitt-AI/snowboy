@@ -12,6 +12,13 @@ by [KITT.AI](http://kitt.ai).
 
 Version: 1.1.0 (9/20/2016)
 
+**New!**
+
+Snowboy now offers Hotword as a Service through the ``https://snowboy.kitt.ai/api/v1/train/``
+endpoint. Check out the [Full Documentation](http://docs.kitt.ai/snowboy) here.
+
+## Introduction
+
 Snowboy is a customizable hotword detection engine for you to create your own
 hotword like "OK Google" or "Alexa". It is powered by deep neural networks and
 has the following properties:
@@ -192,6 +199,11 @@ You are probably using an old version of SWIG. Please upgrade. We have tested wi
 See [Full Documentation](http://docs.kitt.ai/snowboy).
 
 ## Change Log
+
+**9/28/2016**
+
+* Offering Hotword as a Service through ``/api/v1/train`` endpoint.
+* No version bump since decoder is not changed.
 
 **v1.1.0, 9/20/2016**
 
