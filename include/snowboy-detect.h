@@ -108,6 +108,10 @@ class SnowboyDetect {
   // index of the hotwords.
   int NumHotwords() const;
 
+  // If <apply_frontend> is true, then apply frontend audio processing;
+  // otherwise turns the audio processing off.
+  void ApplyFrontend(const bool apply_frontend);
+
   // Returns the required sampling rate, number of channels and bits per sample
   // values for the audio data. You should use this information to set up your
   // audio capturing interface.
