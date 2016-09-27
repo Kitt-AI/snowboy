@@ -14,6 +14,9 @@
             }],
             ['OS=="linux" and target_arch=="x64"', {
                 'link_settings': {
+                    'ldflags': [
+                        '-Wl,--no-as-needed',
+                    ],
                     'libraries': [
                         '<(module_root_dir)/lib/ubuntu64/libsnowboy-detect.a',
                     ]
@@ -44,7 +47,6 @@
             "<!(pwd)/include"
         ],
         'libraries': [
-            '-Wl,--no-as-needed',
             '-lcblas'
         ],
         'xcode_settings': {
