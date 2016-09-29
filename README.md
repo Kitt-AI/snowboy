@@ -15,7 +15,7 @@ Version: 1.1.0 (9/20/2016)
 ## New!
 
 Snowboy now offers **Hotword as a Service** through the ``https://snowboy.kitt.ai/api/v1/train/``
-endpoint. Check out the [Full Documentation](http://docs.kitt.ai/snowboy) here.
+endpoint. Check out the [Full Documentation](http://docs.kitt.ai/snowboy) and example [Python/Bash script](examples/REST_API) (other language contributions are very welcome).
 
 ## Introduction
 

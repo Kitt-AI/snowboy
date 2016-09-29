@@ -7,7 +7,7 @@ NAME="??"
 LANGUAGE="en"
 AGE_GROUP="20_29"
 GENDER="M"
-MICROPHONE="PS3 Eye"
+MICROPHONE="??" # e.g., PS3 Eye
 ############### END OF MODIFY ##################
 
 if [[ "$#" != 4 ]]; then

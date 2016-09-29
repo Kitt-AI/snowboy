@@ -18,7 +18,7 @@ hotword_name = "???"
 language = "en"
 age_group = "20_29"
 gender = "M"
-microphone = "macbook microphone"
+microphone = "??" # e.g., macbook pro microphone
 ############### END OF MODIFY ##################
 
 if __name__ == "__main__":
