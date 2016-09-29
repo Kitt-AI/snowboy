@@ -17,6 +17,24 @@ Version: 1.1.0 (9/20/2016)
 Snowboy now offers **Hotword as a Service** through the ``https://snowboy.kitt.ai/api/v1/train/``
 endpoint. Check out the [Full Documentation](http://docs.kitt.ai/snowboy) and example [Python/Bash script](examples/REST_API) (other language contributions are very welcome).
 
+As a quick start, ``POST`` to https://snowboy.kitt.ai/api/v1/train:
+
+	{
+	    "name": "a word",
+	    "language": "en",
+	    "age_group": "10_19",
+	    "gender": "F",
+	    "microphone": "mic type",
+	    "token": "<your auth token>",
+	    "voice_samples": [
+	        {wave: "<base64 encoded wave data>"},
+	        {wave: "<base64 encoded wave data>"},
+	        {wave: "<base64 encoded wave data>"}
+	    ]
+	}
+
+then you'll get a trained personal model in return!
+
 ## Introduction
 
 Snowboy is a customizable hotword detection engine for you to create your own
