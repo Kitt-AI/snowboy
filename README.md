@@ -67,6 +67,17 @@ pull request!
 If you want support on other hardware/OS, please send your request to
 [snowboy@kitt.ai](mailto:snowboy.kitt.ai)
 
+## Pricing for Snowboy models
+
+Hackers: free
+* Personal use
+* Community support
+
+Business: please contact us at [snowboy@kitt.ai](mailto:snowboy.kitt.ai)
+* Personal use
+* Commercial license
+* Technical support
+
 ## Precompiled node module
 
 Snowboy is available in the form of a native node module precompiled for:
