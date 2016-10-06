@@ -142,6 +142,19 @@ Then to compile the addon run the following from the root of the snowboy reposit
 
     node-pre-gyp clean configure build
 
+## Compile a Java Wrapper
+
+    # Make sure you have JDK installed.
+    cd swig/Java
+    make
+
+SWIG will generate a directory called `java` which contains converted Java wrappers and a directory called `jniLibs` which contains the JNI library.
+
+To run the Java example script:
+
+    cd examples/Java
+    make run
+
 ## Compile a Python Wrapper
 
     cd swig/Python

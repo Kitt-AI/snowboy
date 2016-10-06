@@ -12,11 +12,14 @@ snowboydetect.py
 /examples/C++/pa_stable_v19_20140130.tgz
 /examples/C++/portaudio
 /examples/C++/demo
+/examples/Java/Demo.class
 
 /swig/Android/OpenBLAS-0.2.18.tar.gz
 /swig/Android/OpenBLAS-Android/
 /swig/Android/java/
 /swig/Android/jniLibs/
+/swig/Java/java/
+/swig/Java/jniLibs/
 
 /build
 /node_modules
