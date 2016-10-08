@@ -21,7 +21,7 @@ Snowboy now brings hands-free experience to the [Alexa AVS sample app](https://g
 **Personal model**
 * Create your personal hotword model through our [website](https://snowboy.kitt.ai) or [hotowrd API](https://snowboy.kitt.ai/api/v1/train/)
 * Replace the hotword model in [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) (after installation) with your personal model
-* Turn off frontend audio processing (we don't do it for personal models) by setting `APPLY_FRONTEND` to `false` in the [code](https://github.com/alexa/alexa-avs-sample-app/blob/master/samples/wakeWordAgent/src/KittAiSnowboyWakeWordEngine.cpp) and re-compile
+* Set `APPLY_FRONTEND` to `false` in the [Alexa AVS sample app code](https://github.com/alexa/alexa-avs-sample-app/blob/master/samples/wakeWordAgent/src/KittAiSnowboyWakeWordEngine.cpp) and re-compile
 * Run the wake word agent with engine set to `kitt_ai`!
 
 **Universal model**
