@@ -14,6 +14,23 @@ Version: 1.1.0 (9/20/2016)
 
 ## New!
 
+### Alexa support
+
+Snowboy now brings hands-free experience to the [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) on Raspberry Pi! Here is how you can use other Snowboy models
+
+**Personal model**
+* Create your personal hotword model through our [website](https://snowboy.kitt.ai) or [hotowrd API](https://snowboy.kitt.ai/api/v1/train/)
+* Replace the hotword model in [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) (after installation) with your personal model
+* Set `APPLY_FRONTEND` to `false` in the [Alexa AVS sample app code](https://github.com/alexa/alexa-avs-sample-app/blob/master/samples/wakeWordAgent/src/KittAiSnowboyWakeWordEngine.cpp) and re-compile
+* Run the wake word agent with engine set to `kitt_ai`!
+
+**Universal model**
+* Replace the hotword model in [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) (after installation) with your universal model
+* Run the wake word agent with engine set to `kitt_ai`!
+
+
+### Hotword as a Service
+
 Snowboy now offers **Hotword as a Service** through the ``https://snowboy.kitt.ai/api/v1/train/``
 endpoint. Check out the [Full Documentation](http://docs.kitt.ai/snowboy) and example [Python/Bash script](examples/REST_API) (other language contributions are very welcome).
 
