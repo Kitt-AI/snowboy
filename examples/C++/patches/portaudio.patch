@@ -20,7 +20,7 @@
          LIBS="-framework CoreAudio -framework AudioToolbox -framework AudioUnit -framework Carbon"
  
          if test "x$enable_mac_universal" = "xyes" ; then
-@@ -15819,8 +15819,14 @@
+@@ -15819,8 +15819,17 @@
                elif xcodebuild -version -sdk macosx10.9 Path >/dev/null 2>&1 ; then
                   mac_version_min="-mmacosx-version-min=10.4"
                   mac_sysroot="-isysroot `xcodebuild -version -sdk macosx10.9 Path`"
@@ -30,9 +30,12 @@
 +              elif xcodebuild -version -sdk macosx10.11 Path >/dev/null 2>&1 ; then
 +                 mac_version_min="-mmacosx-version-min=10.4"
 +                 mac_sysroot="-isysroot `xcodebuild -version -sdk macosx10.11 Path`"
++              elif xcodebuild -version -sdk macosx10.12 Path >/dev/null 2>&1 ; then
++                 mac_version_min="-mmacosx-version-min=10.4"
++                 mac_sysroot="-isysroot `xcodebuild -version -sdk macosx10.12 Path`"
                else
 -                 as_fn_error $? "Couldn't find 10.5, 10.6, 10.7, 10.8 or 10.9 SDK" "$LINENO" 5
-+                 as_fn_error $? "Couldn't find 10.5, 10.6, 10.7, 10.8, 10.9, 10.10 or 10.11 SDK" "$LINENO" 5
++                 as_fn_error $? "Couldn't find 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11 or 10.12 SDK" "$LINENO" 5
                fi
             esac
  
