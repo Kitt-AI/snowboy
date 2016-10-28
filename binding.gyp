@@ -24,6 +24,9 @@
             }],
             ['OS=="linux" and target_arch=="arm"', {
                 'link_settings': {
+                    'ldflags': [
+                        '-Wl,--no-as-needed',
+                    ],
                     'libraries': [
                         '<(module_root_dir)/lib/rpi/libsnowboy-detect.a',
                     ]
