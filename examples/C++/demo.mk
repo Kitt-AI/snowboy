@@ -8,6 +8,7 @@ PORTAUDIOINC := /usr/include
 PORTAUDIOLIBS := -lportaudio -lblas -llapack
 
 CXXFLAGS += -D_GLIBCXX_USE_CXX11_ABI=0
+
 ifeq ($(DYNAMIC), True)
   CXXFLAGS += -fPIC
 endif
