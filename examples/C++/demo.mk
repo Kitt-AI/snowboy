@@ -7,6 +7,8 @@ LDLIBS :=
 PORTAUDIOINC := portaudio/install/include
 PORTAUDIOLIBS := portaudio/install/lib/libportaudio.a
 
+CXXFLAGS += -D_GLIBCXX_USE_CXX11_ABI=0
+
 ifeq ($(DYNAMIC), True)
   CXXFLAGS += -fPIC
 endif
