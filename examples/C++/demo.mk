@@ -9,7 +9,6 @@ PORTAUDIOLIBS := -lportaudio
 
 CXXFLAGS += -D_GLIBCXX_USE_CXX11_ABI=0
 
->>>>>>> 9a0b298... Bring back previous set of referenced libraries to minimize diff with upstream.
 ifeq ($(DYNAMIC), True)
   CXXFLAGS += -fPIC
 endif
