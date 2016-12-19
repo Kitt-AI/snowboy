@@ -90,7 +90,9 @@ Hackers: free
 * Personal use
 * Community support
 
-Business: please contact us at [snowboy@kitt.ai](mailto:snowboy.kitt.ai)
+Business: please 
+
+us at [snowboy@kitt.ai](mailto:snowboy@kitt.ai)
 * Personal use
 * Commercial license
 * Technical support
