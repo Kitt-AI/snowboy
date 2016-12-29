@@ -1,6 +1,7 @@
 const fs = require('fs');
 const wav = require('wav');
-const {Detector, Models} = require('../../');
+const Detector = require('../../').Detector;
+const Models = require('../../').Models;
 
 const models = new Models();
 
