@@ -8,7 +8,9 @@
 SWIG := swig
 
 # Please specify your NDK root directory here.
-NDKROOT :=
+NDK_INSTALLROOT := $(PWD)/ndk_install
+NDKROOT := $(PWD)/android-ndk-r11c
+export PATH := $(NDK_INSTALLROOT)/bin:$(PATH)
 APILEVEL := 17
 
 SNOWBOYDETECTSWIGITF = snowboy-detect-swig.i
@@ -23,8 +25,8 @@ ARCH := arm
 TOPDIR := ../../
 LDFLAGS :=
 
-CXXFLAGS := -O3 --sysroot=$(NDKROOT)/platforms/android-$(APILEVEL)/arch-$(ARCH)
-LDLIBS := -L$(NDKROOT)/platforms/android-$(APILEVEL)/arch-$(ARCH)/usr/lib
+CXXFLAGS := -O3 --sysroot=$(NDK_INSTALLROOT)/sysroot
+LDLIBS := -L$(NDK_INSTALLROOT)/sysroot/usr/lib
 
 ifeq ($(ARCH), arm)
   CXX := arm-linux-androideabi-g++
@@ -51,7 +53,10 @@ all: $(SNOWBOYSWIGLIBFILE) $(SNOWBOYDETECTSWIGLIBFILE)
 %.a:
 	$(MAKE) -C ${@D} ${@F}
 
-$(OPENBLASLIBFILE):
+$(NDK_INSTALLROOT):
+	@-./install_ndk.sh
+
+$(OPENBLASLIBFILE): $(NDK_INSTALLROOT)
 	@-./install_openblas_android.sh $(ARCH) $(OPENBLASTARGET)
 
 $(SNOWBOYDETECTSWIGCC): $(SNOWBOYDETECTSWIGITF)
