@@ -1,5 +1,6 @@
 const record = require('node-record-lpcm16');
-const {Detector, Models} = require('../../');
+const Detector = require('../../').Detector;
+const Models = require('../../').Models;
 
 const models = new Models();
 
