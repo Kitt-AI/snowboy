@@ -3,13 +3,14 @@
 
 # When you extract Android toolchain from Android NDK, make sure you supply
 # --stl=libc++ option. This Makefile is optimized for armv7-a architecture.
+# Also, please make sure "unzip" is installed.
 
 # Please use swig-3.0.10 or up.
 SWIG := swig
 
 # Please specify your NDK root directory here.
-NDKROOT :=
-APILEVEL := 17
+NDKINSTALLEDROOT := $(PWD)/ndk_install
+NDKROOT := $(PWD)/android-ndk-r11c
 
 SNOWBOYDETECTSWIGITF = snowboy-detect-swig.i
 SNOWBOYDETECTSWIGOBJ = snowboy-detect-swig.o
@@ -23,12 +24,14 @@ ARCH := arm
 TOPDIR := ../../
 LDFLAGS :=
 
-CXXFLAGS := -O3 --sysroot=$(NDKROOT)/platforms/android-$(APILEVEL)/arch-$(ARCH)
-LDLIBS := -L$(NDKROOT)/platforms/android-$(APILEVEL)/arch-$(ARCH)/usr/lib
+CXXFLAGS := -O3 --sysroot=$(NDKINSTALLEDROOT)/sysroot
+LDLIBS := -L$(NDKINSTALLEDROOT)/sysroot/usr/lib
 
 ifeq ($(ARCH), arm)
-  CXX := arm-linux-androideabi-g++
-  STRIP := arm-linux-androideabi-strip
+  AR := $(NDKINSTALLEDROOT)/bin/arm-linux-androideabi-ar
+  CC := $(NDKINSTALLEDROOT)/bin/arm-linux-androideabi-gcc
+  CXX := $(NDKINSTALLEDROOT)/bin/arm-linux-androideabi-g++
+  STRIP := $(NDKINSTALLEDROOT)/bin/arm-linux-androideabi-strip
   OPENBLASTARGET := ARMV7
   SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/android/armv7a/libsnowboy-detect.a
   CXXFLAGS += -shared -std=c++0x -rdynamic -I$(TOPDIR) -Wl,--fix-cortex-a8 \
@@ -51,8 +54,11 @@ all: $(SNOWBOYSWIGLIBFILE) $(SNOWBOYDETECTSWIGLIBFILE)
 %.a:
 	$(MAKE) -C ${@D} ${@F}
 
-$(OPENBLASLIBFILE):
-	@-./install_openblas_android.sh $(ARCH) $(OPENBLASTARGET)
+$(NDKINSTALLEDROOT):
+	@-./install_ndk.sh
+
+$(OPENBLASLIBFILE): $(NDKINSTALLEDROOT)
+	@-./install_openblas.sh $(CC) $(AR) $(OPENBLASTARGET)
 
 $(SNOWBOYDETECTSWIGCC): $(SNOWBOYDETECTSWIGITF)
 	@-mkdir -p $(SNOWBOYDETECTJAVAPKGDIR)
