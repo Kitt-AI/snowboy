@@ -5,14 +5,16 @@
 #include <cassert>
 #include <csignal>
 #include <iostream>
-#include <pa_ringbuffer.h>
-#include <pa_util.h>
 #include <portaudio.h>
 #include <string>
 #include <vector>
+#include <boost/lockfree/spsc_queue.hpp>
 
 #include "include/snowboy-detect.h"
 
+#define BUFFER_SIZE (1 << 14)
+
+template<typename T>
 int PortAudioCallback(const void* input,
                       void* output,
                       unsigned long frame_count,
@@ -20,6 +22,7 @@ int PortAudioCallback(const void* input,
                       PaStreamCallbackFlags status_flags,
                       void* user_data);
 
+template<typename T>
 class PortAudioWrapper {
  public:
   // Constructor.
@@ -30,8 +33,7 @@ class PortAudioWrapper {
   }
 
   // Reads data from ring buffer.
-  template<typename T>
-  void Read(std::vector<T>* data) {
+  size_t Read(std::vector<T>* data) {
     assert(data != NULL);
 
     // Checks ring buffer overflow.
@@ -41,25 +43,17 @@ class PortAudioWrapper {
       num_lost_samples_ = 0;
     }
 
-    ring_buffer_size_t num_available_samples = 0;
+    size_t num_available_samples = 0;
     while (true) {
-      num_available_samples =
-          PaUtil_GetRingBufferReadAvailable(&pa_ringbuffer_);
+      // Reads data.
+      size_t num_read_samples = ringbuffer_.pop(data->data() + num_available_samples, data->size() - num_available_samples);
+      num_available_samples += num_read_samples;
       if (num_available_samples >= min_read_samples_) {
         break;
       }
       Pa_Sleep(5);
     }
-
-    // Reads data.
-    num_available_samples = PaUtil_GetRingBufferReadAvailable(&pa_ringbuffer_);
-    data->resize(num_available_samples);
-    ring_buffer_size_t num_read_samples = PaUtil_ReadRingBuffer(
-        &pa_ringbuffer_, data->data(), num_available_samples);
-    if (num_read_samples != num_available_samples) {
-      std::cerr << num_available_samples << " samples were available,  but "
-          << "only " << num_read_samples << " samples were read." << std::endl;
-    }
+    return num_available_samples;
   }
 
   int Callback(const void* input, void* output,
@@ -67,8 +61,7 @@ class PortAudioWrapper {
                const PaStreamCallbackTimeInfo* time_info,
                PaStreamCallbackFlags status_flags) {
     // Input audio.
-    ring_buffer_size_t num_written_samples =
-        PaUtil_WriteRingBuffer(&pa_ringbuffer_, input, frame_count);
+    size_t num_written_samples = ringbuffer_.push(static_cast<const int16_t*>(input), frame_count);
     num_lost_samples_ += frame_count - num_written_samples;
     return paContinue;
   }
@@ -77,30 +70,13 @@ class PortAudioWrapper {
     Pa_StopStream(pa_stream_);
     Pa_CloseStream(pa_stream_);
     Pa_Terminate();
-    PaUtil_FreeMemory(ringbuffer_);
   }
 
  private:
   // Initialization.
   bool Init(int sample_rate, int num_channels, int bits_per_sample) {
-    // Allocates ring buffer memory.
-    int ringbuffer_size = 16384;
-    ringbuffer_ = static_cast<char*>(
-        PaUtil_AllocateMemory(bits_per_sample / 8 * ringbuffer_size));
-    if (ringbuffer_ == NULL) {
-      std::cerr << "Fail to allocate memory for ring buffer." << std::endl;
-      return false;
-    }
-
-    // Initializes PortAudio ring buffer.
-    ring_buffer_size_t rb_init_ans =
-        PaUtil_InitializeRingBuffer(&pa_ringbuffer_, bits_per_sample / 8,
-                                    ringbuffer_size, ringbuffer_);
-    if (rb_init_ans == -1) {
-      std::cerr << "Ring buffer size is not power of 2." << std::endl;
-      return false;
-    }
-
+    std::cout << "Initializing PA with " << sample_rate << " sample rate, "
+              << num_channels << " channels, " << bits_per_sample << " bps" << std::endl;
     // Initializes PortAudio.
     PaError pa_init_ans = Pa_Initialize();
     if (pa_init_ans != paNoError) {
@@ -113,15 +89,15 @@ class PortAudioWrapper {
     if (bits_per_sample == 8) {
       pa_open_ans = Pa_OpenDefaultStream(
           &pa_stream_, num_channels, 0, paUInt8, sample_rate,
-          paFramesPerBufferUnspecified, PortAudioCallback, this);
+          paFramesPerBufferUnspecified, PortAudioCallback<T>, this);
     } else if (bits_per_sample == 16) {
       pa_open_ans = Pa_OpenDefaultStream(
           &pa_stream_, num_channels, 0, paInt16, sample_rate,
-          paFramesPerBufferUnspecified, PortAudioCallback, this);
+          paFramesPerBufferUnspecified, PortAudioCallback<T>, this);
     } else if (bits_per_sample == 32) {
       pa_open_ans = Pa_OpenDefaultStream(
           &pa_stream_, num_channels, 0, paInt32, sample_rate,
-          paFramesPerBufferUnspecified, PortAudioCallback, this);
+          paFramesPerBufferUnspecified, PortAudioCallback<T>, this);
     } else {
       std::cerr << "Unsupported BitsPerSample: " << bits_per_sample
           << std::endl;
@@ -143,11 +119,8 @@ class PortAudioWrapper {
   }
 
  private:
-  // Pointer to the ring buffer memory.
-  char* ringbuffer_;
-
   // Ring buffer wrapper used in PortAudio.
-  PaUtilRingBuffer pa_ringbuffer_;
+  boost::lockfree::spsc_queue<T, boost::lockfree::capacity<BUFFER_SIZE>> ringbuffer_;
 
   // Pointer to PortAudio stream.
   PaStream* pa_stream_;
@@ -159,13 +132,14 @@ class PortAudioWrapper {
   int min_read_samples_;
 };
 
+template<typename T>
 int PortAudioCallback(const void* input,
                       void* output,
                       unsigned long frame_count,
                       const PaStreamCallbackTimeInfo* time_info,
                       PaStreamCallbackFlags status_flags,
                       void* user_data) {
-  PortAudioWrapper* pa_wrapper = reinterpret_cast<PortAudioWrapper*>(user_data);
+  PortAudioWrapper<T>* pa_wrapper = reinterpret_cast<PortAudioWrapper<T>*>(user_data);
   pa_wrapper->Callback(input, output, frame_count, time_info, status_flags);
   return paContinue;
 }
@@ -191,11 +165,11 @@ int main(int argc, char* argv[]) {
   }
 
   // Configures signal handling.
-   struct sigaction sig_int_handler;
-   sig_int_handler.sa_handler = SignalHandler;
-   sigemptyset(&sig_int_handler.sa_mask);
-   sig_int_handler.sa_flags = 0;
-   sigaction(SIGINT, &sig_int_handler, NULL);
+  struct sigaction sig_int_handler;
+  sig_int_handler.sa_handler = SignalHandler;
+  sigemptyset(&sig_int_handler.sa_mask);
+  sig_int_handler.sa_flags = 0;
+  sigaction(SIGINT, &sig_int_handler, NULL);
 
   // Parameter section.
   // If you have multiple hotword models (e.g., 2), you should set
@@ -213,18 +187,18 @@ int main(int argc, char* argv[]) {
   detector.SetAudioGain(audio_gain);
 
   // Initializes PortAudio. You may use other tools to capture the audio.
-  PortAudioWrapper pa_wrapper(detector.SampleRate(),
-                              detector.NumChannels(), detector.BitsPerSample());
-
-  // Runs the detection.
   // Note: I hard-coded <int16_t> as data type because detector.BitsPerSample()
   //       returns 16.
+  PortAudioWrapper<int16_t> pa_wrapper(detector.SampleRate(),
+                                       detector.NumChannels(), detector.BitsPerSample());
+
+  // Runs the detection.
   std::cout << "Listening... Press Ctrl+C to exit" << std::endl;
-  std::vector<int16_t> data;
+  std::vector<int16_t> data(BUFFER_SIZE);
   while (true) {
-    pa_wrapper.Read(&data);
-    if (data.size() != 0) {
-      int result = detector.RunDetection(data.data(), data.size());
+    const size_t num_samples = pa_wrapper.Read(&data);
+    if (num_samples) {
+      int result = detector.RunDetection(data.data(), num_samples);
       if (result > 0) {
         std::cout << "Hotword " << result << " detected!" << std::endl;
       }
