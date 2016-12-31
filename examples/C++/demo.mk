@@ -4,11 +4,10 @@ CC = $(CXX)
 CXX :=
 LDFLAGS :=
 LDLIBS :=
-PORTAUDIOINC := portaudio/install/include
-PORTAUDIOLIBS := portaudio/install/lib/libportaudio.a
+PORTAUDIOINC := /usr/include
+PORTAUDIOLIBS := -lportaudio -lblas -llapack
 
 CXXFLAGS += -D_GLIBCXX_USE_CXX11_ABI=0
-
 ifeq ($(DYNAMIC), True)
   CXXFLAGS += -fPIC
 endif
@@ -31,9 +30,9 @@ else ifeq ($(shell uname), Linux)
   CXX := g++
   CXXFLAGS += -I$(TOPDIR) -std=c++0x -Wall -Wno-sign-compare \
       -Wno-unused-local-typedefs -Winit-self -rdynamic \
-      -DHAVE_POSIX_MEMALIGN -I$(PORTAUDIOINC)
+      -DHAVE_POSIX_MEMALIGN
   LDLIBS += -ldl -lm -Wl,-Bstatic -Wl,-Bdynamic -lrt -lpthread $(PORTAUDIOLIBS)\
-      -L/usr/lib/atlas-base -lf77blas -lcblas -llapack_atlas -latlas
+      -lboost_system
   ifneq ($(wildcard $(PORTAUDIOINC)/pa_linux_alsa.h),)
     LDLIBS += -lasound
   endif
