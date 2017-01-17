@@ -120,7 +120,16 @@ If you want to compile a version against your own environment/language, read on.
 
 ## Dependencies
 
-Snowboy's Python wrapper uses PortAudio to access your device's microphone.
+To run the demo you will likely need the following, depending on which demo you
+use and what platform you are working with:
+
+* SoX (audio conversion)
+* PortAudio or PyAudio (audio capturing)
+* SWIG 3.0.10 or above (compiling Snowboy for different languages/platforms)
+* ATLAS or OpenBLAS (matrix computation)
+
+You can also find the exact commands you need to install the dependencies on
+Mac OS X, Ubuntu or Raspberry Pi below.
 
 ### Mac OS X
 
