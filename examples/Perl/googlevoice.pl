@@ -22,7 +22,7 @@ die "Usage: $0 <model.pmdl>"
 STDOUT -> autoflush (1);
 binmode STDOUT, ':utf8';
 
-# Your choice of languages
+# Your choice of language
 use constant LANG => 'en';
 
 # Audio format
@@ -75,25 +75,22 @@ for ($i = 0; $i < (1 / (SAMPLES / RATE)); $i++) {
 
   # Find AMX mean across all data chunks
   $maxdev = $stddev
-   if $stddev > $maxdev;
+    if $stddev > $maxdev;
 }
 
 my $vec = vector (@alldevs);
 $stddev = round (stddev ($vec));
 $mean = round (mean ($vec));
 
-printf OUT "mean: %d, stdddev: %d, maxdev: %d\n", $mean, $stddev, $mean + $stddev;
 $maxdev = $mean + $stddev;
 
-# Too quiet (good silence supression, like SIP phones)
+# If too quiet (good silence supression, like SIP phones)
 $maxdev = 100 if $maxdev < 100;
 
-# Add margin to silence detection to be safe
+# Safety margin to silence detection level
 $maxdev *= 2;
 
 $dcoffset = round (mean (@allmeans));
-
-# $dcoffset = 0;
 
 print "OK (silence thold: $maxdev, DC offset: $dcoffset)\n";
 
@@ -102,7 +99,7 @@ $sb =  new Snowboy::SnowboyDetect ("$models/common.res", "$models/$ARGV[0]");
 $sb -> SetSensitivity ('0.4');
 $sb -> SetAudioGain (2.0);
 
-# Test out the new model indefinitely, until the user hangs up
+# Test out the new model indefinitely
 while (1) {
 
   $stream -> read ($buffer, SAMPLES);
@@ -194,8 +191,6 @@ my $samples = shift;
   # Unpack into an array of 16-bit linear samples
   my $vec = vector (unpack ('s*', $samples));
   my $stddev = round (stddev ($vec));
-
-  $stddev < $maxdev ? print OUT "SILENCE\n" : print OUT "SPEECH\n";
 
   return $stddev < $maxdev;
 }
