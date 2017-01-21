@@ -1,4 +1,7 @@
 #!/usr/bin/perl
+#
+# Uses KITT.AI RESTful API to train a personal model 
+# Uses PortAudio (default capture device) to collect voice samples
 
 use Audio::PortAudio;
 use Math::Round qw/round/;
@@ -60,7 +63,7 @@ for ($i = 0; $i < (1000 / CHUNK_SIZE_MS); $i++) {
   # SLN format = 2 bytes per sample
   $stream -> read ($buffer, SAMPLES);
 
-  # Discard first (noisy) block
+  # Discard first (usually noisy) block
   next if not $i;
 
   # Unpack into an array of 16-bit linear samples
