@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #
 # Uses snowboy to wake up and then collect audio to send to Google Speech API for further recognition
-#  Takes Personal Model for the wake word as a first argument
+# Takes Personal Model as a first argument
 
 use lib 'Snowboy';
 
