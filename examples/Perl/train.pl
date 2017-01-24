@@ -33,6 +33,7 @@ use constant TRAILING_SILENCE_BLOCKS => 25;
 # Depth of FIFO buffer in blocks
 use constant FIFO_DEPTH => 25;
 
+# Choose your language
 use constant LANG => 'en';
 
 # KITT AI API
@@ -40,9 +41,6 @@ use constant APITOKEN => 'PUT_YOUR_TOKEN_HERE';
 
 # REST endpoint for model training
 use constant URL => 'https://snowboy.kitt.ai/api/v1/train/';
-
-# Storage for generated models / samples
-$models = '/var/spool/models';
 
 $trailing_silence_blocks = 0;
 $speech_blocks = 0;
@@ -168,11 +166,12 @@ my $response = $ua -> post (URL, Content_Type => "application/json", Content => 
 
 if ($response -> is_success) {
 
-  make_path ("$models/$model");
+  # Store generated models in the current working directory
+  make_path ($model);
 
   # Store samples
   for (0..2) {
-    my $fh = IO::File -> new ("> $models/$model/sample$_.wav");
+    my $fh = IO::File -> new ("> $model/sample$_.wav");
     if (defined $fh) {
       print $fh addWavHeader($utterance[$_]);
       $fh -> close;
@@ -180,7 +179,7 @@ if ($response -> is_success) {
   }
 
   # Store generated personal model
-  my $fh = IO::File -> new ("> $models/$model/model.pmdl");
+  my $fh = IO::File -> new ("> $model/model.pmdl");
   if (defined $fh) {
     print $fh $response->content;
     $fh -> close;
