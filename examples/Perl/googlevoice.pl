@@ -15,8 +15,8 @@ use IO::Handle;
 
 use Snowboy;
 
-die "Usage: $0 <model.pmdl>" 
-  if scalar @ARGV < 1;
+# Use default snowboy universal model if no model is specified
+my $model = $ARGV[0] || '../../resources/snowboy.umdl';
 
 STDOUT -> autoflush (1);
 binmode STDOUT, ':utf8';
@@ -93,7 +93,7 @@ $dcoffset = round (mean (@allmeans));
 
 print "OK (silence thold: $maxdev, DC offset: $dcoffset)\n";
 
-$sb =  new Snowboy::SnowboyDetect ("$models/common.res", "$models/$ARGV[0]");
+$sb =  new Snowboy::SnowboyDetect ('../../resources/common.res', $model);
 
 $sb -> SetSensitivity ('0.4');
 $sb -> SetAudioGain (2.0);
