@@ -35,8 +35,7 @@ use constant SAMPLES => 640;
 # Detect 500ms silence (12 blocks * 40 ms = after 500ms of speech)
 use constant TRAILING_SILENCE_BLOCKS => 12;
 
-$models = '/var/spool/models';
-
+# Your google speeach API key
 use constant API_KEY => 'PUT_YOUR_GOOGLE_CLOUD_SPEECH_API_KEY_HERE';
 
 # Google Speech API (language-dependent, set LANGUAGE channel var in the dialplan)
