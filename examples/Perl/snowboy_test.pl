@@ -8,12 +8,6 @@ local $/ = undef;
 # Positive test
 open WAV, 'resources/snowboy.wav';
 
-# Negative test
-# open WAV, 'resources/notasnowboy.wav';
-
-# Silence test
-# open WAV, 'resources/ding.wav';
-
 $data = <WAV>;
 close WAV;
 
@@ -28,9 +22,5 @@ print "Number of Channels  : ", $sb -> NumChannels(), "\n";
 print "Bits per Sample     : ", $sb -> BitsPerSample(), "\n";
 print "Number of hotwords  : ", $sb -> NumHotwords(), "\n\n";
 
-if ((my $rc = $sb -> RunDetection ($data)) == 1) {
-  print "HOTWORD DETECTED!\n";
-}
-else {
-  print "NO HOTWORD DETECTED, ERROR: $rc\n";
-}
+print "HOTWORD DETECTED!\n";
+  if $sb -> RunDetection ($data) > 0;
