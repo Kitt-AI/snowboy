@@ -94,8 +94,8 @@ print "OK (silence thold: $maxdev, DC offset: $dcoffset)\n";
 
 $sb =  new Snowboy::SnowboyDetect ('../../resources/common.res', $model);
 
-$sb -> SetSensitivity ('0.4');
-$sb -> SetAudioGain (2.0);
+$sb -> SetSensitivity ('0.5');
+$sb -> SetAudioGain (1.0);
 
 # Test out the new model indefinitely
 while (1) {
