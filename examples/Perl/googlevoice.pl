@@ -38,7 +38,7 @@ use constant TRAILING_SILENCE_BLOCKS => 12;
 # Your google speeach API key
 use constant API_KEY => 'PUT_YOUR_GOOGLE_CLOUD_SPEECH_API_KEY_HERE';
 
-# Google Speech API (language-dependent, set LANGUAGE channel var in the dialplan)
+# Google Speech API endpoint (language-dependent, see LANG constant above)
 $url = "http://www.google.com/speech-api/v2/recognize?lang=" . LANG . "&key=" . API_KEY . "&output=json&maxresults=1&grammar=builtin:search";
 
 my $api = Audio::PortAudio::default_host_api();
