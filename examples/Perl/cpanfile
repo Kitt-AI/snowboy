@@ -1,0 +1,5 @@
+requires 'Audio::PortAudio', '>= 0.03';
+requires 'JSON', '>= 2.00';
+requires 'Statistics::Basic', '>= 1.6611';
+requires 'LWP::UserAgent', '>= 6.0.0';
+requires 'Mozilla::CA', '>= 20160104';

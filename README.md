@@ -193,6 +193,32 @@ SWIG will generate a `_snowboydetect.so` file and a simple (but hard-to-read) py
 Feel free to adapt the `Makefile` in `swig/Python` to your own system's setting if you cannot `make` it.
 
 
+## Compile a Perl Wrapper
+
+    cd swig/Perl
+    make
+
+The Perl examples include training personal hotword using the KITT.AI RESTful APIs, adding Google Speech API after the hotword detection, etc. To run the examples, do the following
+
+    cd examples/Perl
+
+    # Install cpanm, if you don't already have it.
+    curl -L https://cpanmin.us | perl - --sudo App::cpanminus
+
+    # Install the dependencies.
+    sudo cpanm --installdeps .
+
+    # Run the unit test.
+    ./snowboy_unit_test.pl
+
+    # Run the personal model training example.
+    ./snowboy_RESTful_train.pl <API_TOKEN> <Hotword> <Language>
+
+    # Run the Snowboy Google Speech API example. By default it uses the Snowboy
+    # universal hotword.
+    ./snowboy_googlevoice.pl <Google_API_Key> [Hotword_Model]
+
+
 ## Compile an iOS Wrapper
 
 Using Snowboy library in Objective-C does not really require a wrapper. It is basically the same as using C++ library in Objective-C. We have compiled a "fat" static library for iOS devices, see the library here `lib/ios/libsnowboy-detect.a`.
