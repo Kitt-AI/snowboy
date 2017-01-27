@@ -8,11 +8,11 @@ use File::Path qw(make_path);
 use IO::Handle;
 use JSON;
 use LWP::UserAgent;
-use Math::Round qw/round/;
 use MIME::Base64;
 use Statistics::Basic qw(:all);
 
 my $Usage = <<EOU;
+
 This script uses PortAudio to record 3 audio samples on your computer, and sends
 them to the KITT.AI RESTful API to train the personal hotword model.
 
@@ -243,4 +243,9 @@ sub addWavHeader {
   );
 
   return $header . $raw;
+}
+
+sub round {
+  my($number) = shift;
+  return int($number + .5);
 }

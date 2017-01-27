@@ -15,11 +15,11 @@ use Getopt::Long;
 use IO::Handle;
 use JSON;
 use LWP::UserAgent;
-use Math::Round qw/round/;
 use Statistics::Basic qw(:all);
 use Time::HiRes qw(gettimeofday tv_interval);
 
 my $Usage = <<EOU;
+
 This script first uses Snowboy to wake up, then collects audio and sends to
 Google Speech API for further recognition. It works with both personal and
 universal models. By default, it uses the Snowboy universal model at
@@ -226,4 +226,9 @@ sub isSilence {
 sub amp {
   my $samples = shift;
   return pack 's*', map {$_ <<= 3} unpack('s*', $samples);
+}
+
+sub round {
+  my($number) = shift;
+  return int($number + .5);
 }

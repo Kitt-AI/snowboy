@@ -205,7 +205,9 @@ The Perl examples include training personal hotword using the KITT.AI RESTful AP
     # Install cpanm, if you don't already have it.
     curl -L https://cpanmin.us | perl - --sudo App::cpanminus
 
-    # Install the dependencies.
+    # Install the dependencies. Note, on Linux you will have to install the
+    # PortAudio package first, using e.g.:
+    # apt-get install portaudio19-dev
     sudo cpanm --installdeps .
 
     # Run the unit test.
