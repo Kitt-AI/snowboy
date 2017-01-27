@@ -13,18 +13,26 @@ TOPDIR := ../../
 CXXFLAGS := -I$(TOPDIR) -O3 -fPIC -D_GLIBCXX_USE_CXX11_ABI=0
 LDFLAGS :=
 
-CXX := g++
-PERLARCH := $(shell perl -e 'use Config; print $$Config{archlib}')
-SWIGFLAGS := -shared
-CXXFLAGS += -std=gnu++11 -I$(PERLARCH)/CORE -L$(PERLARCH)/CORE
-
-# Make sure you have OpenBLAS installed
-LDLIBS := -lm -ldl -Wl,--whole-archive -lopenblas -Wl,--no-whole-archive
-
-SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/ubuntu64/libsnowboy-detect.a
-
-ifneq (,$(findstring arm,$(shell uname -m)))
-  SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/rpi/libsnowboy-detect.a
+ifeq ($(shell uname), Darwin)
+  CXX := clang++
+  PERLARCH := $(shell perl -e 'use Config; print $$Config{archlib}')
+  SWIGFLAGS := -bundle -flat_namespace -undefined suppress
+  CXXFLAGS += -I$(PERLARCH)/CORE
+  LDLIBS := -lm -ldl -framework Accelerate
+  SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/osx/libsnowboy-detect.a
+  SNOWBOYDETECTSWIGLIBFILE := Snowboy.dylib
+else
+  CXX := g++
+  PERLARCH := $(shell perl -e 'use Config; print $$Config{archlib}')
+  SWIGFLAGS := -shared
+  CXXFLAGS += -std=gnu++11 -I$(PERLARCH)/CORE
+	# Make sure you have Atlas installed. You can statically link Atlas if you
+	# would like to be able to move the library to a machine without Atlas.
+  LDLIBS := -lm -ldl -lf77blas -lcblas -llapack_atlas -latlas
+  SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/ubuntu64/libsnowboy-detect.a
+  ifneq (,$(findstring arm,$(shell uname -m)))
+    SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/rpi/libsnowboy-detect.a
+  endif
 endif
 
 all: $(SNOWBOYSWIGLIBFILE) $(SNOWBOYDETECTSWIGLIBFILE)
@@ -33,14 +41,14 @@ all: $(SNOWBOYSWIGLIBFILE) $(SNOWBOYDETECTSWIGLIBFILE)
 	$(MAKE) -C ${@D} ${@F}
 
 $(SNOWBOYDETECTSWIGCC): $(SNOWBOYDETECTSWIGITF)
-	$(SWIG) -I$(TOPDIR) -c++ -perl5 -o $(SNOWBOYDETECTSWIGCC) $(SNOWBOYDETECTSWIGITF)
+	$(SWIG) -I$(TOPDIR) -c++ -perl -o $(SNOWBOYDETECTSWIGCC) $(SNOWBOYDETECTSWIGITF)
 
 $(SNOWBOYDETECTSWIGOBJ): $(SNOWBOYDETECTSWIGCC)
-	$(CXX) $(PYINC) $(CXXFLAGS) -c $(SNOWBOYDETECTSWIGCC)
+	$(CXX) $(CXXFLAGS) -c $(SNOWBOYDETECTSWIGCC)
 
 $(SNOWBOYDETECTSWIGLIBFILE): $(SNOWBOYDETECTSWIGOBJ) $(SNOWBOYDETECTLIBFILE)
 	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(SWIGFLAGS) $(SNOWBOYDETECTSWIGOBJ) \
-	$(SNOWBOYDETECTLIBFILE) $(PYLIBS) $(LDLIBS) -o $(SNOWBOYDETECTSWIGLIBFILE)
+	$(SNOWBOYDETECTLIBFILE) $(LDLIBS) -o $(SNOWBOYDETECTSWIGLIBFILE)
 
 clean:
-	-rm -f *.o *.a *.so Snowboy.pm $(SNOWBOYDETECTSWIGCC)
+	-rm -f *.o *.a *.so *.dylib Snowboy.pm $(SNOWBOYDETECTSWIGCC)
