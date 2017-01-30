@@ -44,7 +44,7 @@ ifeq ($(ARCH), arm)
       -mfpu=vfpv3-d16 -mhard-float -D_NDK_MATH_NO_SOFTFP=1 -DANDROID
   LDLIBS += \
       -L$(NDKROOT)/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a-hard/thumb/ \
-      -lc++_static -lgcc -lm_hard -ldl -lc -lm
+      -lc++_static -lgcc -lm_hard -ldl -lc -lm -llog
   SNOWBOYDETECTSWIGLIBFILE := jniLibs/armeabi-v7a/$(SNOWBOYDETECTSWIGLIBFILE)
   SNOWBOYDETECTSWIGLIBNAME := $(shell basename $(SNOWBOYDETECTSWIGLIBFILE))
 endif

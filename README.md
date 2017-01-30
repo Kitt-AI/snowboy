@@ -118,7 +118,16 @@ If you want to compile a version against your own environment/language, read on.
 
 ## Dependencies
 
-Snowboy's Python wrapper uses PortAudio to access your device's microphone.
+To run the demo you will likely need the following, depending on which demo you
+use and what platform you are working with:
+
+* SoX (audio conversion)
+* PortAudio or PyAudio (audio capturing)
+* SWIG 3.0.10 or above (compiling Snowboy for different languages/platforms)
+* ATLAS or OpenBLAS (matrix computation)
+
+You can also find the exact commands you need to install the dependencies on
+Mac OS X, Ubuntu or Raspberry Pi below.
 
 ### Mac OS X
 
@@ -180,6 +189,34 @@ To run the Java example script:
 SWIG will generate a `_snowboydetect.so` file and a simple (but hard-to-read) python wrapper `snowboydetect.py`. We have provided a higher level python wrapper `snowboydecoder.py` on top of that.
     
 Feel free to adapt the `Makefile` in `swig/Python` to your own system's setting if you cannot `make` it.
+
+
+## Compile a Perl Wrapper
+
+    cd swig/Perl
+    make
+
+The Perl examples include training personal hotword using the KITT.AI RESTful APIs, adding Google Speech API after the hotword detection, etc. To run the examples, do the following
+
+    cd examples/Perl
+
+    # Install cpanm, if you don't already have it.
+    curl -L https://cpanmin.us | perl - --sudo App::cpanminus
+
+    # Install the dependencies. Note, on Linux you will have to install the
+    # PortAudio package first, using e.g.:
+    # apt-get install portaudio19-dev
+    sudo cpanm --installdeps .
+
+    # Run the unit test.
+    ./snowboy_unit_test.pl
+
+    # Run the personal model training example.
+    ./snowboy_RESTful_train.pl <API_TOKEN> <Hotword> <Language>
+
+    # Run the Snowboy Google Speech API example. By default it uses the Snowboy
+    # universal hotword.
+    ./snowboy_googlevoice.pl <Google_API_Key> [Hotword_Model]
 
 
 ## Compile an iOS Wrapper

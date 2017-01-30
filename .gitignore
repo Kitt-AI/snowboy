@@ -1,8 +1,10 @@
 /lib/libsnowboy-detect.a
 snowboy-detect-swig.cc
 snowboydetect.py
+Snowboy.pm
 .DS_Store
 
+*.dylib
 *.pyc
 *.o
 *.so
@@ -13,6 +15,7 @@ snowboydetect.py
 /examples/C++/portaudio
 /examples/C++/demo
 /examples/Java/Demo.class
+/examples/Perl/data/
 
 /swig/Android/OpenBLAS-0.2.18.tar.gz
 /swig/Android/android-ndk-r11c-darwin-x86_64.zip
