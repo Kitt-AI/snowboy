@@ -35,6 +35,7 @@ env:
     - NODE_VERSION="4.0.0"
     - NODE_VERSION="5.0.0"
     - NODE_VERSION="6.0.0"
+    - NODE_VERSION="7.0.0"
 
 before_install:
 # use the correct version of node
