@@ -95,6 +95,22 @@ Business: please contact us at [snowboy@kitt.ai](mailto:snowboy@kitt.ai)
 * Commercial license
 * Technical support
 
+## Pretrained universal models
+
+We provide pretrained universal models for testing purpose. When you test those
+models, bear in mind that they may not be optimized for your specific device or
+environment.
+
+Here is the list of the models, and the parameters that you have to use for
+them:
+* resources/snowboy.umdl: Universal model for the hotword "Snowboy". Set
+SetSensitivity to 0.5 for better performance.
+* resources/alexa.umdl: Universal model for the hotword "Alexa". Set
+SetSensitivity to 0.5, and preferably set ApplyFrontend to true. This model is
+depressed.
+* resources/alexa_02092017.umdl: Universal model for the hotword "Alexa". This
+is still work in progress. Set SetSensitivity to 0.15.
+
 ## Precompiled node module
 
 Snowboy is available in the form of a native node module precompiled for:
