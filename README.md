@@ -103,12 +103,12 @@ environment.
 
 Here is the list of the models, and the parameters that you have to use for
 them:
-* resources/snowboy.umdl: Universal model for the hotword "Snowboy". Set
+* **resources/snowboy.umdl**: Universal model for the hotword "Snowboy". Set
 SetSensitivity to 0.5 for better performance.
-* resources/alexa.umdl: Universal model for the hotword "Alexa". Set
+* **resources/alexa.umdl**: Universal model for the hotword "Alexa". Set
 SetSensitivity to 0.5, and preferably set ApplyFrontend to true. This model is
 depressed.
-* resources/alexa_02092017.umdl: Universal model for the hotword "Alexa". This
+* **resources/alexa_02092017.umdl**: Universal model for the hotword "Alexa". This
 is still work in progress. Set SetSensitivity to 0.15.
 
 ## Precompiled node module
