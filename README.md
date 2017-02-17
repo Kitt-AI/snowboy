@@ -253,6 +253,11 @@ To run hotword detection in Objective-C:
 
 You may want to play with the frequency of the calls to `RunDetection()`, which controls the CPU usage and the detection latency.
 
+Thanks to @patrickjquinn and @grimlockrocks, we now have examples of using Snowboy in both Objective-C and Swift3. Check out the examples at `examples/iOS/`, and the screenshots below!
+
+<img src=https://s3-us-west-2.amazonaws.com/kittai-cdn/Snowboy/Obj-C_Demo_02172017.png alt="Obj-C Example" width=300 /> <img src=https://s3-us-west-2.amazonaws.com/kittai-cdn/Snowboy/Swift3_Demo_02172017.png alt="Swift3 Example" width=300 />
+
+
 ## Compile an Android Wrapper
 
     cd swig/Android

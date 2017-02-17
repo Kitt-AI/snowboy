@@ -16,6 +16,12 @@ Snowboy.pm
 /examples/C++/demo
 /examples/Java/Demo.class
 /examples/Perl/data/
+/examples/iOS/Obj-C/Pods/Pods.xcodeproj/xcuserdata/
+/examples/iOS/Obj-C/SnowboyTest.xcodeproj/project.xcworkspace/xcuserdata/
+/examples/iOS/Obj-C/SnowboyTest.xcodeproj/xcuserdata/
+/examples/iOS/Obj-C/SnowboyTest.xcworkspace/xcuserdata/
+/examples/iOS/Swift3/SnowboyTest.xcodeproj/project.xcworkspace/xcuserdata/
+/examples/iOS/Swift3/SnowboyTest.xcodeproj/xcuserdata/
 
 /swig/Android/OpenBLAS-0.2.18.tar.gz
 /swig/Android/android-ndk-r11c-darwin-x86_64.zip
