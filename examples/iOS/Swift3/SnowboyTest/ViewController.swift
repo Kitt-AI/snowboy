@@ -35,7 +35,6 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDe
         wrapper.setSensitivity("0.5")
         wrapper.setAudioGain(1.0)
         print("Sample rate: \(wrapper?.sampleRate()); channels: \(wrapper?.numChannels()); bits: \(wrapper?.bitsPerSample())")
-        
     }
 
     @IBAction func onClickBtn(_ sender: Any) {
