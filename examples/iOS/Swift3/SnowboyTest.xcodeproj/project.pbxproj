@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04BB6F381E54128000983DAD /* alexa_02092017.umdl in Resources */ = {isa = PBXBuildFile; fileRef = 04BB6F371E54128000983DAD /* alexa_02092017.umdl */; };
-		04D8BB631E52B685001D71B9 /* libsnowboy-detect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04F91BCC1E522BE300BEF6E3 /* libsnowboy-detect.a */; };
+		045F549D1E58A8FD00F8F4A4 /* libsnowboy-detect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 045F549C1E58A8FD00F8F4A4 /* libsnowboy-detect.a */; };
+		045F54A01E58AAEC00F8F4A4 /* common.res in Resources */ = {isa = PBXBuildFile; fileRef = 045F549F1E58AAEC00F8F4A4 /* common.res */; };
+		045F54A21E58AAF900F8F4A4 /* alexa_02092017.umdl in Resources */ = {isa = PBXBuildFile; fileRef = 045F54A11E58AAF900F8F4A4 /* alexa_02092017.umdl */; };
 		04D8BB8B1E539066001D71B9 /* SnowboyWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04D8BB8A1E539066001D71B9 /* SnowboyWrapper.mm */; };
 		04D8BB8D1E53916F001D71B9 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D8BB8C1E53916F001D71B9 /* Accelerate.framework */; };
-		04D8BB931E53C434001D71B9 /* common.res in Resources */ = {isa = PBXBuildFile; fileRef = 04D8BB921E53C434001D71B9 /* common.res */; };
-		04D8BB971E53DE3D001D71B9 /* snowboy.pmdl in Resources */ = {isa = PBXBuildFile; fileRef = 04D8BB961E53DE3D001D71B9 /* snowboy.pmdl */; };
 		04F91B9A1E522B6F00BEF6E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F91B991E522B6F00BEF6E3 /* AppDelegate.swift */; };
 		04F91B9C1E522B6F00BEF6E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F91B9B1E522B6F00BEF6E3 /* ViewController.swift */; };
 		04F91B9F1E522B6F00BEF6E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F91B9D1E522B6F00BEF6E3 /* Main.storyboard */; };
@@ -41,14 +40,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04BB6F371E54128000983DAD /* alexa_02092017.umdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = alexa_02092017.umdl; sourceTree = "<group>"; };
-		04D8BB641E52BCF3001D71B9 /* snowboy-detect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "snowboy-detect.h"; sourceTree = "<group>"; };
+		045F549A1E58A7EA00F8F4A4 /* snowboy-detect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "snowboy-detect.h"; path = "../../../../include/snowboy-detect.h"; sourceTree = "<group>"; };
+		045F549C1E58A8FD00F8F4A4 /* libsnowboy-detect.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsnowboy-detect.a"; path = "../../../lib/ios/libsnowboy-detect.a"; sourceTree = "<group>"; };
+		045F549F1E58AAEC00F8F4A4 /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; name = common.res; path = ../../../../resources/common.res; sourceTree = "<group>"; };
+		045F54A11E58AAF900F8F4A4 /* alexa_02092017.umdl */ = {isa = PBXFileReference; lastKnownFileType = file; name = alexa_02092017.umdl; path = ../../../../resources/alexa_02092017.umdl; sourceTree = "<group>"; };
 		04D8BB881E52C242001D71B9 /* SnowboyTest-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SnowboyTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		04D8BB891E5382BB001D71B9 /* SnowboyWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowboyWrapper.h; sourceTree = "<group>"; };
 		04D8BB8A1E539066001D71B9 /* SnowboyWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SnowboyWrapper.mm; sourceTree = "<group>"; };
 		04D8BB8C1E53916F001D71B9 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		04D8BB921E53C434001D71B9 /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = common.res; sourceTree = "<group>"; };
-		04D8BB961E53DE3D001D71B9 /* snowboy.pmdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = snowboy.pmdl; sourceTree = "<group>"; };
 		04F91B961E522B6F00BEF6E3 /* SnowboyTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnowboyTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F91B991E522B6F00BEF6E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04F91B9B1E522B6F00BEF6E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,7 +62,6 @@
 		04F91BB81E522B6F00BEF6E3 /* SnowboyTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnowboyTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F91BBC1E522B6F00BEF6E3 /* SnowboyTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowboyTestUITests.swift; sourceTree = "<group>"; };
 		04F91BBE1E522B6F00BEF6E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		04F91BCC1E522BE300BEF6E3 /* libsnowboy-detect.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libsnowboy-detect.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D8BB8D1E53916F001D71B9 /* Accelerate.framework in Frameworks */,
-				04D8BB631E52B685001D71B9 /* libsnowboy-detect.a in Frameworks */,
+				045F549D1E58A8FD00F8F4A4 /* libsnowboy-detect.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,9 +94,8 @@
 		04D8BB911E53C41D001D71B9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				04D8BB921E53C434001D71B9 /* common.res */,
-				04BB6F371E54128000983DAD /* alexa_02092017.umdl */,
-				04D8BB961E53DE3D001D71B9 /* snowboy.pmdl */,
+				045F549F1E58AAEC00F8F4A4 /* common.res */,
+				045F54A11E58AAF900F8F4A4 /* alexa_02092017.umdl */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -129,9 +126,9 @@
 			children = (
 				04D8BB911E53C41D001D71B9 /* Resources */,
 				04F91B991E522B6F00BEF6E3 /* AppDelegate.swift */,
-				04D8BB641E52BCF3001D71B9 /* snowboy-detect.h */,
 				04D8BB881E52C242001D71B9 /* SnowboyTest-Bridging-Header.h */,
 				04F91B9B1E522B6F00BEF6E3 /* ViewController.swift */,
+				045F549A1E58A7EA00F8F4A4 /* snowboy-detect.h */,
 				04F91B9D1E522B6F00BEF6E3 /* Main.storyboard */,
 				04F91BA31E522B6F00BEF6E3 /* Assets.xcassets */,
 				04F91BA51E522B6F00BEF6E3 /* LaunchScreen.storyboard */,
@@ -164,8 +161,8 @@
 		04F91BCB1E522BE300BEF6E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				045F549C1E58A8FD00F8F4A4 /* libsnowboy-detect.a */,
 				04D8BB8C1E53916F001D71B9 /* Accelerate.framework */,
-				04F91BCC1E522BE300BEF6E3 /* libsnowboy-detect.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -277,12 +274,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04D8BB971E53DE3D001D71B9 /* snowboy.pmdl in Resources */,
 				04F91BA71E522B6F00BEF6E3 /* LaunchScreen.storyboard in Resources */,
+				045F54A21E58AAF900F8F4A4 /* alexa_02092017.umdl in Resources */,
 				04F91BA41E522B6F00BEF6E3 /* Assets.xcassets in Resources */,
 				04F91B9F1E522B6F00BEF6E3 /* Main.storyboard in Resources */,
-				04D8BB931E53C434001D71B9 /* common.res in Resources */,
-				04BB6F381E54128000983DAD /* alexa_02092017.umdl in Resources */,
+				045F54A01E58AAEC00F8F4A4 /* common.res in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,8 +303,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04F91B9C1E522B6F00BEF6E3 /* ViewController.swift in Sources */,
 				04D8BB8B1E539066001D71B9 /* SnowboyWrapper.mm in Sources */,
+				04F91B9C1E522B6F00BEF6E3 /* ViewController.swift in Sources */,
 				04F91B9A1E522B6F00BEF6E3 /* AppDelegate.swift in Sources */,
 				04F91BA21E522B6F00BEF6E3 /* SnowboyTest.xcdatamodeld in Sources */,
 			);
@@ -477,6 +473,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/../../../lib/ios",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shengbi.SnowboyTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -507,6 +504,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/../../../lib/ios",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.shengbi.SnowboyTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
