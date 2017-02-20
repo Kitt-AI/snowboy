@@ -2,7 +2,7 @@ import snowboydecoder
 import sys
 import signal
 
-# Demo code for listening two hotwords at the same time
+# Demo code for listening to two hotwords at the same time
 
 interrupted = False
 
