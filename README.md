@@ -4,7 +4,7 @@ by [KITT.AI](http://kitt.ai).
 
 [Home Page](https://snowboy.kitt.ai)
 
-[Full Documentation](http://docs.kitt.ai/snowboy)
+[Full Documentation](http://docs.kitt.ai/snowboy) and [FAQ](http://docs.kitt.ai/snowboy#faq)
 
 [Discussion Group](https://groups.google.com/a/kitt.ai/forum/#!forum/snowboy-discussion) (or send email to snowboy-discussion@kitt.ai)
 
