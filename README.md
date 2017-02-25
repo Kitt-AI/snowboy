@@ -318,6 +318,10 @@ See [Full Documentation](http://docs.kitt.ai/snowboy).
 
 ## Change Log
 
+**2/24/2016**
+
+* Added Intel Edison support
+
 **9/28/2016**
 
 * Offering Hotword as a Service through ``/api/v1/train`` endpoint.
