@@ -348,11 +348,11 @@ See [Full Documentation](http://docs.kitt.ai/snowboy).
 
 ## Change Log
 
-**2/27/2016**
+**2/27/2017**
 
 * Added Go support
 
-**2/24/2016**
+**2/24/2017**
 
 * Added Intel Edison support
 
