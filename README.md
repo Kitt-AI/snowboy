@@ -296,6 +296,8 @@ Thanks to @patrickjquinn and @grimlockrocks, we now have examples of using Snowb
     # We have only tested with NDK version r11c.
     make
 
+(Warning: please do this on \*nix platforms. Snowboy does not support Windows yet)
+
 Using Snowboy library on Android devices is a little bit tricky. We have only tested with NDK version r11c. We do not support r12 yet because of the removal of armeabi-v7a-hard ABI in r12. We have compiled Snowboy using Android's cross-compilation toolchain for ARMV7 architecture, see the library here `lib/android/armv7a/libsnowboy-detect.a`. We then use SWIG to generate the Java wrapper, and use Android's cross-compilation toolchain to generate the corresponding JNI libraries. After running `make`, two directories will be created: `java` and `jniLibs`. Copy these two directories to your Android app directory (e.g., `app/src/main/`) and you should be able to call Snowboy funcitons within Java.
 
 To initialize Snowboy detector in Java:
