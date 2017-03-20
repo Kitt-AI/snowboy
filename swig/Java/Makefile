@@ -38,6 +38,10 @@ else
   SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/ubuntu64/libsnowboy-detect.a
   ifneq (,$(findstring arm,$(shell uname -m)))
     SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/rpi/libsnowboy-detect.a
+    ifeq ($(findstring fc,$(shell uname -r)), fc)
+      SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/fedora25-armv7/libsnowboy-detect.a
+      LDLIBS := -L/usr/lib/atlas -lm -ldl -lsatlas
+    endif
   endif
 endif
 
