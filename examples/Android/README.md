@@ -23,7 +23,7 @@ Note:
 		java
 		└── ai
 		    └── kitt
-				└── snowboy
+			└── snowboy
 		            ├── SnowboyDetect.java
 		            ├── snowboy.java
 		            └── snowboyJNI.java
