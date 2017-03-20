@@ -76,6 +76,7 @@ Currently Snowboy supports:
 * 64bit Ubuntu (12.04 and 14.04)
 * iOS
 * Android
+* Pine64 (Debian Jessie 8.5, 3.10.102 BSP2)
 * Intel Edison (Ubilinux based on Debian Wheezy 7.8)
 * Samsung Artik (built with Fedora 25 for ARMv7)
 
@@ -175,7 +176,7 @@ Make sure that you can record audio with your microphone:
 
     rec t.wav
 
-### Ubuntu/Raspberry Pi
+### Ubuntu/Raspberry Pi/Pine64
 
 First `apt-get` install `swig`, `sox`, `portaudio` and its Python binding `pyaudio`:
 
@@ -362,6 +363,14 @@ See [Full Documentation](http://docs.kitt.ai/snowboy).
 **2/24/2017**
 
 * Added Intel Edison support
+
+**2/21/2017**
+
+* Added Pine64 support
+
+**2/9/2017**
+
+* Added a more robust "Alexa" model (umdl)
 
 **9/28/2016**
 
