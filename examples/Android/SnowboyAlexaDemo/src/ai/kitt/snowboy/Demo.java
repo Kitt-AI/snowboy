@@ -32,8 +32,8 @@ public class Demo extends Activity {
     private int preVolume = -1;
     private static long activeTimes = 0;
 
-    private RecordingThread mRecordingThread;
-    private PlaybackThread mPlaybackThread;
+    private RecordingThread recordingThread;
+    private PlaybackThread playbackThread;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,8 +47,8 @@ public class Demo extends Activity {
           AppResCopy.copyResFromAssetsToSD(this);
         
         activeTimes = 0;
-        mRecordingThread = new RecordingThread(mhandle, new AudioDataSaver());
-        mPlaybackThread = new PlaybackThread();
+        recordingThread = new RecordingThread(handle, new AudioDataSaver());
+        playbackThread = new PlaybackThread();
     }
     
     void showToast(CharSequence msg) {
@@ -102,13 +102,13 @@ public class Demo extends Activity {
     }
 
     private void startRecording() {
-        mRecordingThread.startRecording();
+        recordingThread.startRecording();
         updateLog(" ----> recording started ...", "green");
         record_button.setText(R.string.btn1_stop);
     }
 
     private void stopRecording() {
-        mRecordingThread.stopRecording();
+        recordingThread.stopRecording();
         updateLog(" ----> recording stopped ", "green");
         record_button.setText(R.string.btn1_start);
     }
@@ -117,13 +117,13 @@ public class Demo extends Activity {
         updateLog(" ----> playback started ...", "green");
         play_button.setText(R.string.btn2_stop);
         // (new PcmPlayer()).playPCM();
-        mPlaybackThread.startPlayback();
+        playbackThread.startPlayback();
     }
 
     private void stopPlayback() {
         updateLog(" ----> playback stopped ", "green");
         play_button.setText(R.string.btn2_start);
-        mPlaybackThread.stopPlayback();
+        playbackThread.stopPlayback();
     }
 
     private void sleep() {
@@ -158,7 +158,7 @@ public class Demo extends Activity {
         }
     };
      
-    public Handler mhandle = new Handler() {
+    public Handler handle = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             MsgEnum message = MsgEnum.getMsgEnum(msg.what);
@@ -246,7 +246,7 @@ public class Demo extends Activity {
     @Override
      public void onDestroy() {
          restoreVolume();
-         mRecordingThread.stopRecording();
+         recordingThread.stopRecording();
          super.onDestroy();
      }
 }

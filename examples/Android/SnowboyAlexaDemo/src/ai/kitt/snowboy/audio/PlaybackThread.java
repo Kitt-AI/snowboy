@@ -18,40 +18,39 @@ import java.nio.ShortBuffer;
 import ai.kitt.snowboy.Constants;
 
 public class PlaybackThread {
-    private static final String LOG_TAG = PlaybackThread.class.getSimpleName();
+    private static final String TAG = PlaybackThread.class.getSimpleName();
 
     public PlaybackThread() {
     }
 
-    private Thread mThread;
-    private boolean mShouldContinue;
-    private PlaybackListener mListener;
+    private Thread thread;
+    private boolean shouldContinue;
 
     public boolean playing() {
-        return mThread != null;
+        return thread != null;
     }
 
     public void startPlayback() {
-        if (mThread != null)
+        if (thread != null)
             return;
 
         // Start streaming in a thread
-        mShouldContinue = true;
-        mThread = new Thread(new Runnable() {
+        shouldContinue = true;
+        thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 play();
             }
         });
-        mThread.start();
+        thread.start();
     }
 
     public void stopPlayback() {
-        if (mThread == null)
+        if (thread == null)
             return;
 
-        mShouldContinue = false;
-        mThread = null;
+        shouldContinue = false;
+        thread = null;
     }
 
     public short[] readPCM() {
@@ -70,7 +69,7 @@ public class PlaybackThread {
             // }
             dataInputStream.read(audioData);
             dataInputStream.close();
-            Log.v(LOG_TAG, "audioData size: " + audioData.length);
+            Log.v(TAG, "audioData size: " + audioData.length);
 
             ShortBuffer sb = ByteBuffer.wrap(audioData).order(ByteOrder.LITTLE_ENDIAN).asShortBuffer();
             short[] samples = new short[sb.limit() - sb.position()];
@@ -88,7 +87,7 @@ public class PlaybackThread {
         short[] samples = this.readPCM();
         int shortSizeInBytes = Short.SIZE / Byte.SIZE;
         int bufferSizeInBytes = samples.length * shortSizeInBytes;
-        Log.v(LOG_TAG, "shortSizeInBytes: " + shortSizeInBytes + " bufferSizeInBytes: " + bufferSizeInBytes);
+        Log.v(TAG, "shortSizeInBytes: " + shortSizeInBytes + " bufferSizeInBytes: " + bufferSizeInBytes);
 
         AudioTrack audioTrack = new AudioTrack(
                 AudioManager.STREAM_MUSIC,
@@ -101,9 +100,9 @@ public class PlaybackThread {
         audioTrack.play();
 
         audioTrack.write(samples, 0, samples.length);
-        Log.v(LOG_TAG, "Audio playback started");
+        Log.v(TAG, "Audio playback started");
 
-        if (!mShouldContinue) {
+        if (!shouldContinue) {
             audioTrack.release();
         }
     }

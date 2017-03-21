@@ -13,13 +13,6 @@ public enum  MsgEnum {
     MSG_INFO;
 
     public static MsgEnum getMsgEnum(int i) {
-        MsgEnum msgFind = null;
-        for (MsgEnum msg : MsgEnum.values()) {
-            if (i == msg.ordinal()) {
-                msgFind = msg;
-                break;
-            }
-        }
-        return msgFind;
+        return MsgEnum.values()[i];
     }
 }
