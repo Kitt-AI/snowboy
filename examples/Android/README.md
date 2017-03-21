@@ -39,6 +39,9 @@ Screenshot (say "Alexa" after clicking "Start"):
 
 Don't forget to disable the "debug" option when releasing your Android App!
 
+Note: If you need to copy the Android demo to another folder, please use the `-RL` option of `cp` to replace the relative symbol links with real files:
+
+	cp -RL  SnowboyAlexaDemo Other_Folder
 
 ## Useful Code Snippets
 
