@@ -69,34 +69,34 @@ public class Demo extends Activity {
     }
     
     private void setMaxVolume() {
-        AudioManager mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);  
-        preVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);  
+        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        preVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         updateLog(" ----> preVolume = "+preVolume, "green");
-        int maxVolume = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);  
+        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         updateLog(" ----> maxVolume = "+maxVolume, "green");
-        mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, maxVolume, 0); 
-        int currentVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);  
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, maxVolume, 0);
+        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         updateLog(" ----> currentVolume = "+currentVolume, "green");
     }
     
     private void setProperVolume() {
-        AudioManager mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);  
-        preVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        preVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         updateLog(" ----> preVolume = "+preVolume, "green");
-        int maxVolume = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         updateLog(" ----> maxVolume = "+maxVolume, "green");
         int properVolume = (int) ((float) maxVolume * 0.2); 
-        mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, properVolume, 0); 
-        int currentVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);  
+        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, properVolume, 0);
+        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         updateLog(" ----> currentVolume = "+currentVolume, "green");
     }
     
     private void restoreVolume() {
         if(preVolume>=0) {
-            AudioManager mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-            mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, preVolume, 0);
+            AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, preVolume, 0);
             updateLog(" ----> set preVolume = "+preVolume, "green");
-            int currentVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+            int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
             updateLog(" ----> currentVolume = "+currentVolume, "green");
         }
     }
@@ -193,11 +193,11 @@ public class Demo extends Activity {
          log.post(new Runnable() {
              @Override
              public void run() {
-                 if (mCurrLogLineNum >= MAX_LOG_LINE_NUM) {
+                 if (currLogLineNum >= MAX_LOG_LINE_NUM) {
                      int st = strLog.indexOf("<br>");
                      strLog = strLog.substring(st+4);
                  } else {
-                     mCurrLogLineNum++;
+                     currLogLineNum++;
                  }
                  String str = "<font color='white'>"+text+"</font>"+"<br>";
                  strLog = (strLog == null || strLog.length() == 0) ? str : strLog + str;
@@ -213,17 +213,17 @@ public class Demo extends Activity {
     }
 
     static int MAX_LOG_LINE_NUM = 200;
-    static int mCurrLogLineNum = 0;
+    static int currLogLineNum = 0;
 
     public void updateLog(final String text, final String color) {
         log.post(new Runnable() {
             @Override
             public void run() {
-                if(mCurrLogLineNum>=MAX_LOG_LINE_NUM) {
+                if(currLogLineNum>=MAX_LOG_LINE_NUM) {
                     int st = strLog.indexOf("<br>");
                     strLog = strLog.substring(st+4);
                 } else {
-                    mCurrLogLineNum++;
+                    currLogLineNum++;
                 }
                 String str = "<font color='"+color+"'>"+text+"</font>"+"<br>";
                 strLog = (strLog == null || strLog.length() == 0) ? str : strLog + str;

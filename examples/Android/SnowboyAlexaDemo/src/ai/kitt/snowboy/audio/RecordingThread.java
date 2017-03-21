@@ -1,5 +1,6 @@
 package ai.kitt.snowboy.audio;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
@@ -32,8 +33,8 @@ public class RecordingThread {
     private String activeModel = strEnvWorkSpace+ACTIVE_UMDL;    
     private String commonRes = strEnvWorkSpace+ACTIVE_RES;   
     
-    private SnowboyDetect mDetector = new SnowboyDetect(commonRes, activeModel);
-    private MediaPlayer mPlayer = new MediaPlayer();
+    private SnowboyDetect detector = new SnowboyDetect(commonRes, activeModel);
+    private MediaPlayer player = new MediaPlayer();
 
     public RecordingThread(Handler handler, AudioDataReceivedListener listener) {
         this.handler = handler;
@@ -48,14 +49,14 @@ public class RecordingThread {
     }
 
     public void startRecording() {
-        mDetector.SetSensitivity("0.6");
-        //-mDetector.SetAudioGain(1);
-        mDetector.ApplyFrontend(true);
+        detector.SetSensitivity("0.6");
+        //-detector.SetAudioGain(1);
+        detector.ApplyFrontend(true);
         try {
-            mPlayer.setDataSource(strEnvWorkSpace+"ding.wav");
-            mPlayer.prepare();
-        } catch (Exception e) {
-            e.printStackTrace();
+            player.setDataSource(strEnvWorkSpace+"ding.wav");
+            player.prepare();
+        } catch (IOException e) {
+            Log.e(TAG, "Playing ding sound error", e);
         }
         if (thread != null)
             return;
@@ -121,7 +122,7 @@ public class RecordingThread {
             shortsRead += audioData.length;
 
             // Snowboy hotword detection.
-            int result = mDetector.RunDetection(audioData, audioData.length);
+            int result = detector.RunDetection(audioData, audioData.length);
 
             if (result == -2) {
                 sendMessage(MsgEnum.MSG_VAD_NOSPEECH, null);
@@ -132,7 +133,7 @@ public class RecordingThread {
             } else if (result > 0) {
                 sendMessage(MsgEnum.MSG_ACTIVE, null);
                 Log.i("Snowboy: ", "Hotword " + Integer.toString(result) + " detected!");
-                mPlayer.start();
+                player.start();
             }
         }
 

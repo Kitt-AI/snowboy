@@ -32,8 +32,7 @@ public class AudioDataSaver implements AudioDataReceivedListener {
             try {
                 saveFile.createNewFile();
             } catch (IOException e) {
-                e.printStackTrace();
-                throw new IllegalStateException("Cannot create file: " + saveFile.toString());
+                Log.e(TAG, "IO Exception on creating audio file " + saveFile.toString(), e);
             }
 
             try {
@@ -53,8 +52,7 @@ public class AudioDataSaver implements AudioDataReceivedListener {
                 dataOutputStreamInstance.write(data, 0, length);
             }
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new IllegalStateException("dataOutputStreamInstance.write(curVal)");
+            Log.e(TAG, "IO Exception on saving audio file " + saveFile.toString(), e);
         }
     }
 
@@ -64,8 +62,7 @@ public class AudioDataSaver implements AudioDataReceivedListener {
             try {
                 dataOutputStreamInstance.close();
             } catch (IOException e) {
-                e.printStackTrace();
-                throw new IllegalStateException("Cannot close buffered writer.");
+                Log.e(TAG, "IO Exception on finishing saving audio file " + saveFile.toString(), e);
             }
             Log.e(TAG, "Recording saved to " + saveFile.toString());
         }

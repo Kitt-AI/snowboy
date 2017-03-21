@@ -76,9 +76,9 @@ public class PlaybackThread {
             sb.get(samples);
             return samples;
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Cannot find saved audio file", e);
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, "IO Exception on saved audio file", e);
         }
         return null;
     }
