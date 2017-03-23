@@ -125,11 +125,13 @@ public class RecordingThread {
             int result = detector.RunDetection(audioData, audioData.length);
 
             if (result == -2) {
-                sendMessage(MsgEnum.MSG_VAD_NOSPEECH, null);
+                // post a higher CPU usage:
+                // sendMessage(MsgEnum.MSG_VAD_NOSPEECH, null);
             } else if (result == -1) {
                 sendMessage(MsgEnum.MSG_ERROR, "Unknown Detection Error");
             } else if (result == 0) {
-                sendMessage(MsgEnum.MSG_VAD_SPEECH, null);
+                // post a higher CPU usage:
+                // sendMessage(MsgEnum.MSG_VAD_SPEECH, null);
             } else if (result > 0) {
                 sendMessage(MsgEnum.MSG_ACTIVE, null);
                 Log.i("Snowboy: ", "Hotword " + Integer.toString(result) + " detected!");

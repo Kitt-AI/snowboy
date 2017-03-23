@@ -9,14 +9,15 @@ buildscript {
 apply plugin: 'android'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
+    compile fileTree(include: '*.jar', dir: 'libs')
 }
 
 android {
+    signingConfigs {
+    }
     compileSdkVersion 25
     buildToolsVersion '25.0.0'
     compileOptions.encoding = 'ISO-8859-1'
-
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -39,5 +40,13 @@ android {
         // by a similar customization.
         debug.setRoot('build-types/debug')
         release.setRoot('build-types/release')
+    }
+    buildTypes {
+        release {
+        }
+    }
+    defaultConfig {
+    }
+    productFlavors {
     }
 }

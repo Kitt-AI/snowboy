@@ -43,6 +43,8 @@ Note: If you need to copy the Android demo to another folder, please use the `-R
 
 	cp -RL  SnowboyAlexaDemo Other_Folder
 
+Note: The sample app will save/overwrite all audio to a file (`recording.pcm`). Make sure you do not leave it on for a long time.
+
 ## Useful Code Snippets
 
 
