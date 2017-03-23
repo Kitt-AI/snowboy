@@ -22,5 +22,4 @@ else
 fi
 
 ./android-ndk-r11c/build/tools/make-standalone-toolchain.sh \
-  --arch=arm --platform=android-17 --install-dir=`pwd`/ndk_install \
-  --use-llvm --stl=libc++ || exit 1;
+  --arch=arm --platform=android-14 --install-dir=`pwd`/ndk_install || exit 1;
