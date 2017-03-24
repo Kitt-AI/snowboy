@@ -183,6 +183,7 @@ you use.
 * [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.1.1.tar.bz2)
 * Raspberry Pi with Raspbian 8.0, all versions
   ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.1.1.tar.bz2))
+* Pine64 (Debian Jessie 8.5 (3.10.102)) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/pine64-debian-jessie-1.1.1.tar.bz2))
 * Intel Edison (Ubilinux based on Debian Wheezy 7.8) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/edison-ubilinux-1.1.1.tar.bz2))
   
 If you want to compile a version against your own environment/language, read on.
