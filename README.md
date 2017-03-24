@@ -10,11 +10,16 @@ by [KITT.AI](http://kitt.ai).
 
 (The discussion group is new since September 2016 as we are getting many messages every day. Please send general questions there. For bugs, use Github issues.)
 
-Version: 1.1.1 (3/24/2017)
+Version: 1.2.0 (3/25/2017)
 
 ## Alexa support
 
-Snowboy now brings hands-free experience to the [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) on Raspberry Pi! Here is how you can use other Snowboy models
+Snowboy now brings hands-free experience to the [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) on Raspberry Pi! See more info below regarding the performance and how you can use other hotword models.
+
+**Performance**
+The performance of hotword detection usually depends on the actually environment, e.g., is it used with a quality microphone, is it used on the street, in a kitchen, or is there any background noise, etc. So we feel it is best for the users to evaluate it in their real environment. For the evaluation purpose, we have prepared an Android app which can be installed and run out of box. The app is here:
+
+* **resources/alexa/SnowboyAlexaDemo.apk**
 
 **Personal model**
 * Create your personal hotword model through our [website](https://snowboy.kitt.ai) or [hotword API](https://snowboy.kitt.ai/api/v1/train/)
@@ -160,10 +165,15 @@ Here is the list of the models, and the parameters that you have to use for them
 * **resources/snowboy.umdl**: Universal model for the hotword "Snowboy". Set
 SetSensitivity to 0.5 for better performance.
 * **resources/alexa.umdl**: Universal model for the hotword "Alexa". Set
-SetSensitivity to 0.5, and preferably set ApplyFrontend to true. This model is
-depressed.
-* **resources/alexa_02092017.umdl**: Universal model for the hotword "Alexa". This
-is still work in progress. Set SetSensitivity to 0.15.
+SetSensitivity to 0.5, and preferably set ApplyFrontend (only works on Raspberry
+Pi) to true. This model is depressed.
+* **resources/alexa/alexa_02092017.umdl**: Universal model for the hotword
+"Alexa". This is still work in progress. Set SetSensitivity to 0.15.
+* **resources/alexa/alexa-avs-sample-app/alexa.umdl**: Universal model for the
+hotword "Alexa" optimized for [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app).
+Set SetSensitivity to 0.6, and set ApplyFrontend (only works on Raspberry Pi)
+to true. This is so far the best "Alexa" model we released publicly, when
+ApplyFrontend is set to true.
 
 ## Precompiled node module
 
@@ -178,13 +188,13 @@ dependencies like `fs`, `wav` or `node-record-lpcm16` depending on which script
 you use.
 
 ## Precompiled Binaries with Python Demo
-* 64 bit Ubuntu [12.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1204-x86_64-1.1.1.tar.bz2)
-  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.1.1.tar.bz2)
-* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.1.1.tar.bz2)
+* 64 bit Ubuntu [12.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1204-x86_64-1.2.0.tar.bz2)
+  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.2.0.tar.bz2)
+* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.2.0.tar.bz2)
 * Raspberry Pi with Raspbian 8.0, all versions
-  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.1.1.tar.bz2))
-* Pine64 (Debian Jessie 8.5 (3.10.102)) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/pine64-debian-jessie-1.1.1.tar.bz2))
-* Intel Edison (Ubilinux based on Debian Wheezy 7.8) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/edison-ubilinux-1.1.1.tar.bz2))
+  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.2.0.tar.bz2))
+* Pine64 (Debian Jessie 8.5 (3.10.102)) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/pine64-debian-jessie-1.2.0.tar.bz2))
+* Intel Edison (Ubilinux based on Debian Wheezy 7.8) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/edison-ubilinux-1.2.0.tar.bz2))
   
 If you want to compile a version against your own environment/language, read on.
 
@@ -371,6 +381,11 @@ You are probably using an old version of SWIG. Please upgrade. We have tested wi
 See [Full Documentation](http://docs.kitt.ai/snowboy).
 
 ## Change Log
+
+**v1.2.0, 3/25/2017**
+
+* Added better Alexa model for [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app)
+* New decoder that works well for short hotwords like Alexa
 
 **v1.1.1, 3/24/2017**
 
