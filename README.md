@@ -10,26 +10,55 @@ by [KITT.AI](http://kitt.ai).
 
 (The discussion group is new since September 2016 as we are getting many messages every day. Please send general questions there. For bugs, use Github issues.)
 
-Version: 1.1.0 (9/20/2016)
+Version: 1.1.1 (3/24/2017)
 
-## New!
-
-### Alexa support
+## Alexa support
 
 Snowboy now brings hands-free experience to the [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) on Raspberry Pi! Here is how you can use other Snowboy models
 
 **Personal model**
 * Create your personal hotword model through our [website](https://snowboy.kitt.ai) or [hotword API](https://snowboy.kitt.ai/api/v1/train/)
 * Replace the hotword model in [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) (after installation) with your personal model
-* Set `APPLY_FRONTEND` to `false` in the [Alexa AVS sample app code](https://github.com/alexa/alexa-avs-sample-app/blob/master/samples/wakeWordAgent/src/KittAiSnowboyWakeWordEngine.cpp) and re-compile
+
+    # Please replace YOUR_PERSONAL_MODEL.pmdl with the personal model you just
+    # created, and $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
+    # cloned the Alexa AVS sample app repository.
+    cp YOUR_PERSONAL_MODEL.pmdl $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/ext/resources/alexa.umdl
+
+* Set `APPLY_FRONTEND` to `false` and update `SENSITIVITY` in the [Alexa AVS sample app code](https://github.com/alexa/alexa-avs-sample-app/blob/master/samples/wakeWordAgent/src/KittAiSnowboyWakeWordEngine.cpp) and re-compile
+
+    # Please replace $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
+    # cloned the Alexa AVS sample app repository.
+    cd $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/src/
+
+    # Modify KittAiSnowboyWakeWordEngine.cpp and update SENSITIVITY at line 28.
+    # Modify KittAiSnowboyWakeWordEngine.cpp and set APPLY_FRONTEND to false at
+    # line 30.
+    make
+
 * Run the wake word agent with engine set to `kitt_ai`!
 
 **Universal model**
 * Replace the hotword model in [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) (after installation) with your universal model
+
+    # Please replace YOUR_UNIVERSAL_MODEL.umdl with the personal model you just
+    # created, and $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
+    # cloned the Alexa AVS sample app repository.
+    cp YOUR_UNIVERSAL_MODEL.umdl $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/ext/resources/alexa.umdl
+
+* Update `SENSITIVITY` in the [Alexa AVS sample app code](https://github.com/alexa/alexa-avs-sample-app/blob/master/samples/wakeWordAgent/src/KittAiSnowboyWakeWordEngine.cpp) and re-compile
+
+    # Please replace $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
+    # cloned the Alexa AVS sample app repository.
+    cd $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/src/
+
+    # Modify KittAiSnowboyWakeWordEngine.cpp and update SENSITIVITY at line 28.
+    make
+
 * Run the wake word agent with engine set to `kitt_ai`!
 
 
-### Hotword as a Service
+## Hotword as a Service
 
 Snowboy now offers **Hotword as a Service** through the ``https://snowboy.kitt.ai/api/v1/train/``
 endpoint. Check out the [Full Documentation](http://docs.kitt.ai/snowboy) and example [Python/Bash script](examples/REST_API) (other language contributions are very welcome).
@@ -141,12 +170,12 @@ dependencies like `fs`, `wav` or `node-record-lpcm16` depending on which script
 you use.
 
 ## Precompiled Binaries with Python Demo
-* 64 bit Ubuntu [12.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1204-x86_64-1.1.0.tar.bz2)
-  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.1.0.tar.bz2)
-* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.1.0.tar.bz2)
+* 64 bit Ubuntu [12.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1204-x86_64-1.1.1.tar.bz2)
+  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.1.1.tar.bz2)
+* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.1.1.tar.bz2)
 * Raspberry Pi with Raspbian 8.0, all versions
-  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.1.0.tar.bz2))
-* Intel Edison (Ubilinux based on Debian Wheezy 7.8) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/edison-ubilinux-1.1.0.tar.bz2))
+  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.1.1.tar.bz2))
+* Intel Edison (Ubilinux based on Debian Wheezy 7.8) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/edison-ubilinux-1.1.1.tar.bz2))
   
 If you want to compile a version against your own environment/language, read on.
 
@@ -334,30 +363,17 @@ See [Full Documentation](http://docs.kitt.ai/snowboy).
 
 ## Change Log
 
-**3/3/2017**
+**v1.1.1, 3/24/2017**
 
+* Added Android demo
+* Added iOS demos
 * Added Samsung Artik support
-
-**2/27/2017**
-
 * Added Go support
-
-**2/24/2017**
-
 * Added Intel Edison support
-
-**2/21/2017**
-
 * Added Pine64 support
-
-**2/9/2017**
-
 * Added a more robust "Alexa" model (umdl)
-
-**9/28/2016**
-
 * Offering Hotword as a Service through ``/api/v1/train`` endpoint.
-* No version bump since decoder is not changed.
+* Decoder is not changed.
 
 **v1.1.0, 9/20/2016**
 
