@@ -20,40 +20,48 @@ Snowboy now brings hands-free experience to the [Alexa AVS sample app](https://g
 * Create your personal hotword model through our [website](https://snowboy.kitt.ai) or [hotword API](https://snowboy.kitt.ai/api/v1/train/)
 * Replace the hotword model in [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) (after installation) with your personal model
 
-    # Please replace YOUR_PERSONAL_MODEL.pmdl with the personal model you just
-    # created, and $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
-    # cloned the Alexa AVS sample app repository.
-    cp YOUR_PERSONAL_MODEL.pmdl $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/ext/resources/alexa.umdl
+```
+# Please replace YOUR_PERSONAL_MODEL.pmdl with the personal model you just
+# created, and $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
+# cloned the Alexa AVS sample app repository.
+cp YOUR_PERSONAL_MODEL.pmdl $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/ext/resources/alexa.umdl
+```
 
 * Set `APPLY_FRONTEND` to `false` and update `SENSITIVITY` in the [Alexa AVS sample app code](https://github.com/alexa/alexa-avs-sample-app/blob/master/samples/wakeWordAgent/src/KittAiSnowboyWakeWordEngine.cpp) and re-compile
 
-    # Please replace $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
-    # cloned the Alexa AVS sample app repository.
-    cd $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/src/
+```
+# Please replace $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
+# cloned the Alexa AVS sample app repository.
+cd $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/src/
 
-    # Modify KittAiSnowboyWakeWordEngine.cpp and update SENSITIVITY at line 28.
-    # Modify KittAiSnowboyWakeWordEngine.cpp and set APPLY_FRONTEND to false at
-    # line 30.
-    make
+# Modify KittAiSnowboyWakeWordEngine.cpp and update SENSITIVITY at line 28.
+# Modify KittAiSnowboyWakeWordEngine.cpp and set APPLY_FRONTEND to false at
+# line 30.
+make
+```
 
 * Run the wake word agent with engine set to `kitt_ai`!
 
 **Universal model**
 * Replace the hotword model in [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) (after installation) with your universal model
 
-    # Please replace YOUR_UNIVERSAL_MODEL.umdl with the personal model you just
-    # created, and $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
-    # cloned the Alexa AVS sample app repository.
-    cp YOUR_UNIVERSAL_MODEL.umdl $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/ext/resources/alexa.umdl
+```
+# Please replace YOUR_UNIVERSAL_MODEL.umdl with the personal model you just
+# created, and $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
+# cloned the Alexa AVS sample app repository.
+cp YOUR_UNIVERSAL_MODEL.umdl $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/ext/resources/alexa.umdl
+```
 
 * Update `SENSITIVITY` in the [Alexa AVS sample app code](https://github.com/alexa/alexa-avs-sample-app/blob/master/samples/wakeWordAgent/src/KittAiSnowboyWakeWordEngine.cpp) and re-compile
 
-    # Please replace $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
-    # cloned the Alexa AVS sample app repository.
-    cd $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/src/
+```
+# Please replace $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
+# cloned the Alexa AVS sample app repository.
+cd $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/src/
 
-    # Modify KittAiSnowboyWakeWordEngine.cpp and update SENSITIVITY at line 28.
-    make
+# Modify KittAiSnowboyWakeWordEngine.cpp and update SENSITIVITY at line 28.
+make
+```
 
 * Run the wake word agent with engine set to `kitt_ai`!
 
