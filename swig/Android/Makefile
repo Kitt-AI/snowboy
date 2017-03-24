@@ -8,8 +8,9 @@
 SWIG := swig
 
 # Please specify your NDK root directory here.
+NDK_VERSION="r14b"
 NDKINSTALLEDROOT := $(PWD)/ndk_install
-NDKROOT := $(PWD)/android-ndk-r11c
+NDKROOT := $(PWD)/android-ndk-${NDK_VERSION}
 
 SNOWBOYDETECTSWIGITF = snowboy-detect-swig.i
 SNOWBOYDETECTSWIGOBJ = snowboy-detect-swig.o
@@ -50,7 +51,7 @@ all: $(SNOWBOYSWIGLIBFILE) $(SNOWBOYDETECTSWIGLIBFILE)
 	$(MAKE) -C ${@D} ${@F}
 
 $(NDKINSTALLEDROOT):
-	@-./install_ndk.sh
+	@-./install_ndk.sh ${NDK_VERSION}
 
 $(OPENBLASLIBFILE): $(NDKINSTALLEDROOT)
 	@-./install_openblas.sh $(CC) $(AR) $(OPENBLASTARGET)

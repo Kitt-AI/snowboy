@@ -126,12 +126,12 @@ public class RecordingThread {
 
             if (result == -2) {
                 // post a higher CPU usage:
-                // sendMessage(MsgEnum.MSG_VAD_NOSPEECH, null);
+                sendMessage(MsgEnum.MSG_VAD_NOSPEECH, null);
             } else if (result == -1) {
                 sendMessage(MsgEnum.MSG_ERROR, "Unknown Detection Error");
             } else if (result == 0) {
                 // post a higher CPU usage:
-                // sendMessage(MsgEnum.MSG_VAD_SPEECH, null);
+                sendMessage(MsgEnum.MSG_VAD_SPEECH, null);
             } else if (result > 0) {
                 sendMessage(MsgEnum.MSG_ACTIVE, null);
                 Log.i("Snowboy: ", "Hotword " + Integer.toString(result) + " detected!");

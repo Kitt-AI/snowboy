@@ -67,8 +67,8 @@ You may want to play with the frequency of the calls to `RunDetection()`, which 
 
 The following TODOs will be fixed by 2017/4 in the upcoming Snowboy v1.2.0 release.
 
-- [ ] softfloating point support in OpenBlas
-- [ ] upgrade NDK version to newer than r11c
-- [ ] NDK toolchain building remove `--stl=libc++` option
+- [x] softfloating point support with OpenBlas
+- [x] upgrade NDK version to newer than r11c
+- [x] NDK toolchain building: remove `--stl=libc++` option
 
 
