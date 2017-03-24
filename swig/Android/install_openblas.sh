@@ -1,21 +1,22 @@
 #!/bin/bash
 
-# This script compiles OpenBLAS for Android with the given architecture. The
-# prebuild Android NDK toolchains do not include Fortran, hence parts like
-# LAPACK will not be built.
+# This script compiles OpenBLAS for Android with ARM architecture. The prebuilt
+# Android NDK toolchains do not include Fortran, hence parts like LAPACK will
+# not be built.
 
 CC=$1
 AR=$2
 TARGET=$3
 
-if [ ! -f OpenBLAS-0.2.18.tar.gz ]; then
-  wget -T 10 -t 3 https://codeload.github.com/xianyi/OpenBLAS/tar.gz/v0.2.18 \
-  -O OpenBLAS-0.2.18.tar.gz || exit 1;
+if [ ! -d "OpenBLAS-Android" ]; then
+  git clone https://github.com/xianyi/OpenBLAS.git OpenBLAS-Android
+  cd OpenBLAS-Android
+  git checkout arm_soft_fp_abi || exit 1;
+  git reset --hard b5c96fcfcdc82945502a2303116a64d89985daf5 || exit 1;
+  cd ..
 fi
 
-tar -xvzf OpenBLAS-0.2.18.tar.gz 1>/dev/null || exit 1;
-mv OpenBLAS-0.2.18 OpenBLAS-Android
-
 cd OpenBLAS-Android
-make TARGET=${TARGET} HOSTCC=gcc CC=${CC} AR=${AR} NOFORTRAN=1 || exit 1;
+make USE_THREAD=0 TARGET=${TARGET} HOSTCC=gcc CC=${CC} AR=${AR} \
+  NOFORTRAN=1 ARM_SOFTFP_ABI=1 libs || exit 1;
 make PREFIX=`pwd`/install install || exit 1;

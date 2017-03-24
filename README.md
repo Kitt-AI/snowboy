@@ -293,28 +293,10 @@ Thanks to @patrickjquinn and @grimlockrocks, we now have examples of using Snowb
 
 ## Compile an Android Wrapper
 
-    cd swig/Android
-    # Make sure you set up the NDKROOT variable in Makefile before you run.
-    # We have only tested with NDK version r11c.
-    make
+Full README and tutorial is in [Android README](examples/Android/README.md) and here's a screenshot:
 
-(Warning: please do this on \*nix platforms. Snowboy does not support Windows yet)
+<img src="https://s3-us-west-2.amazonaws.com/kittai-cdn/Snowboy/SnowboyAlexaDemo-Andriod.jpeg" alt="Android Alexa Demo" width=300 />
 
-Using Snowboy library on Android devices is a little bit tricky. We have only tested with NDK version r11c. We do not support r12 yet because of the removal of armeabi-v7a-hard ABI in r12. We have compiled Snowboy using Android's cross-compilation toolchain for ARMV7 architecture, see the library here `lib/android/armv7a/libsnowboy-detect.a`. We then use SWIG to generate the Java wrapper, and use Android's cross-compilation toolchain to generate the corresponding JNI libraries. After running `make`, two directories will be created: `java` and `jniLibs`. Copy these two directories to your Android app directory (e.g., `app/src/main/`) and you should be able to call Snowboy funcitons within Java.
-
-To initialize Snowboy detector in Java:
-
-    # Assume you put the model related files under /sdcard/snowboy/
-    SnowboyDetect snowboyDetector = new SnowboyDetect("/sdcard/snowboy/common.res",
-                                                      "/sdcard/snowboy/snowboy.umdl");
-    snowboyDetector.SetSensitivity("0.45");         // Sensitivity for each hotword
-    snowboyDetector.SetAudioGain(2.0);              // Audio gain for detection
-
-To run hotword detection in Java:
-
-    int result = snowboyDetector.RunDetection(buffer, buffer.length);   // buffer is a short array.
-
-You may want to play with the frequency of the calls to `RunDetection()`, which controls the CPU usage and the detection latency.
 
 ## Quick Start for Python Demo
 
