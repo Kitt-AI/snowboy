@@ -380,6 +380,7 @@ See [Full Documentation](http://docs.kitt.ai/snowboy).
 * Added Go support
 * Added Intel Edison support
 * Added Pine64 support
+* Added Perl Support
 * Added a more robust "Alexa" model (umdl)
 * Offering Hotword as a Service through ``/api/v1/train`` endpoint.
 * Decoder is not changed.
