@@ -17,6 +17,7 @@ Version: 1.2.0 (3/25/2017)
 Snowboy now brings hands-free experience to the [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) on Raspberry Pi! See more info below regarding the performance and how you can use other hotword models.
 
 **Performance**
+
 The performance of hotword detection usually depends on the actually environment, e.g., is it used with a quality microphone, is it used on the street, in a kitchen, or is there any background noise, etc. So we feel it is best for the users to evaluate it in their real environment. For the evaluation purpose, we have prepared an Android app which can be installed and run out of box. The app is here:
 
 * **resources/alexa/SnowboyAlexaDemo.apk**
