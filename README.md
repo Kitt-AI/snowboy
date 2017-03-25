@@ -131,7 +131,7 @@ Currently we have built wrappers for:
 
 * Java/Android
 * Go (thanks to @brentnd)
-* Node (thanks to @evancohen)
+* Node (thanks to @evancohen and @nekuz0r)
 * Perl (thanks to @iboguslavsky)
 * Python
 * iOS/Swift3 (thanks to @grimlockrocks)
