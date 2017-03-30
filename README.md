@@ -18,9 +18,7 @@ Snowboy now brings hands-free experience to the [Alexa AVS sample app](https://g
 
 **Performance**
 
-The performance of hotword detection usually depends on the actually environment, e.g., is it used with a quality microphone, is it used on the street, in a kitchen, or is there any background noise, etc. So we feel it is best for the users to evaluate it in their real environment. For the evaluation purpose, we have prepared an Android app which can be installed and run out of box. The app is here:
-
-* **resources/alexa/SnowboyAlexaDemo.apk**
+The performance of hotword detection usually depends on the actually environment, e.g., is it used with a quality microphone, is it used on the street, in a kitchen, or is there any background noise, etc. So we feel it is best for the users to evaluate it in their real environment. For the evaluation purpose, we have prepared an Android app which can be installed and run out of box: [SnowboyAlexaDemo.apk](https://github.com/Kitt-AI/snowboy/raw/master/resources/alexa/SnowboyAlexaDemo.apk)
 
 **Personal model**
 * Create your personal hotword model through our [website](https://snowboy.kitt.ai) or [hotword API](https://snowboy.kitt.ai/api/v1/train/)
