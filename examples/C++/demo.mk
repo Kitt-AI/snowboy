@@ -5,7 +5,7 @@ CXX :=
 LDFLAGS :=
 LDLIBS := -lboost_system
 PORTAUDIOINC := /usr/include
-PORTAUDIOLIBS := -lportaudio -lblas -llapack
+PORTAUDIOLIBS := -lportaudio
 
 CXXFLAGS += -D_GLIBCXX_USE_CXX11_ABI=0
 
