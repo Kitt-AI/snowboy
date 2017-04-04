@@ -39,6 +39,16 @@ public class RecordingThread {
     public RecordingThread(Handler handler, AudioDataReceivedListener listener) {
         this.handler = handler;
         this.listener = listener;
+
+        detector.SetSensitivity("0.6");
+        //-detector.SetAudioGain(1);
+        detector.ApplyFrontend(true);
+        try {
+            player.setDataSource(strEnvWorkSpace+"ding.wav");
+            player.prepare();
+        } catch (IOException e) {
+            Log.e(TAG, "Playing ding sound error", e);
+        }
     }
 
     private void sendMessage(MsgEnum what, Object obj){
@@ -49,15 +59,6 @@ public class RecordingThread {
     }
 
     public void startRecording() {
-        detector.SetSensitivity("0.6");
-        //-detector.SetAudioGain(1);
-        detector.ApplyFrontend(true);
-        try {
-            player.setDataSource(strEnvWorkSpace+"ding.wav");
-            player.prepare();
-        } catch (IOException e) {
-            Log.e(TAG, "Playing ding sound error", e);
-        }
         if (thread != null)
             return;
 
