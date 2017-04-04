@@ -109,6 +109,7 @@ public class RecordingThread {
         Log.v(TAG, "Start recording");
 
         long shortsRead = 0;
+        detector.Reset();
         while (shouldContinue) {
             record.read(audioBuffer, 0, audioBuffer.length, AudioRecord.READ_BLOCKING);
 
