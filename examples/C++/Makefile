@@ -7,10 +7,7 @@ all: $(BINFILES)
 %.a:
 	$(MAKE) -C ${@D} ${@F}
 
-$(BINFILES): $(PORTAUDIOLIBS) $(SNOWBOYDETECTLIBFILE)
-
-$(PORTAUDIOLIBS):
-	@-./install_portaudio.sh
+$(BINFILES): $(SNOWBOYDETECTLIBFILE)
 
 clean:
 	-rm -f *.o *.a $(BINFILES)
