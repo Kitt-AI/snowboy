@@ -124,7 +124,7 @@ export class SnowboyDetect extends stream.Writable implements SnowboyDetectInter
 
   runDetection(buffer: Buffer): number {
     const index = this.nativeInstance.RunDetection(buffer);
-    this.processDetectionResult(index);
+    this.processDetectionResult(index, buffer);
     return index;
   }
 
@@ -163,11 +163,11 @@ export class SnowboyDetect extends stream.Writable implements SnowboyDetectInter
   // Stream implementation
   _write(chunk: Buffer, encoding: string, callback: Function) {
     const index = this.nativeInstance.RunDetection(chunk);
-    this.processDetectionResult(index);
+    this.processDetectionResult(index, chunk);
     return callback();
   }
 
-  private processDetectionResult(index: number): void {
+  private processDetectionResult(index: number, buffer: Buffer): void {
     switch (index) {
       case DetectionResult.ERROR:
         this.emit('error');
@@ -178,12 +178,12 @@ export class SnowboyDetect extends stream.Writable implements SnowboyDetectInter
         break;
 
       case DetectionResult.SOUND:
-        this.emit('sound');
+        this.emit('sound', buffer);
         break;
 
       default:
         const hotword = this.models.lookup(index);
-        this.emit('hotword', index, hotword);
+        this.emit('hotword', index, hotword, buffer);
         break;
     }
   }
