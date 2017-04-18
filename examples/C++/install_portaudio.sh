@@ -2,6 +2,10 @@
 
 # This script attempts to install PortAudio, which can grap a live audio stream
 # from the soundcard.
+#
+# On linux systems, we only build with ALSA, so make sure you install it using
+# e.g.:
+#   sudo apt-get -y install libasound2-dev
 
 echo "Installing portaudio"
 
@@ -17,7 +21,8 @@ patch < ../patches/portaudio.patch
 
 MACOS=`uname 2>/dev/null | grep Darwin`
 if [ -z "$MACOS" ]; then
-  ./configure --prefix=`pwd`/install --with-pic
+  ./configure --without-jack --without-oss \
+    --with-alsa --prefix=`pwd`/install --with-pic || exit 1;
   sed -i '40s:src/common/pa_ringbuffer.o::g' Makefile
   sed -i '40s:$: src/common/pa_ringbuffer.o:' Makefile
 else
