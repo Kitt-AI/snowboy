@@ -33,13 +33,7 @@ else ifeq ($(shell uname), Linux)
       -Wno-unused-local-typedefs -Winit-self -rdynamic \
       -DHAVE_POSIX_MEMALIGN -I$(PORTAUDIOINC)
   LDLIBS += -ldl -lm -Wl,-Bstatic -Wl,-Bdynamic -lrt -lpthread $(PORTAUDIOLIBS)\
-      -L/usr/lib/atlas-base -lf77blas -lcblas -llapack_atlas -latlas
-  ifneq ($(wildcard $(PORTAUDIOINC)/pa_linux_alsa.h),)
-    LDLIBS += -lasound
-  endif
-  ifneq ($(wildcard $(PORTAUDIOINC)/pa_jack.h),)
-    LDLIBS += -ljack
-  endif
+      -L/usr/lib/atlas-base -lf77blas -lcblas -llapack_atlas -latlas -lasound
   SNOWBOYDETECTLIBFILE := $(TOPDIR)/lib/ubuntu64/libsnowboy-detect.a
   ifneq (,$(findstring arm,$(shell uname -m)))
     SNOWBOYDETECTLIBFILE := $(TOPDIR)/lib/rpi/libsnowboy-detect.a
