@@ -16,9 +16,11 @@ BIT = 32
 ifeq ($(BIT), 64)
     NDKINSTALLEDROOT := $(PWD)/ndk_install_64bit
     OPENBLASTARGET := ARMV8
+    OPENBLASDIR := OpenBLAS-Android-ARM64
 else
     NDKINSTALLEDROOT := $(PWD)/ndk_install_32bit
     OPENBLASTARGET := ARMV7
+    OPENBLASDIR := OpenBLAS-Android-ARM32
 endif
 NDKROOT := $(PWD)/android-ndk-${NDK_VERSION}
 
@@ -28,7 +30,7 @@ SNOWBOYDETECTSWIGCC = snowboy-detect-swig.cc
 SNOWBOYDETECTJAVAPKG = ai.kitt.snowboy
 SNOWBOYDETECTJAVAPKGDIR = java/ai/kitt/snowboy/
 SNOWBOYDETECTSWIGLIBFILE = libsnowboy-detect-android.so
-OPENBLASLIBFILE = OpenBLAS-Android/install/lib/libopenblas.a
+OPENBLASLIBFILE = $(OPENBLASDIR)/install/lib/libopenblas.a
 
 ARCH := arm
 TOPDIR := ../../
@@ -80,7 +82,7 @@ $(NDKINSTALLEDROOT):
 	@-./install_ndk.sh ${NDK_VERSION} ${BIT}
 
 $(OPENBLASLIBFILE): $(NDKINSTALLEDROOT)
-	@-./install_openblas.sh $(CC) $(AR) $(OPENBLASTARGET)
+	@-./install_openblas.sh $(CC) $(AR) $(OPENBLASTARGET) $(OPENBLASDIR)
 
 $(SNOWBOYDETECTSWIGCC): $(SNOWBOYDETECTSWIGITF)
 	@-mkdir -p $(SNOWBOYDETECTJAVAPKGDIR)
