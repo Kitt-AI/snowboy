@@ -13,10 +13,18 @@ Note:
 
 		cd swig/Android
 		make
+	
+	To make for ARMv8 64bit:
+	
+		 make BIT=64
 
 	Ths will generate a cross-compiled library for ARM:
 	
-		jniLibs/armeabi-v7a/libsnowboy-detect-android.so
+		jniLibs/
+			├── arm64-v8a
+			│   └── libsnowboy-detect-android.so
+			└── armeabi-v7a
+			    └── libsnowboy-detect-android.so
 
 	and a few Java wrapper files:
 	
