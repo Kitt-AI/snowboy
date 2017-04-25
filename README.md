@@ -345,6 +345,7 @@ Full README and tutorial is in [Android README](examples/Android/README.md) and 
 
 <img src="https://s3-us-west-2.amazonaws.com/kittai-cdn/Snowboy/SnowboyAlexaDemo-Andriod.jpeg" alt="Android Alexa Demo" width=300 />
 
+We have prepared an Android app which can be installed and run out of box: [SnowboyAlexaDemo.apk](https://github.com/Kitt-AI/snowboy/raw/master/resources/alexa/SnowboyAlexaDemo.apk) (please uninstall any previous one first if you installed this app before).
 
 ## Quick Start for Python Demo
 
