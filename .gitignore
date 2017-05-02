@@ -25,9 +25,11 @@ Snowboy.pm
 
 /swig/Android/OpenBLAS-0.2.18.tar.gz
 /swig/Android/android-ndk-r11c-darwin-x86_64.zip
+/swig/Android/android-ndk-r14b-darwin-x86_64.zip
 /swig/Android/android-ndk-r11c-linux-x86_64.zip
 /swig/Android/OpenBLAS-Android/
 /swig/Android/android-ndk-r11c/
+/swig/Android/android-ndk-r14b/
 /swig/Android/ndk_install/
 /swig/Android/java/
 /swig/Android/jniLibs/
