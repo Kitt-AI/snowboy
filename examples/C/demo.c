@@ -101,6 +101,10 @@ void StartAudioCapturing(int sample_rate,
 }
 
 void StopAudioCapturing() {
+  if (g_data != NULL) {
+    free(g_data);
+    g_data = NULL;
+  }
   Pa_StopStream(g_pa_stream);
   Pa_CloseStream(g_pa_stream);
   Pa_Terminate();
