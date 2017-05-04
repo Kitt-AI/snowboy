@@ -1,6 +1,6 @@
-// example/C++/demo.cc
+// example/C/demo.c
 
-// Copyright 2016  KITT.AI (author: Guoguo Chen)
+// Copyright 2017  KITT.AI (author: Guoguo Chen)
 
 #include <assert.h>
 #include <pa_ringbuffer.h>
