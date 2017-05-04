@@ -111,7 +111,7 @@ public class RecordingThread {
         long shortsRead = 0;
         detector.Reset();
         while (shouldContinue) {
-            record.read(audioBuffer, 0, audioBuffer.length, AudioRecord.READ_BLOCKING);
+            record.read(audioBuffer, 0, audioBuffer.length);
 
             if (null != listener) {
                 listener.onAudioDataReceived(audioBuffer, audioBuffer.length);
@@ -133,7 +133,7 @@ public class RecordingThread {
                 sendMessage(MsgEnum.MSG_ERROR, "Unknown Detection Error");
             } else if (result == 0) {
                 // post a higher CPU usage:
-                sendMessage(MsgEnum.MSG_VAD_SPEECH, null);
+                // sendMessage(MsgEnum.MSG_VAD_SPEECH, null);
             } else if (result > 0) {
                 sendMessage(MsgEnum.MSG_ACTIVE, null);
                 Log.i("Snowboy: ", "Hotword " + Integer.toString(result) + " detected!");
