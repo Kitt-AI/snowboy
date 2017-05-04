@@ -25,6 +25,7 @@ public class PlaybackThread {
 
     private Thread thread;
     private boolean shouldContinue;
+    protected AudioTrack audioTrack;
 
     public boolean playing() {
         return thread != null;
@@ -50,7 +51,16 @@ public class PlaybackThread {
             return;
 
         shouldContinue = false;
+        relaseAudioTrack();
         thread = null;
+    }
+
+    protected void relaseAudioTrack() {
+        if (audioTrack != null) {
+            try {
+                audioTrack.release();
+            } catch (Exception e) {}
+        }
     }
 
     public short[] readPCM() {
@@ -62,11 +72,6 @@ public class PlaybackThread {
 
             byte[] audioData = new byte[(int)recordFile.length()];
 
-            // int i = 0;
-            // while (dataInputStream.available() > 0) {
-            //     audioData[i] = dataInputStream.readByte();
-            //     i++;
-            // }
             dataInputStream.read(audioData);
             dataInputStream.close();
             Log.v(TAG, "audioData size: " + audioData.length);
@@ -89,7 +94,7 @@ public class PlaybackThread {
         int bufferSizeInBytes = samples.length * shortSizeInBytes;
         Log.v(TAG, "shortSizeInBytes: " + shortSizeInBytes + " bufferSizeInBytes: " + bufferSizeInBytes);
 
-        AudioTrack audioTrack = new AudioTrack(
+        audioTrack = new AudioTrack(
                 AudioManager.STREAM_MUSIC,
                 Constants.SAMPLE_RATE,
                 AudioFormat.CHANNEL_OUT_MONO,
@@ -97,13 +102,14 @@ public class PlaybackThread {
                 bufferSizeInBytes,
                 AudioTrack.MODE_STREAM);
 
-        audioTrack.play();
-
-        audioTrack.write(samples, 0, samples.length);
-        Log.v(TAG, "Audio playback started");
+        if (audioTrack.getState() == AudioTrack.STATE_INITIALIZED) {
+            audioTrack.play();
+            audioTrack.write(samples, 0, samples.length);
+            Log.v(TAG, "Audio playback started");
+        }
 
         if (!shouldContinue) {
-            audioTrack.release();
+            relaseAudioTrack();
         }
     }
 }
