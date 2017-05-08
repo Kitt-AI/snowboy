@@ -72,9 +72,9 @@ To run hotword detection in Java:
 You may want to play with the frequency of the calls to `RunDetection()`, which controls the CPU usage and the detection latency.
 
 
-## TODO
+## Common Asks
 
-The following TODOs will be fixed by 2017/4 in the upcoming Snowboy v1.2.0 release.
+The following issues have been fixed pushed to `master`.
 
 - [x] softfloating point support with OpenBlas
 - [x] upgrade NDK version to newer than r11c
