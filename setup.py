@@ -20,25 +20,31 @@ class SnowboyBuild(build):
 
         # copy generated .so to build folder
         self.mkpath(self.build_lib)
-        target_file = os.path.join('swig/Python/_snowboydetect.so')
+        self.mkpath(os.path.join(self.build_lib, 'snowboy'))
+        target_file = 'swig/Python/_snowboydetect.so'
         if not self.dry_run:
-            self.copy_file(target_file, self.build_lib)
+            self.copy_file(target_file,
+                           os.path.join(self.build_lib, 'snowboy'))
 
         build.run(self)
 
 
 setup(
     name='snowboy',
-    version='0.1',
-    description='',
-    maintainer='',
-    maintainer_email='',
-    license='',
-    url='',
+    version='1.2.0',
+    description='Snowboy is a customizable hotword detection engine',
+    maintainer='KITT.AI',
+    maintainer_email='snowboy@kitt.ai',
+    license='Apache-2.0',
+    url='https://snowboy.kitt.ai',
     packages=find_packages('examples/Python/'),
     package_dir={'snowboy': 'examples/Python/'},
     py_modules=['snowboy.snowboydecoder', 'snowboy.snowboydetect'],
+    package_data={'': ['README.md', 'snowboy/resources/common.res']},
+    data_files=[('.', ['README.md']),
+                ('snowboy/resources', ['resources/common.res'])],
     include_package_data=True,
+    zip_safe=False,
     long_description="",
     classifiers=[],
     install_requires=[
