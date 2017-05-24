@@ -119,6 +119,7 @@ Currently Snowboy supports (look into the [lib](lib) folder):
 * Android
 * Pine64 (Debian Jessie 8.5, 3.10.102 BSP2)
 * Nvidia Jetson TX1 (use above Pine64 package)
+* Nvidia Jetson TX2 (use above Pine64 package)
 * Intel Edison (Ubilinux based on Debian Wheezy 7.8)
 * Samsung Artik (built with Fedora 25 for ARMv7)
 * ARM64 (aarch64, Ubuntu 16.04)
@@ -194,7 +195,7 @@ you use.
 * [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.2.0.tar.bz2)
 * Raspberry Pi with Raspbian 8.0, all versions
   ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.2.0.tar.bz2))
-* Pine64 (Debian Jessie 8.5 (3.10.102)) and Nvidia Jetson TX1 ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/pine64-debian-jessie-1.2.0.tar.bz2))
+* Pine64 (Debian Jessie 8.5 (3.10.102)), Nvidia Jetson TX1 and Nvidia Jetson TX2 ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/pine64-debian-jessie-1.2.0.tar.bz2))
 * Intel Edison (Ubilinux based on Debian Wheezy 7.8) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/edison-ubilinux-1.2.0.tar.bz2))
   
 If you want to compile a version against your own environment/language, read on.
@@ -225,7 +226,7 @@ Make sure that you can record audio with your microphone:
 
     rec t.wav
 
-### Ubuntu/Raspberry Pi/Pine64/Nvidia Jetson TX1
+### Ubuntu/Raspberry Pi/Pine64/Nvidia Jetson TX1/Nvidia Jetson TX2
 
 First `apt-get` install `swig`, `sox`, `portaudio` and its Python binding `pyaudio`:
 
