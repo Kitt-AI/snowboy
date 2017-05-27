@@ -10,14 +10,14 @@
 # Please use swig-3.0.10 or up.
 SWIG := swig
 
-SWIG_VERSION := $(shell expr `swig -version | grep -i Version | sed "s/^.* //g"\
-	| sed -e "s/\.\([0-9][0-9]\)/\1/g" -e "s/\.\([0-9]\)/0\1/g" \
+SWIG_VERSION := $(shell expr `$(SWIG) -version | grep -i Version | \
+	sed "s/^.* //g" | sed -e "s/\.\([0-9][0-9]\)/\1/g" -e "s/\.\([0-9]\)/0\1/g" \
 	-e "s/^[0-9]\{3,4\}$$/&00/"` \>= 30010)
 
 ifeq ($(SWIG_VERSION), 0)
 checkversion:
 	$(info You need at least Swig 3.0.10 to run)
-	$(info Your current version is $(shell swig -version | grep -i Version))
+	$(info Your current version is $(shell $(SWIG) -version | grep -i Version))
 	@exit -1
 endif
 
