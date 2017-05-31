@@ -17,6 +17,7 @@ fi
 tar -xovzf pa_stable_v190600_20161030.tgz || exit 1
 
 cd portaudio
+patch < ../patches/portaudio.patch
 
 MACOS=`uname 2>/dev/null | grep Darwin`
 if [ -z "$MACOS" ]; then
