@@ -12,9 +12,11 @@ Snowboy.pm
 *.swo
 
 /examples/C/pa_stable_v19_20140130.tgz
+/examples/C/pa_stable_v190600_20161030.tgz
 /examples/C/portaudio
 /examples/C/demo
 /examples/C++/pa_stable_v19_20140130.tgz
+/examples/C++/pa_stable_v190600_20161030.tgz
 /examples/C++/portaudio
 /examples/C++/demo
 /examples/Java/Demo.class
