@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 import collections
-import pyaudio
 import snowboydetect
 import time
 import wave
@@ -21,7 +20,7 @@ DETECT_DONG = os.path.join(TOP_DIR, "resources/dong.wav")
 
 
 class RingBuffer(object):
-    """Ring buffer to hold audio from PortAudio"""
+    """Ring buffer to hold audio from audio capturing tool"""
     def __init__(self, size = 4096):
         self._buf = collections.deque(maxlen=size)
 
@@ -43,19 +42,7 @@ def play_audio_file(fname=DETECT_DING):
     :param str fname: wave file name
     :return: None
     """
-    ding_wav = wave.open(fname, 'rb')
-    ding_data = ding_wav.readframes(ding_wav.getnframes())
-    audio = pyaudio.PyAudio()
-    stream_out = audio.open(
-        format=audio.get_format_from_width(ding_wav.getsampwidth()),
-        channels=ding_wav.getnchannels(),
-        rate=ding_wav.getframerate(), input=False, output=True)
-    stream_out.start_stream()
-    stream_out.write(ding_data)
-    time.sleep(0.2)
-    stream_out.stop_stream()
-    stream_out.close()
-    audio.terminate()
+    os.system("aplay " + fname + " > /dev/null 2>&1")
 
 
 class HotwordDetector(object):
@@ -75,11 +62,6 @@ class HotwordDetector(object):
                  resource=RESOURCE_FILE,
                  sensitivity=[],
                  audio_gain=1):
-
-        def audio_callback(in_data, frame_count, time_info, status):
-            self.ring_buffer.extend(in_data)
-            play_data = chr(0) * len(in_data)
-            return play_data, pyaudio.paContinue
 
         tm = type(decoder_model)
         ts = type(sensitivity)
@@ -111,7 +93,9 @@ class HotwordDetector(object):
         CHUNK = 2048
         RECORD_RATE = 16000
         cmd = 'arecord -q -r %d -f S16_LE' % RECORD_RATE
-        process = subprocess.Popen(cmd.split(' '), stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+        process = subprocess.Popen(cmd.split(' '),
+                                   stdout = subprocess.PIPE,
+                                   stderr = subprocess.PIPE)
         wav = wave.open(process.stdout, 'rb')
         while self.recording:
             data = wav.readframes(CHUNK)
