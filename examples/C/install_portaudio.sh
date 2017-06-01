@@ -23,6 +23,8 @@ MACOS=`uname 2>/dev/null | grep Darwin`
 if [ -z "$MACOS" ]; then
   ./configure --without-jack --without-oss \
     --with-alsa --prefix=`pwd`/install --with-pic || exit 1;
+  sed -i '40s:src/common/pa_ringbuffer.o::g' Makefile
+  sed -i '40s:$: src/common/pa_ringbuffer.o:' Makefile
 else
   # People may have changed OSX's default configuration -- we use clang++.
   CC=clang CXX=clang++ ./configure --prefix=`pwd`/install --with-pic
