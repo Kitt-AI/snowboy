@@ -26,15 +26,15 @@ LDFLAGS :=
 
 ifeq ($(shell uname), Darwin)
   CXX := clang++
-  PYINC := $(shell python-config --includes)
-  PYLIBS := $(shell python-config --ldflags)
+  PYINC := $(shell python3-config --includes)
+  PYLIBS := $(shell python3-config --ldflags)
   SWIGFLAGS := -bundle -flat_namespace -undefined suppress
   LDLIBS := -lm -ldl -framework Accelerate
   SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/osx/libsnowboy-detect.a
 else
   CXX := g++
-  PYINC := $(shell python-config --cflags)
-  PYLIBS := $(shell python-config --ldflags)
+  PYINC := $(shell python3-config --cflags)
+  PYLIBS := $(shell python3-config --ldflags)
   SWIGFLAGS := -shared
   CXXFLAGS += -std=c++0x
   # Make sure you have Atlas installed. You can statically link Atlas if you
