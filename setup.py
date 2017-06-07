@@ -1,10 +1,8 @@
 import os
-from sys import platform
 from setuptools import setup, find_packages
-from setuptools.command.install import install
 from distutils.command.build import build
+from distutils.dir_util import copy_tree
 from subprocess import call
-from multiprocessing import cpu_count
 
 
 class SnowboyBuild(build):
@@ -16,22 +14,29 @@ class SnowboyBuild(build):
         def compile():
             call(cmd, cwd='swig/Python')
 
-        self.execute(compile, [], 'Compiling snowboy')
+        self.execute(compile, [], 'Compiling snowboy...')
 
         # copy generated .so to build folder
         self.mkpath(self.build_lib)
-        self.mkpath(os.path.join(self.build_lib, 'snowboy'))
+        snowboy_build_lib = os.path.join(self.build_lib, 'snowboy')
+        self.mkpath(snowboy_build_lib)
         target_file = 'swig/Python/_snowboydetect.so'
         if not self.dry_run:
             self.copy_file(target_file,
-                           os.path.join(self.build_lib, 'snowboy'))
+                           snowboy_build_lib)
+
+            # copy resources too since it is a symlink
+            resources_dir = 'resources'
+            resources_dir_on_build = os.path.join(snowboy_build_lib,
+                                                  'resources')
+            copy_tree(resources_dir, resources_dir_on_build)
 
         build.run(self)
 
 
 setup(
     name='snowboy',
-    version='1.2.0',
+    version='1.2.0b1',
     description='Snowboy is a customizable hotword detection engine',
     maintainer='KITT.AI',
     maintainer_email='snowboy@kitt.ai',
@@ -40,14 +45,7 @@ setup(
     packages=find_packages('examples/Python/'),
     package_dir={'snowboy': 'examples/Python/'},
     py_modules=['snowboy.snowboydecoder', 'snowboy.snowboydetect'],
-    package_data={'': ['README.md', 'snowboy/resources/common.res']},
-    data_files=[('.', ['README.md']),
-                ('snowboy/resources', ['resources/common.res',
-                                       'resources/ding.wav',
-                                       'resources/dong.wav',
-                                       'resources/snowboy.wav',
-                                       'resources/snowboy.umdl'])],
-    include_package_data=True,
+    package_data={'snowboy': ['resources/*']},
     zip_safe=False,
     long_description="",
     classifiers=[],
