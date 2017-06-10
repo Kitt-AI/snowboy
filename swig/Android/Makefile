@@ -22,7 +22,6 @@ checkversion:
 endif
 
 
-# Please specify your NDK root directory here.
 NDK_VERSION=r14b
 BIT = 32
 ifeq ($(BIT), 64)
