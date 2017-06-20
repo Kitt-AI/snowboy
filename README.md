@@ -250,6 +250,7 @@ Compiling a node addon for Linux and the Raspberry Pi requires the installation 
 
 Then to compile the addon run the following from the root of the snowboy repository:
 
+    npm install
     node-pre-gyp clean configure build
 
 ## Compile a Java Wrapper
