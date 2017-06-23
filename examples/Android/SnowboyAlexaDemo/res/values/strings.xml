@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<resources>
+    <string name="app_name">SnowboyAlexaDemo</string>    
+	<string name="btn1_start">Start</string>
+    <string name="btn1_stop">Stop</string>
+    <string name="btn2_start">Play</string>
+    <string name="btn2_stop">Stop</string>
+</resources>

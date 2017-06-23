@@ -4,6 +4,17 @@
 # Please use swig-3.0.10 or up.
 SWIG := swig
 
+SWIG_VERSION := $(shell expr `$(SWIG) -version | grep -i Version | \
+	sed "s/^.* //g" | sed -e "s/\.\([0-9][0-9]\)/\1/g" -e "s/\.\([0-9]\)/0\1/g" \
+	-e "s/^[0-9]\{3,4\}$$/&00/"` \>= 30010)
+
+ifeq ($(SWIG_VERSION), 0)
+checkversion:
+	$(info You need at least Swig 3.0.10 to run)
+	$(info Your current version is $(shell $(SWIG) -version | grep -i Version))
+	@exit -1
+endif
+
 SNOWBOYDETECTSWIGITF = snowboy-detect-swig.i
 SNOWBOYDETECTSWIGOBJ = snowboy-detect-swig.o
 SNOWBOYDETECTSWIGCC = snowboy-detect-swig.cc
@@ -32,6 +43,10 @@ else
   SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/ubuntu64/libsnowboy-detect.a
   ifneq (,$(findstring arm,$(shell uname -m)))
     SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/rpi/libsnowboy-detect.a
+    ifeq ($(findstring fc,$(shell uname -r)), fc)
+      SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/fedora25-armv7/libsnowboy-detect.a
+      LDLIBS := -L/usr/lib/atlas -lm -ldl -lsatlas
+    endif
   endif
 endif
 

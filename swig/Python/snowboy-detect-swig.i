@@ -14,6 +14,11 @@
 
 %include "include/snowboy-detect.h"
 
+// below is Python 3 support, however,
+// adding it will generate wrong .so file
+// for Fedora 25 on ARMv7. So be sure to 
+// comment them when you compile for 
+// Fedora 25 on ARMv7.
 %begin %{
 #define SWIG_PYTHON_STRICT_BYTE_CHAR
 %}

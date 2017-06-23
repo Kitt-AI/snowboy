@@ -63,9 +63,11 @@ class SnowboyDetect {
   //  2: Hotword 2 triggered.
   //  ...
   //
-  //  @param [in]  data               Small chunk of data to be detected. See
-  //                                  above for the supported data format.
-  int RunDetection(const std::string& data);
+  // @param [in]  data               Small chunk of data to be detected. See
+  //                                 above for the supported data format.
+  // @param [in]  is_end             Set it to true if it is the end of a
+  //                                 utterance or file.
+  int RunDetection(const std::string& data, bool is_end = false);
 
   // Various versions of RunDetection() that take different format of audio. If
   // NumChannels() > 1, e.g., NumChannels() == 2, then the array is as follows:
@@ -77,9 +79,14 @@ class SnowboyDetect {
   // @param [in]  data               Small chunk of data to be detected. See
   //                                 above for the supported data format.
   // @param [in]  array_length       Length of the data array.
-  int RunDetection(const float* const data, const int array_length);
-  int RunDetection(const int16_t* const data, const int array_length);
-  int RunDetection(const int32_t* const data, const int array_length);
+  // @param [in]  is_end             Set it to true if it is the end of a
+  //                                 utterance or file.
+  int RunDetection(const float* const data,
+                   const int array_length, bool is_end = false);
+  int RunDetection(const int16_t* const data,
+                   const int array_length, bool is_end = false);
+  int RunDetection(const int32_t* const data,
+                   const int array_length, bool is_end = false);
 
   // Sets the sensitivity string for the loaded hotwords. A <sensitivity_str> is
   // a list of floating numbers between 0 and 1, and separated by comma. For

@@ -1,0 +1,9 @@
+recursive-include examples/Python *
+recursive-include include *
+recursive-include lib *
+recursive-include swig/Python *
+recursive-include resources *
+include README.md
+
+exclude *.txt
+exclude *.pyc

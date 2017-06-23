@@ -1,0 +1,628 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		045F549D1E58A8FD00F8F4A4 /* libsnowboy-detect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 045F549C1E58A8FD00F8F4A4 /* libsnowboy-detect.a */; };
+		045F54A01E58AAEC00F8F4A4 /* common.res in Resources */ = {isa = PBXBuildFile; fileRef = 045F549F1E58AAEC00F8F4A4 /* common.res */; };
+		045F54A21E58AAF900F8F4A4 /* alexa_02092017.umdl in Resources */ = {isa = PBXBuildFile; fileRef = 045F54A11E58AAF900F8F4A4 /* alexa_02092017.umdl */; };
+		04D8BB8B1E539066001D71B9 /* SnowboyWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04D8BB8A1E539066001D71B9 /* SnowboyWrapper.mm */; };
+		04D8BB8D1E53916F001D71B9 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04D8BB8C1E53916F001D71B9 /* Accelerate.framework */; };
+		04F91B9A1E522B6F00BEF6E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F91B991E522B6F00BEF6E3 /* AppDelegate.swift */; };
+		04F91B9C1E522B6F00BEF6E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F91B9B1E522B6F00BEF6E3 /* ViewController.swift */; };
+		04F91B9F1E522B6F00BEF6E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F91B9D1E522B6F00BEF6E3 /* Main.storyboard */; };
+		04F91BA21E522B6F00BEF6E3 /* SnowboyTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04F91BA01E522B6F00BEF6E3 /* SnowboyTest.xcdatamodeld */; };
+		04F91BA41E522B6F00BEF6E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04F91BA31E522B6F00BEF6E3 /* Assets.xcassets */; };
+		04F91BA71E522B6F00BEF6E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04F91BA51E522B6F00BEF6E3 /* LaunchScreen.storyboard */; };
+		04F91BB21E522B6F00BEF6E3 /* SnowboyTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F91BB11E522B6F00BEF6E3 /* SnowboyTestTests.swift */; };
+		04F91BBD1E522B6F00BEF6E3 /* SnowboyTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F91BBC1E522B6F00BEF6E3 /* SnowboyTestUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		04F91BAE1E522B6F00BEF6E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04F91B8E1E522B6F00BEF6E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04F91B951E522B6F00BEF6E3;
+			remoteInfo = SnowboyTest;
+		};
+		04F91BB91E522B6F00BEF6E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04F91B8E1E522B6F00BEF6E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04F91B951E522B6F00BEF6E3;
+			remoteInfo = SnowboyTest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		045F549A1E58A7EA00F8F4A4 /* snowboy-detect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "snowboy-detect.h"; path = "../../../../include/snowboy-detect.h"; sourceTree = "<group>"; };
+		045F549C1E58A8FD00F8F4A4 /* libsnowboy-detect.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libsnowboy-detect.a"; path = "../../../lib/ios/libsnowboy-detect.a"; sourceTree = "<group>"; };
+		045F549F1E58AAEC00F8F4A4 /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; name = common.res; path = ../../../../resources/common.res; sourceTree = "<group>"; };
+		045F54A11E58AAF900F8F4A4 /* alexa_02092017.umdl */ = {isa = PBXFileReference; lastKnownFileType = file; name = alexa_02092017.umdl; path = ../../../../resources/alexa/alexa_02092017.umdl; sourceTree = "<group>"; };
+		04D8BB881E52C242001D71B9 /* SnowboyTest-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SnowboyTest-Bridging-Header.h"; sourceTree = "<group>"; };
+		04D8BB891E5382BB001D71B9 /* SnowboyWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowboyWrapper.h; sourceTree = "<group>"; };
+		04D8BB8A1E539066001D71B9 /* SnowboyWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SnowboyWrapper.mm; sourceTree = "<group>"; };
+		04D8BB8C1E53916F001D71B9 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		04F91B961E522B6F00BEF6E3 /* SnowboyTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnowboyTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F91B991E522B6F00BEF6E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		04F91B9B1E522B6F00BEF6E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		04F91B9E1E522B6F00BEF6E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		04F91BA11E522B6F00BEF6E3 /* SnowboyTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SnowboyTest.xcdatamodel; sourceTree = "<group>"; };
+		04F91BA31E522B6F00BEF6E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04F91BA61E522B6F00BEF6E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		04F91BA81E522B6F00BEF6E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04F91BAD1E522B6F00BEF6E3 /* SnowboyTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnowboyTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F91BB11E522B6F00BEF6E3 /* SnowboyTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowboyTestTests.swift; sourceTree = "<group>"; };
+		04F91BB31E522B6F00BEF6E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04F91BB81E522B6F00BEF6E3 /* SnowboyTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnowboyTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		04F91BBC1E522B6F00BEF6E3 /* SnowboyTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnowboyTestUITests.swift; sourceTree = "<group>"; };
+		04F91BBE1E522B6F00BEF6E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		04F91B931E522B6F00BEF6E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04D8BB8D1E53916F001D71B9 /* Accelerate.framework in Frameworks */,
+				045F549D1E58A8FD00F8F4A4 /* libsnowboy-detect.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F91BAA1E522B6F00BEF6E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F91BB51E522B6F00BEF6E3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04D8BB911E53C41D001D71B9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				045F549F1E58AAEC00F8F4A4 /* common.res */,
+				045F54A11E58AAF900F8F4A4 /* alexa_02092017.umdl */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		04F91B8D1E522B6F00BEF6E3 = {
+			isa = PBXGroup;
+			children = (
+				04F91B981E522B6F00BEF6E3 /* SnowboyTest */,
+				04F91BB01E522B6F00BEF6E3 /* SnowboyTestTests */,
+				04F91BBB1E522B6F00BEF6E3 /* SnowboyTestUITests */,
+				04F91B971E522B6F00BEF6E3 /* Products */,
+				04F91BCB1E522BE300BEF6E3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		04F91B971E522B6F00BEF6E3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				04F91B961E522B6F00BEF6E3 /* SnowboyTest.app */,
+				04F91BAD1E522B6F00BEF6E3 /* SnowboyTestTests.xctest */,
+				04F91BB81E522B6F00BEF6E3 /* SnowboyTestUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		04F91B981E522B6F00BEF6E3 /* SnowboyTest */ = {
+			isa = PBXGroup;
+			children = (
+				04D8BB911E53C41D001D71B9 /* Resources */,
+				04F91B991E522B6F00BEF6E3 /* AppDelegate.swift */,
+				04D8BB881E52C242001D71B9 /* SnowboyTest-Bridging-Header.h */,
+				04F91B9B1E522B6F00BEF6E3 /* ViewController.swift */,
+				045F549A1E58A7EA00F8F4A4 /* snowboy-detect.h */,
+				04F91B9D1E522B6F00BEF6E3 /* Main.storyboard */,
+				04F91BA31E522B6F00BEF6E3 /* Assets.xcassets */,
+				04F91BA51E522B6F00BEF6E3 /* LaunchScreen.storyboard */,
+				04F91BA81E522B6F00BEF6E3 /* Info.plist */,
+				04F91BA01E522B6F00BEF6E3 /* SnowboyTest.xcdatamodeld */,
+				04D8BB891E5382BB001D71B9 /* SnowboyWrapper.h */,
+				04D8BB8A1E539066001D71B9 /* SnowboyWrapper.mm */,
+			);
+			path = SnowboyTest;
+			sourceTree = "<group>";
+		};
+		04F91BB01E522B6F00BEF6E3 /* SnowboyTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				04F91BB11E522B6F00BEF6E3 /* SnowboyTestTests.swift */,
+				04F91BB31E522B6F00BEF6E3 /* Info.plist */,
+			);
+			path = SnowboyTestTests;
+			sourceTree = "<group>";
+		};
+		04F91BBB1E522B6F00BEF6E3 /* SnowboyTestUITests */ = {
+			isa = PBXGroup;
+			children = (
+				04F91BBC1E522B6F00BEF6E3 /* SnowboyTestUITests.swift */,
+				04F91BBE1E522B6F00BEF6E3 /* Info.plist */,
+			);
+			path = SnowboyTestUITests;
+			sourceTree = "<group>";
+		};
+		04F91BCB1E522BE300BEF6E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				045F549C1E58A8FD00F8F4A4 /* libsnowboy-detect.a */,
+				04D8BB8C1E53916F001D71B9 /* Accelerate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		04F91B951E522B6F00BEF6E3 /* SnowboyTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04F91BC11E522B6F00BEF6E3 /* Build configuration list for PBXNativeTarget "SnowboyTest" */;
+			buildPhases = (
+				04F91B921E522B6F00BEF6E3 /* Sources */,
+				04F91B931E522B6F00BEF6E3 /* Frameworks */,
+				04F91B941E522B6F00BEF6E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SnowboyTest;
+			productName = SnowboyTest;
+			productReference = 04F91B961E522B6F00BEF6E3 /* SnowboyTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		04F91BAC1E522B6F00BEF6E3 /* SnowboyTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04F91BC41E522B6F00BEF6E3 /* Build configuration list for PBXNativeTarget "SnowboyTestTests" */;
+			buildPhases = (
+				04F91BA91E522B6F00BEF6E3 /* Sources */,
+				04F91BAA1E522B6F00BEF6E3 /* Frameworks */,
+				04F91BAB1E522B6F00BEF6E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04F91BAF1E522B6F00BEF6E3 /* PBXTargetDependency */,
+			);
+			name = SnowboyTestTests;
+			productName = SnowboyTestTests;
+			productReference = 04F91BAD1E522B6F00BEF6E3 /* SnowboyTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		04F91BB71E522B6F00BEF6E3 /* SnowboyTestUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04F91BC71E522B6F00BEF6E3 /* Build configuration list for PBXNativeTarget "SnowboyTestUITests" */;
+			buildPhases = (
+				04F91BB41E522B6F00BEF6E3 /* Sources */,
+				04F91BB51E522B6F00BEF6E3 /* Frameworks */,
+				04F91BB61E522B6F00BEF6E3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				04F91BBA1E522B6F00BEF6E3 /* PBXTargetDependency */,
+			);
+			name = SnowboyTestUITests;
+			productName = SnowboyTestUITests;
+			productReference = 04F91BB81E522B6F00BEF6E3 /* SnowboyTestUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		04F91B8E1E522B6F00BEF6E3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Bi, Sheng";
+				TargetAttributes = {
+					04F91B951E522B6F00BEF6E3 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+					};
+					04F91BAC1E522B6F00BEF6E3 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 04F91B951E522B6F00BEF6E3;
+					};
+					04F91BB71E522B6F00BEF6E3 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 04F91B951E522B6F00BEF6E3;
+					};
+				};
+			};
+			buildConfigurationList = 04F91B911E522B6F00BEF6E3 /* Build configuration list for PBXProject "SnowboyTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 04F91B8D1E522B6F00BEF6E3;
+			productRefGroup = 04F91B971E522B6F00BEF6E3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				04F91B951E522B6F00BEF6E3 /* SnowboyTest */,
+				04F91BAC1E522B6F00BEF6E3 /* SnowboyTestTests */,
+				04F91BB71E522B6F00BEF6E3 /* SnowboyTestUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		04F91B941E522B6F00BEF6E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F91BA71E522B6F00BEF6E3 /* LaunchScreen.storyboard in Resources */,
+				045F54A21E58AAF900F8F4A4 /* alexa_02092017.umdl in Resources */,
+				04F91BA41E522B6F00BEF6E3 /* Assets.xcassets in Resources */,
+				04F91B9F1E522B6F00BEF6E3 /* Main.storyboard in Resources */,
+				045F54A01E58AAEC00F8F4A4 /* common.res in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F91BAB1E522B6F00BEF6E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F91BB61E522B6F00BEF6E3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		04F91B921E522B6F00BEF6E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04D8BB8B1E539066001D71B9 /* SnowboyWrapper.mm in Sources */,
+				04F91B9C1E522B6F00BEF6E3 /* ViewController.swift in Sources */,
+				04F91B9A1E522B6F00BEF6E3 /* AppDelegate.swift in Sources */,
+				04F91BA21E522B6F00BEF6E3 /* SnowboyTest.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F91BA91E522B6F00BEF6E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F91BB21E522B6F00BEF6E3 /* SnowboyTestTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04F91BB41E522B6F00BEF6E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04F91BBD1E522B6F00BEF6E3 /* SnowboyTestUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04F91BAF1E522B6F00BEF6E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04F91B951E522B6F00BEF6E3 /* SnowboyTest */;
+			targetProxy = 04F91BAE1E522B6F00BEF6E3 /* PBXContainerItemProxy */;
+		};
+		04F91BBA1E522B6F00BEF6E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04F91B951E522B6F00BEF6E3 /* SnowboyTest */;
+			targetProxy = 04F91BB91E522B6F00BEF6E3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		04F91B9D1E522B6F00BEF6E3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04F91B9E1E522B6F00BEF6E3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		04F91BA51E522B6F00BEF6E3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04F91BA61E522B6F00BEF6E3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		04F91BBF1E522B6F00BEF6E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		04F91BC01E522B6F00BEF6E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		04F91BC21E522B6F00BEF6E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				GCC_INPUT_FILETYPE = automatic;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/SnowboyTest",
+				);
+				INFOPLIST_FILE = SnowboyTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/../../../lib/ios",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shengbi.SnowboyTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SnowboyTest/SnowboyTest-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR) $(PROJECT_DIR)/SnowboyTest";
+			};
+			name = Debug;
+		};
+		04F91BC31E522B6F00BEF6E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LIBRARY = "libc++";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				GCC_INPUT_FILETYPE = automatic;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/SnowboyTest",
+				);
+				INFOPLIST_FILE = SnowboyTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/../../../lib/ios",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.shengbi.SnowboyTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SnowboyTest/SnowboyTest-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "$(PROJECT_DIR) $(PROJECT_DIR)/SnowboyTest";
+			};
+			name = Release;
+		};
+		04F91BC51E522B6F00BEF6E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SnowboyTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shengbi.SnowboyTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnowboyTest.app/SnowboyTest";
+			};
+			name = Debug;
+		};
+		04F91BC61E522B6F00BEF6E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SnowboyTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shengbi.SnowboyTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnowboyTest.app/SnowboyTest";
+			};
+			name = Release;
+		};
+		04F91BC81E522B6F00BEF6E3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = SnowboyTestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shengbi.SnowboyTestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SnowboyTest;
+			};
+			name = Debug;
+		};
+		04F91BC91E522B6F00BEF6E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = SnowboyTestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shengbi.SnowboyTestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SnowboyTest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		04F91B911E522B6F00BEF6E3 /* Build configuration list for PBXProject "SnowboyTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F91BBF1E522B6F00BEF6E3 /* Debug */,
+				04F91BC01E522B6F00BEF6E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04F91BC11E522B6F00BEF6E3 /* Build configuration list for PBXNativeTarget "SnowboyTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F91BC21E522B6F00BEF6E3 /* Debug */,
+				04F91BC31E522B6F00BEF6E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04F91BC41E522B6F00BEF6E3 /* Build configuration list for PBXNativeTarget "SnowboyTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F91BC51E522B6F00BEF6E3 /* Debug */,
+				04F91BC61E522B6F00BEF6E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04F91BC71E522B6F00BEF6E3 /* Build configuration list for PBXNativeTarget "SnowboyTestUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04F91BC81E522B6F00BEF6E3 /* Debug */,
+				04F91BC91E522B6F00BEF6E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		04F91BA01E522B6F00BEF6E3 /* SnowboyTest.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				04F91BA11E522B6F00BEF6E3 /* SnowboyTest.xcdatamodel */,
+			);
+			currentVersion = 04F91BA11E522B6F00BEF6E3 /* SnowboyTest.xcdatamodel */;
+			path = SnowboyTest.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 04F91B8E1E522B6F00BEF6E3 /* Project object */;
+}

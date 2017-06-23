@@ -204,7 +204,7 @@ int main(int argc, char* argv[]) {
   //   sensitivity_str = "0.4,0.4";
   std::string resource_filename = "resources/common.res";
   std::string model_filename = "resources/snowboy.umdl";
-  std::string sensitivity_str = "0.4";
+  std::string sensitivity_str = "0.5";
   float audio_gain = 1;
 
   // Initializes Snowboy detector.

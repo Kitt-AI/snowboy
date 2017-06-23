@@ -1,0 +1,8 @@
+platform :ios, “10.0”
+
+target 'SnowboyTest' do
+
+pod "EZAudio"
+
+
+end

@@ -1,15 +1,39 @@
 # Example Makefile that wrappers snowboy c++ library (snowboy-detect.a) through
 # JNI interface, using swig.
 
-# When you extract Android toolchain from Android NDK, make sure you supply
-# --stl=libc++ option. This Makefile is optimized for armv7-a architecture.
+# This Makefile is optimized for armv7-a/armv8 architecture. Also, please make sure
+# "unzip" is installed.
+# Usage:
+# make # for 32bit ARM
+# make BIT=64 # for 64bit ARM
 
 # Please use swig-3.0.10 or up.
 SWIG := swig
 
-# Please specify your NDK root directory here.
-NDKROOT :=
-APILEVEL := 17
+SWIG_VERSION := $(shell expr `$(SWIG) -version | grep -i Version | \
+	sed "s/^.* //g" | sed -e "s/\.\([0-9][0-9]\)/\1/g" -e "s/\.\([0-9]\)/0\1/g" \
+	-e "s/^[0-9]\{3,4\}$$/&00/"` \>= 30010)
+
+ifeq ($(SWIG_VERSION), 0)
+checkversion:
+	$(info You need at least Swig 3.0.10 to run)
+	$(info Your current version is $(shell $(SWIG) -version | grep -i Version))
+	@exit -1
+endif
+
+
+NDK_VERSION=r14b
+BIT = 32
+ifeq ($(BIT), 64)
+    NDKINSTALLEDROOT := $(PWD)/ndk_install_64bit
+    OPENBLASTARGET := ARMV8
+    OPENBLASDIR := OpenBLAS-Android-ARM64
+else
+    NDKINSTALLEDROOT := $(PWD)/ndk_install_32bit
+    OPENBLASTARGET := ARMV7
+    OPENBLASDIR := OpenBLAS-Android-ARM32
+endif
+NDKROOT := $(PWD)/android-ndk-${NDK_VERSION}
 
 SNOWBOYDETECTSWIGITF = snowboy-detect-swig.i
 SNOWBOYDETECTSWIGOBJ = snowboy-detect-swig.o
@@ -17,33 +41,47 @@ SNOWBOYDETECTSWIGCC = snowboy-detect-swig.cc
 SNOWBOYDETECTJAVAPKG = ai.kitt.snowboy
 SNOWBOYDETECTJAVAPKGDIR = java/ai/kitt/snowboy/
 SNOWBOYDETECTSWIGLIBFILE = libsnowboy-detect-android.so
-OPENBLASLIBFILE = OpenBLAS-Android/install/lib/libopenblas.a
+OPENBLASLIBFILE = $(OPENBLASDIR)/install/lib/libopenblas.a
 
 ARCH := arm
 TOPDIR := ../../
 LDFLAGS :=
 
-CXXFLAGS := -O3 --sysroot=$(NDKROOT)/platforms/android-$(APILEVEL)/arch-$(ARCH)
-LDLIBS := -L$(NDKROOT)/platforms/android-$(APILEVEL)/arch-$(ARCH)/usr/lib
+CXXFLAGS := -O3 --sysroot=$(NDKINSTALLEDROOT)/sysroot
+LDLIBS := -L$(NDKINSTALLEDROOT)/sysroot/usr/lib
 
 ifeq ($(ARCH), arm)
-  CXX := arm-linux-androideabi-g++
-  STRIP := arm-linux-androideabi-strip
-  OPENBLASTARGET := ARMV7
-  SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/android/armv7a/libsnowboy-detect.a
-  CXXFLAGS += -shared -std=c++0x -rdynamic -I$(TOPDIR) -Wl,--fix-cortex-a8 \
-      -Wl,--no-warn-mismatch -Wl,--no-undefined -Wl,-z,noexecstack \
-      -Wl,-z,relro -Wl,-z,now -Wl,--warn-shared-textrel -Wl,--fatal-warnings \
-      -Wno-sign-compare -Wa,--noexecstack -Wformat -Werror=format-security \
-      -fno-rtti -ffunction-sections -funwind-tables -fstack-protector-strong \
-      -fomit-frame-pointer -fno-strict-aliasing -finline-limit=64 \
-      -fno-strict-aliasing -mthumb -no-canonical-prefixes -march=armv7-a \
-      -mfpu=vfpv3-d16 -mhard-float -D_NDK_MATH_NO_SOFTFP=1 -DANDROID
-  LDLIBS += \
-      -L$(NDKROOT)/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a-hard/thumb/ \
-      -lc++_static -lgcc -lm_hard -ldl -lc -lm
-  SNOWBOYDETECTSWIGLIBFILE := jniLibs/armeabi-v7a/$(SNOWBOYDETECTSWIGLIBFILE)
-  SNOWBOYDETECTSWIGLIBNAME := $(shell basename $(SNOWBOYDETECTSWIGLIBFILE))
+  ifeq ($(BIT), 64)
+      AR := $(NDKINSTALLEDROOT)/bin/aarch64-linux-android-ar
+      CC := $(NDKINSTALLEDROOT)/bin/aarch64-linux-android-gcc
+      CXX := $(NDKINSTALLEDROOT)/bin/aarch64-linux-android-g++
+      STRIP := $(NDKINSTALLEDROOT)/bin/aarch64-linux-android-strip
+      SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/android/armv8-aarch64/libsnowboy-detect.a
+      CXXFLAGS += -std=c++0x -rdynamic -I$(TOPDIR) -Werror -Wall \
+          -fsigned-char -fpic -fPIC -march=armv8-a \
+          -DNDEBUG -ffast-math -fomit-frame-pointer -O3 -pie -fPIE -DHAVE_NEON=1 \
+          -fno-strict-aliasing -Wno-unused-function -shared
+      LDLIBS += \
+          -L$(NDKROOT)/sources/cxx-stl/gnu-libstdc++/4.9/libs/arm64-v8a \
+          -lgnustl_static -lsupc++ -lgcc -ldl -lc -lm -llog -pthread
+      SNOWBOYDETECTSWIGLIBFILE := jniLibs/arm64-v8a/$(SNOWBOYDETECTSWIGLIBFILE)
+      SNOWBOYDETECTSWIGLIBNAME := $(shell basename $(SNOWBOYDETECTSWIGLIBFILE))
+  else
+      AR := $(NDKINSTALLEDROOT)/bin/arm-linux-androideabi-ar
+      CC := $(NDKINSTALLEDROOT)/bin/arm-linux-androideabi-gcc
+      CXX := $(NDKINSTALLEDROOT)/bin/arm-linux-androideabi-g++
+      STRIP := $(NDKINSTALLEDROOT)/bin/arm-linux-androideabi-strip
+      SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/android/armv7a/libsnowboy-detect.a
+      CXXFLAGS += -std=c++0x -rdynamic -I$(TOPDIR) -Werror -Wall \
+          -fsigned-char -fpic -fPIC -mfloat-abi=softfp -march=armv7-a -mfpu=neon \
+          -DNDEBUG -ffast-math -fomit-frame-pointer -O3 -pie -fPIE -DHAVE_NEON=1 \
+          -fno-strict-aliasing -Wno-unused-function -shared
+      LDLIBS += \
+          -L$(NDKROOT)/sources/cxx-stl/gnu-libstdc++/4.9/libs/armeabi-v7a \
+          -lgnustl_static -lsupc++ -lgcc -ldl -lc -lm -llog -pthread
+      SNOWBOYDETECTSWIGLIBFILE := jniLibs/armeabi-v7a/$(SNOWBOYDETECTSWIGLIBFILE)
+      SNOWBOYDETECTSWIGLIBNAME := $(shell basename $(SNOWBOYDETECTSWIGLIBFILE))
+  endif
 endif
 
 all: $(SNOWBOYSWIGLIBFILE) $(SNOWBOYDETECTSWIGLIBFILE)
@@ -51,8 +89,11 @@ all: $(SNOWBOYSWIGLIBFILE) $(SNOWBOYDETECTSWIGLIBFILE)
 %.a:
 	$(MAKE) -C ${@D} ${@F}
 
-$(OPENBLASLIBFILE):
-	@-./install_openblas_android.sh $(ARCH) $(OPENBLASTARGET)
+$(NDKINSTALLEDROOT):
+	@-./install_ndk.sh ${NDK_VERSION} ${BIT}
+
+$(OPENBLASLIBFILE): $(NDKINSTALLEDROOT)
+	@-./install_openblas.sh $(CC) $(AR) $(OPENBLASTARGET) $(OPENBLASDIR)
 
 $(SNOWBOYDETECTSWIGCC): $(SNOWBOYDETECTSWIGITF)
 	@-mkdir -p $(SNOWBOYDETECTJAVAPKGDIR)
