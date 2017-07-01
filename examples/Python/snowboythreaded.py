@@ -82,11 +82,13 @@ class ThreadedDetector(threading.Thread):
     def change_models(self, models):
         if self.is_running():
             print("Models will be changed after restarting detectors.")
-        self.models = models
-        self.vars_are_changed = True
+        if self.models != models:
+            self.models = models
+            self.vars_are_changed = True
 
     def change_sensitivity(self, sensitivity):
         if self.is_running():
             print("Sensitivity will be changed after restarting detectors.")
-        self.init_kwargs['sensitivity'] = sensitivity
-        self.vars_are_changed = True
+        if self.init_kwargs['sensitivity'] != sensitivity:
+            self.init_kwargs['sensitivity'] = sensitivity
+            self.vars_are_changed = True
