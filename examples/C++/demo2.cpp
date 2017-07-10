@@ -36,7 +36,8 @@ int main(int argc, char * argv[]) {
 	"Atention reading from a file: this software is for simulation/test only,"
 	"You need to take precautions when loading a file into the memory.\n"
 	"To run the example:\n\n./demo [time to record] [filename.raw]\n\n" 
-	"If you just want to use a file, you can use:\n\n./demo - file.raw\n\n";
+	"If you just want to use a file, you can use:\n\n./demo - file.raw\n\n"
+	"IMPORTANT NOTE: Raw file must be 16kHz sample, mono and 16bit";
 	
 
 
@@ -140,7 +141,7 @@ int main(int argc, char * argv[]) {
   
 
   
-	int result = detector.RunDetection(&data_buffer[0], fsize);
+	int result = detector.RunDetection(&data_buffer[0], fsize./sizeof(short));
   printf(">>>>> Result: %d <<<<<\nLegend: -2: noise | -1: error | 0: silence | 1: hotword\n",result);
   auto end = std::chrono::steady_clock::now();
 	
