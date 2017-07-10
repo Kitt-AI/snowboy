@@ -78,7 +78,7 @@ class SnowboyDetect {
   //
   // @param [in]  data               Small chunk of data to be detected. See
   //                                 above for the supported data format.
-  // @param [in]  array_length       Length of the data array.
+  // @param [in]  array_length       Length of the data array in samples.
   // @param [in]  is_end             Set it to true if it is the end of a
   //                                 utterance or file.
   int RunDetection(const float* const data,
