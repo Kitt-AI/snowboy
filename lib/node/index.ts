@@ -33,6 +33,7 @@ interface DetectorOptions {
   resource: string;
   models: HotwordModels;
   audioGain?: number;
+  applyFrontend?: boolean;
 }
 
 interface SnowboyDetectInterface {
@@ -115,6 +116,10 @@ export class SnowboyDetect extends stream.Writable implements SnowboyDetectInter
 
     if (options.audioGain) {
       this.nativeInstance.SetAudioGain(options.audioGain);
+    }
+
+    if (options.applyFrontend) {
+      this.nativeInstance.ApplyFrontend(options.applyFrontend);
     }
   }
 

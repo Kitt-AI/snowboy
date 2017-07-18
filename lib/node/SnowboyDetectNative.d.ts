@@ -10,4 +10,5 @@ interface SnowboyDetectNativeInterface {
   SampleRate(): number;
   NumChannels(): number;
   BitsPerSample(): number;
+  ApplyFrontend(applyFrontend: boolean): void;
 }
