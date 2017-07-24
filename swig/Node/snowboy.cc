@@ -22,6 +22,7 @@ class SnowboyDetect : public Nan::ObjectWrap {
     static NAN_METHOD(SampleRate);
     static NAN_METHOD(NumChannels);
     static NAN_METHOD(BitsPerSample);
+    static NAN_METHOD(ApplyFrontend);
 
     static Nan::Persistent<v8::Function> constructor;
 
@@ -59,6 +60,7 @@ NAN_MODULE_INIT(SnowboyDetect::Init) {
   SetPrototypeMethod(tpl, "SampleRate", SampleRate);
   SetPrototypeMethod(tpl, "NumChannels", NumChannels);
   SetPrototypeMethod(tpl, "BitsPerSample", BitsPerSample);
+  SetPrototypeMethod(tpl, "ApplyFrontend", ApplyFrontend);
 
   constructor.Reset(Nan::GetFunction(tpl).ToLocalChecked());
   Nan::Set(target, Nan::New("SnowboyDetect").ToLocalChecked(),
@@ -121,6 +123,14 @@ NAN_METHOD(SnowboyDetect::SetSensitivity) {
 
   SnowboyDetect* ptr = Nan::ObjectWrap::Unwrap<SnowboyDetect>(info.Holder());
   ptr->detector->SetSensitivity(*sensitivityString);
+}
+
+NAN_METHOD(SnowboyDetect::ApplyFrontend) {
+  Nan::Maybe<bool> applyFrontend= Nan::To<bool>(info[0]);
+  bool applyFrontendBool=applyFrontend.FromJust();
+
+  SnowboyDetect* ptr = Nan::ObjectWrap::Unwrap<SnowboyDetect>(info.Holder());
+  ptr->detector->ApplyFrontend(applyFrontendBool);
 }
 
 NAN_METHOD(SnowboyDetect::GetSensitivity) {
