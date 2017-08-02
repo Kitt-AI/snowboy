@@ -75,7 +75,7 @@ class ThreadedDetector(threading.Thread):
         """
         Terminates recognition thread - called when program terminates
         """
-        self.stop_recog()
+        self.pause_recog()
         self.commands.put("Terminate")
 
     def is_running(self):
