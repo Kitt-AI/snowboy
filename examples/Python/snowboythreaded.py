@@ -61,7 +61,7 @@ class ThreadedDetector(threading.Thread):
         as that is already set up.
         """
         assert "interrupt_check" not in kwargs, \
-            "Cannot set interrupt_check argument. To interrupt detectors, use Detectors.stop_recog() instead"
+            "Cannot set interrupt_check argument. To interrupt detectors, use Detectors.pause_recog() instead"
         self.run_kwargs = kwargs
         self.commands.put("Start")
 
