@@ -13,7 +13,7 @@ def signal_handler(signal, frame):
 
 if len(sys.argv) == 1:
     print("Error: need to specify model name")
-    print("Usage: python demo.py your.model")
+    print("Usage: python demo4.py your.model")
     sys.exit(-1)
 
 model = sys.argv[1]
