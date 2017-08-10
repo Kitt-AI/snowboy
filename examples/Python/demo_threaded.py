@@ -5,6 +5,8 @@ import time
 
 stop_program = False
 
+# This a demo that shows running Snowboy in another thread
+
 
 def signal_handler(signal, frame):
     global stop_program
