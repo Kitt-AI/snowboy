@@ -8,7 +8,7 @@ Note:
 
 ## General Workflow
 
-1. Install `swig`. For Mac, do `brew install swig`; for Ubuntu, do `sudo apt-get install swig3.0`. Make sure your `swig` version is at least `3.0.10`.
+1. Install `swig`. For Mac, do `brew install swig`; for Ubuntu, do `sudo apt-get install swig3.0`. Make sure your `swig` version is at least `3.0.10`. You'll also need `wget` to download files.
 
 2. Go to `swig/Android` and build swig wrappers for Snowboy:
 
