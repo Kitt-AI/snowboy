@@ -17,7 +17,7 @@ enum ModelType {
   UMDL
 }
 
-interface HotwordModel {
+export interface HotwordModel {
   file: string;
   sensitivity?: string;
   hotwords: string | Array<string>;
@@ -29,14 +29,14 @@ interface HotwordModelsInterface {
   numHotwords(): number;
 }
 
-interface DetectorOptions {
+export interface DetectorOptions {
   resource: string;
   models: HotwordModels;
   audioGain?: number;
   applyFrontend?: boolean;
 }
 
-interface SnowboyDetectInterface {
+export interface SnowboyDetectInterface {
   reset(): boolean;
   runDetection(buffer: Buffer): number;
   setSensitivity(sensitivity: string): void;
