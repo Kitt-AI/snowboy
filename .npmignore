@@ -17,7 +17,6 @@ snowboydetect.py
 /node_modules
 
 /lib/node/*.ts
-/lib/node/*.d.ts
 
 .npmignore
 .travis.yml

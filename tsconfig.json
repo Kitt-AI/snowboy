@@ -7,7 +7,7 @@
         "jsx": "react",
         "experimentalDecorators": false,
         "emitDecoratorMetadata": false,
-        "declaration": false,
+        "declaration": true,
         "noImplicitAny": true,
         "noImplicitUseStrict": false,
         "noFallthroughCasesInSwitch": true,
