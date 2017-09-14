@@ -249,8 +249,9 @@ Compiling a node addon for Linux and the Raspberry Pi requires the installation 
     sudo apt-get install libmagic-dev libatlas-base-dev
 
 Then to compile the addon run the following from the root of the snowboy repository:
-
-    npm install
+ 
+    npm install
+    sudo npm install node-pre-gyp -g
     node-pre-gyp clean configure build
 
 ## Compile a Java Wrapper
