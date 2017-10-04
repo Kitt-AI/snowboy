@@ -1,0 +1,435 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		21C9F874038CF3E449A2609C /* Pods_Snowboy_example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E343FFE4CAB901628BC97C /* Pods_Snowboy_example.framework */; };
+		6D6697911EE7694E00109B9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6697901EE7694E00109B9E /* AppDelegate.swift */; };
+		6D6697931EE7694E00109B9E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6697921EE7694E00109B9E /* ViewController.swift */; };
+		6D6697961EE7694E00109B9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D6697941EE7694E00109B9E /* Main.storyboard */; };
+		6D6697981EE7694E00109B9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D6697971EE7694E00109B9E /* Assets.xcassets */; };
+		6D66979B1EE7694E00109B9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D6697991EE7694E00109B9E /* LaunchScreen.storyboard */; };
+		6DBBC9EE1EE76B3F0032C128 /* SnowboyWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6DBBC9ED1EE76B3F0032C128 /* SnowboyWrapper.mm */; };
+		6DBBC9F41EE770CE0032C128 /* common.res in Resources */ = {isa = PBXBuildFile; fileRef = 6DBBC9F21EE770CE0032C128 /* common.res */; };
+		6DBBC9F81EE770EE0032C128 /* libsnowboy-detect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DBBC9F71EE770EE0032C128 /* libsnowboy-detect.a */; };
+		6DBBC9FA1EE773780032C128 /* alexa_02092017.umdl in Resources */ = {isa = PBXBuildFile; fileRef = 6DBBC9F91EE773780032C128 /* alexa_02092017.umdl */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6D66978D1EE7694E00109B9E /* Snowboy-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Snowboy-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D6697901EE7694E00109B9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6D6697921EE7694E00109B9E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6D6697951EE7694E00109B9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6D6697971EE7694E00109B9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6D66979A1EE7694E00109B9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6D66979C1EE7694E00109B9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6DBBC9EC1EE76B3F0032C128 /* SnowboyWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnowboyWrapper.h; sourceTree = "<group>"; };
+		6DBBC9ED1EE76B3F0032C128 /* SnowboyWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SnowboyWrapper.mm; sourceTree = "<group>"; };
+		6DBBC9EF1EE76B4C0032C128 /* Snowboy-example-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Snowboy-example-Bridging-Header.h"; sourceTree = "<group>"; };
+		6DBBC9F21EE770CE0032C128 /* common.res */ = {isa = PBXFileReference; lastKnownFileType = file; path = common.res; sourceTree = "<group>"; };
+		6DBBC9F61EE770E10032C128 /* snowboy-detect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "snowboy-detect.h"; sourceTree = "<group>"; };
+		6DBBC9F71EE770EE0032C128 /* libsnowboy-detect.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libsnowboy-detect.a"; sourceTree = "<group>"; };
+		6DBBC9F91EE773780032C128 /* alexa_02092017.umdl */ = {isa = PBXFileReference; lastKnownFileType = file; path = alexa_02092017.umdl; sourceTree = "<group>"; };
+		B7E343FFE4CAB901628BC97C /* Pods_Snowboy_example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Snowboy_example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1773F48144ECD84F3781EEC /* Pods-Snowboy-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snowboy-example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Snowboy-example/Pods-Snowboy-example.debug.xcconfig"; sourceTree = "<group>"; };
+		E4832C6A0EE1E032C8B12D12 /* Pods-Snowboy-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snowboy-example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Snowboy-example/Pods-Snowboy-example.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6D66978A1EE7694D00109B9E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DBBC9F81EE770EE0032C128 /* libsnowboy-detect.a in Frameworks */,
+				21C9F874038CF3E449A2609C /* Pods_Snowboy_example.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		674DF9667F4712B7AFB94C89 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7E343FFE4CAB901628BC97C /* Pods_Snowboy_example.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6D6697841EE7694D00109B9E = {
+			isa = PBXGroup;
+			children = (
+				6D66978F1EE7694E00109B9E /* Snowboy-example */,
+				6D66978E1EE7694E00109B9E /* Products */,
+				E2F0AA99820F41B7CCCBF878 /* Pods */,
+				674DF9667F4712B7AFB94C89 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6D66978E1EE7694E00109B9E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6D66978D1EE7694E00109B9E /* Snowboy-example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6D66978F1EE7694E00109B9E /* Snowboy-example */ = {
+			isa = PBXGroup;
+			children = (
+				6DCDCD6C1EE76A3D005AF077 /* Resources */,
+				6D6697901EE7694E00109B9E /* AppDelegate.swift */,
+				6D6697921EE7694E00109B9E /* ViewController.swift */,
+				6D6697941EE7694E00109B9E /* Main.storyboard */,
+				6D6697971EE7694E00109B9E /* Assets.xcassets */,
+				6D6697991EE7694E00109B9E /* LaunchScreen.storyboard */,
+				6D66979C1EE7694E00109B9E /* Info.plist */,
+			);
+			path = "Snowboy-example";
+			sourceTree = "<group>";
+		};
+		6DCDCD6C1EE76A3D005AF077 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6DBBC9F21EE770CE0032C128 /* common.res */,
+				6DBBC9F91EE773780032C128 /* alexa_02092017.umdl */,
+				6DBBC9EC1EE76B3F0032C128 /* SnowboyWrapper.h */,
+				6DBBC9ED1EE76B3F0032C128 /* SnowboyWrapper.mm */,
+				6DBBC9EF1EE76B4C0032C128 /* Snowboy-example-Bridging-Header.h */,
+				6DBBC9F61EE770E10032C128 /* snowboy-detect.h */,
+				6DBBC9F71EE770EE0032C128 /* libsnowboy-detect.a */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		E2F0AA99820F41B7CCCBF878 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D1773F48144ECD84F3781EEC /* Pods-Snowboy-example.debug.xcconfig */,
+				E4832C6A0EE1E032C8B12D12 /* Pods-Snowboy-example.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6D66978C1EE7694D00109B9E /* Snowboy-example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D66979F1EE7694E00109B9E /* Build configuration list for PBXNativeTarget "Snowboy-example" */;
+			buildPhases = (
+				2D5DA7D55252CB1B42A12741 /* [CP] Check Pods Manifest.lock */,
+				6D6697891EE7694D00109B9E /* Sources */,
+				6D66978A1EE7694D00109B9E /* Frameworks */,
+				6D66978B1EE7694D00109B9E /* Resources */,
+				53F1C799402701B99F3587BB /* [CP] Embed Pods Frameworks */,
+				06ED913A5EC930271DD71E8D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Snowboy-example";
+			productName = "Snowboy-example";
+			productReference = 6D66978D1EE7694E00109B9E /* Snowboy-example.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6D6697851EE7694D00109B9E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Chashmeet Singh";
+				TargetAttributes = {
+					6D66978C1EE7694D00109B9E = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 29QXBB297F;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 6D6697881EE7694D00109B9E /* Build configuration list for PBXProject "Snowboy-example" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6D6697841EE7694D00109B9E;
+			productRefGroup = 6D66978E1EE7694E00109B9E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6D66978C1EE7694D00109B9E /* Snowboy-example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6D66978B1EE7694D00109B9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D66979B1EE7694E00109B9E /* LaunchScreen.storyboard in Resources */,
+				6DBBC9FA1EE773780032C128 /* alexa_02092017.umdl in Resources */,
+				6D6697981EE7694E00109B9E /* Assets.xcassets in Resources */,
+				6D6697961EE7694E00109B9E /* Main.storyboard in Resources */,
+				6DBBC9F41EE770CE0032C128 /* common.res in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06ED913A5EC930271DD71E8D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Snowboy-example/Pods-Snowboy-example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2D5DA7D55252CB1B42A12741 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		53F1C799402701B99F3587BB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Snowboy-example/Pods-Snowboy-example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6D6697891EE7694D00109B9E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6DBBC9EE1EE76B3F0032C128 /* SnowboyWrapper.mm in Sources */,
+				6D6697931EE7694E00109B9E /* ViewController.swift in Sources */,
+				6D6697911EE7694E00109B9E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6D6697941EE7694E00109B9E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D6697951EE7694E00109B9E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6D6697991EE7694E00109B9E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D66979A1EE7694E00109B9E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6D66979D1EE7694E00109B9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6D66979E1EE7694E00109B9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6D6697A01EE7694E00109B9E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1773F48144ECD84F3781EEC /* Pods-Snowboy-example.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 29QXBB297F;
+				INFOPLIST_FILE = "Snowboy-example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Snowboy-example",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chashmeet.Snowboy-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Snowboy-example/Snowboy-example-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		6D6697A11EE7694E00109B9E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4832C6A0EE1E032C8B12D12 /* Pods-Snowboy-example.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 29QXBB297F;
+				INFOPLIST_FILE = "Snowboy-example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Snowboy-example",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chashmeet.Snowboy-example";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Snowboy-example/Snowboy-example-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6D6697881EE7694D00109B9E /* Build configuration list for PBXProject "Snowboy-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D66979D1EE7694E00109B9E /* Debug */,
+				6D66979E1EE7694E00109B9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D66979F1EE7694E00109B9E /* Build configuration list for PBXNativeTarget "Snowboy-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D6697A01EE7694E00109B9E /* Debug */,
+				6D6697A11EE7694E00109B9E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6D6697851EE7694D00109B9E /* Project object */;
+}
