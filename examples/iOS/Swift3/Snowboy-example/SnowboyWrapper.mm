@@ -42,8 +42,9 @@
     for (int i = 0; i < count; ++i) {
         dataArray[i] = [[data objectAtIndex:i] floatValue];
     }
-    
-    return snowboy->RunDetection(dataArray, length);
+    int detected = snowboy->RunDetection(dataArray, length);
+    free(dataArray);		
+    return detected;
 }
 
 -(bool)reset
