@@ -114,7 +114,7 @@ int main(int argc, char * argv[]) {
     wavHeader *wavhdr = new wavHeader();
     readWavHeader(wavhdr, f);
 
-    short *data = (short *)malloc(wavhdr->datasize);
+    data_buffer = (short *)malloc(wavhdr->datasize);
      // Consume all the audio to the buffer
     fread(data, wavhdr->datasize, 1, f);
     fclose(f);
