@@ -54,8 +54,7 @@ void readWavHeader(wavHeader *wavhdr, FILE *fi){
 
   tag += 36; //aponta para wavhdr->data
   fread(tag, 4, 1, fi); //data chunk deve estar aqui.
-  while (tag[0] != 'd' || tag[1] != 'a' || tag[2] != 't' || tag[3] != 'a')
-  { //tenta encontrar o data chunk mais à frente (sempre em múltilos de 4)
+  while (tag[0] != 'd' || tag[1] != 'a' || tag[2] != 't' || tag[3] != 'a'){ 
     fread(tag, 4, 1, fi);
     if (ftell(fi) >= long(wavhdr->RIFFsize)) {
       fclose(fi);
@@ -82,7 +81,7 @@ int main(int argc, char * argv[]) {
  char * filename;
  int fsize;
  short * data_buffer = NULL;
- bool isRaw;
+ bool isRaw = true;
  FILE * f;
  
  if(argc > 2 or argc < 2){
@@ -116,7 +115,7 @@ int main(int argc, char * argv[]) {
 
     data_buffer = (short *)malloc(wavhdr->datasize);
      // Consume all the audio to the buffer
-    fread(data, wavhdr->datasize, 1, f);
+    fread(data_buffer, wavhdr->datasize, 1, f);
     fclose(f);
     fsize = wavhdr->datasize;
 
