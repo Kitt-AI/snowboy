@@ -118,6 +118,7 @@ int main(int argc, char * argv[]) {
      // Consume all the audio to the buffer
     fread(data, wavhdr->datasize, 1, f);
     fclose(f);
+    fsize = wavhdr->datasize;
 
   } else {
     fseek(f,0,SEEK_END);
