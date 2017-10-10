@@ -31,39 +31,38 @@ void readWavHeader(wavHeader *wavhdr, FILE *fi){
 // (it should not contain chunks after 'data')
 // Returns a pointer pointing to the begining of the data
 
-  char *tag = (char *)wavhdr;
-  fread(wavhdr, 34, 1, fi); //starting tag should be "RIFF"
-  if (tag[0] != 'R' || tag[1] != 'I' || tag[2] != 'F' || tag[3] != 'F'){
-    fclose(fi);
-    perror("NO 'RIFF'.");
+ char *tag = (char *)wavhdr;
+ fread(wavhdr, 34, 1, fi); //starting tag should be "RIFF"
+ if (tag[0] != 'R' || tag[1] != 'I' || tag[2] != 'F' || tag[3] != 'F'){
+  fclose(fi);
+  perror("NO 'RIFF'.");
+ }
+ if (wavhdr->fmtTag != 1){
+  fclose(fi);
+  perror("WAV file has encoded data or it is WAVEFORMATEXTENSIBLE.");
+ }
+ if (wavhdr->fmtSize == 14){
+  wavhdr->bps = 16;
+ }
+ if (wavhdr->fmtSize >= 16){
+  fread(&wavhdr->bps, 2, 1, fi);
+ }
+ if (wavhdr->fmtSize == 18) {
+  short lixo;
+  fread(&lixo, 2, 1, fi);
+ }
+ tag += 36; //aponta para wavhdr->data
+ fread(tag, 4, 1, fi); //data chunk deve estar aqui.
+ while (tag[0] != 'd' || tag[1] != 'a' || tag[2] != 't' || tag[3] != 'a'){ 
+  fread(tag, 4, 1, fi);
+  if (ftell(fi) >= long(wavhdr->RIFFsize)) {
+   fclose(fi);
+   perror("Bad WAV header !");
   }
-  if (wavhdr->fmtTag != 1){
-    fclose(fi);
-    perror("WAV file has encoded data or it is WAVEFORMATEXTENSIBLE.");
-  }
-  if (wavhdr->fmtSize == 14){
-      wavhdr->bps = 16;
-  }
-  if (wavhdr->fmtSize >= 16){
-      fread(&wavhdr->bps, 2, 1, fi);
-  }
-  if (wavhdr->fmtSize == 18) {
-    short lixo;
-    fread(&lixo, 2, 1, fi);
-  }
-
-  tag += 36; //aponta para wavhdr->data
-  fread(tag, 4, 1, fi); //data chunk deve estar aqui.
-  while (tag[0] != 'd' || tag[1] != 'a' || tag[2] != 't' || tag[3] != 'a'){ 
-    fread(tag, 4, 1, fi);
-    if (ftell(fi) >= long(wavhdr->RIFFsize)) {
-      fclose(fi);
-      perror("Bad WAV header !");
-    }
-  }
-  fread(&wavhdr->datasize, 4, 1, fi); //data size
-  // Assuming that header ends here. 
-  // From here until the end it is audio data
+ }
+ fread(&wavhdr->datasize, 4, 1, fi); //data size
+ // Assuming that header ends here. 
+ // From here until the end it is audio data
 }
 
 
@@ -87,10 +86,8 @@ int main(int argc, char * argv[]) {
  if(argc > 2 or argc < 2){
   printf("%s\n",usage);
   exit(1);
- }
-
- if(argc > 1){
-  filename = argv[1]; //input: file. else, input: mic
+ } else {
+  filename = argv[1];
  }
 
  std::string str = filename;
@@ -104,7 +101,7 @@ int main(int argc, char * argv[]) {
  if(filename != NULL)
   f = fopen(filename,"rb");
   
-  if( f == NULL ){
+  if(f == NULL){
    perror ("Error opening file");
    return(-1);
   }
