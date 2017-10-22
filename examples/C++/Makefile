@@ -1,6 +1,6 @@
 include demo.mk
 
-BINFILES = demo
+BINFILES = demo demo2
 
 all: $(BINFILES)
 
