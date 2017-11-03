@@ -1,18 +1,21 @@
 import os
+import sys
 from setuptools import setup, find_packages
 from distutils.command.build import build
 from distutils.dir_util import copy_tree
 from subprocess import call
 
 
+py_dir = 'Python' if sys.version_info[0] < 3 else 'Python3'
+
 class SnowboyBuild(build):
 
     def run(self):
 
         cmd = ['make']
-
+        swig_dir = os.path.join('swig', py_dir)
         def compile():
-            call(cmd, cwd='swig/Python')
+            call(cmd, cwd=swig_dir)
 
         self.execute(compile, [], 'Compiling snowboy...')
 
@@ -20,7 +23,7 @@ class SnowboyBuild(build):
         self.mkpath(self.build_lib)
         snowboy_build_lib = os.path.join(self.build_lib, 'snowboy')
         self.mkpath(snowboy_build_lib)
-        target_file = 'swig/Python/_snowboydetect.so'
+        target_file = os.path.join(swig_dir, '_snowboydetect.so')
         if not self.dry_run:
             self.copy_file(target_file,
                            snowboy_build_lib)
@@ -42,8 +45,8 @@ setup(
     maintainer_email='snowboy@kitt.ai',
     license='Apache-2.0',
     url='https://snowboy.kitt.ai',
-    packages=find_packages('examples/Python/'),
-    package_dir={'snowboy': 'examples/Python/'},
+    packages=find_packages(os.path.join('examples', py_dir)),
+    package_dir={'snowboy': os.path.join('examples', py_dir)},
     py_modules=['snowboy.snowboydecoder', 'snowboy.snowboydetect'],
     package_data={'snowboy': ['resources/*']},
     zip_safe=False,
