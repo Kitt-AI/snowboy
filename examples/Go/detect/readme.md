@@ -22,7 +22,7 @@ go build -o snowboy main.go
 
 ### Examples
 Cmd:
-`./snowboy ../../resources/snowboy.umdl ../../resources/snowboy.wav`
+`./snowboy ../../../resources/snowboy.umdl ../../../resources/snowboy.wav`
 
 Output:
 ```
