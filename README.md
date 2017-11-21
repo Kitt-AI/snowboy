@@ -131,7 +131,7 @@ pull request!
 Currently we have built wrappers for:
 
 * Java/Android
-* Go (thanks to @brentnd)
+* Go (thanks to @brentnd and @deadprogram)
 * Node (thanks to @evancohen and @nekuz0r)
 * Perl (thanks to @iboguslavsky)
 * Python
