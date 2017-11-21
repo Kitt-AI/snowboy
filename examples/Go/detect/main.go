@@ -15,7 +15,7 @@ func main() {
 		return
 	}
 	fmt.Printf("Snowboy detecting keyword in %s\n", os.Args[2])
-	detector := snowboydetect.NewSnowboyDetect("../../resources/common.res", os.Args[1])
+	detector := snowboydetect.NewSnowboyDetect("../../../resources/common.res", os.Args[1])
 	detector.SetSensitivity("0.5")
 	detector.SetAudioGain(1)
 	defer snowboydetect.DeleteSnowboyDetect(detector)
