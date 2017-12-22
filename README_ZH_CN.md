@@ -1,29 +1,30 @@
 # Snowboy 唤醒词检测
 
-通过[KITT.AI](http://kitt.ai).
+[KITT.AI](http://kitt.ai)出品。
 
 [Home Page](https://snowboy.kitt.ai)
 
-[Full Documentation](http://docs.kitt.ai/snowboy) and [FAQ](http://docs.kitt.ai/snowboy#faq)
+[Full Documentation](http://docs.kitt.ai/snowboy) 和 [FAQ](http://docs.kitt.ai/snowboy#faq)
 
 [Discussion Group](https://groups.google.com/a/kitt.ai/forum/#!forum/snowboy-discussion) (或者发送邮件给 snowboy-discussion@kitt.ai)
 
-（讨论组自2016年9月以来是新的，因为我们每天都会收到很多消息，请在这里发送普遍的问题。关于错误，请使用Github问题标签.）
+（因为我们每天都会收到很多消息，从2016年9月开始建立了讨论组。请在这里发送一般性的讨论。关于错误，请使用Github问题标签。）
 
 版本：1.2.0（3/25/2017）
 
 ## Alexa支持
 
-Snowboy现在为我们带来了解放双手的体验通过运行在Raspberry Pi上的[Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app)！有关性能以及如何使用其他唤醒词模型，请参阅下面更多的信息.
+Snowboy现在为运行在Raspberry Pi上的[Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app)提供了hands-free的体验！有关性能以及如何使用其他唤醒词模型，请参阅下面的信息。
 
 **性能**
 
-唤醒检测的性能通常依赖于实际的环境，例如，它是否与高质量麦克风一起使用，是否在街道上，在厨房中，还是有背景噪音等等. 所以我们觉得最好在使用者真实的环境中进行评估。为了评估的目的，我们准备了一个可以安装和运行在除盒子以外设备上的Android应用程序：[SnowboyAlexaDemo.apk](https://github.com/Kitt-AI/snowboy/raw/master/resources/alexa/SnowboyAlexaDemo.apk) (如果您之前安装了此应用程序，请先卸载它) .
+唤醒检测的性能通常依赖于实际的环境，例如，它是否与高质量麦克风一起使用，是否在街道上，在厨房中，是否有背景噪音等等. 所以对于性能，我们觉得最好是在使用者真实的环境中进行评估。为了方便评估，我们准备了一个可以直接安装训醒的Android应用程序：[SnowboyAlexaDemo.apk](https://github.com/Kitt-AI/snowboy/raw/master/resources/alexa/SnowboyAlexaDemo.apk) (如果您之前安装了此应用程序，请先卸载它) 。
 
 **个人模型**
 
-* 创建您的个人唤醒词模型通过我们的 [website](https://snowboy.kitt.ai) 或者 [hotword API](https://snowboy.kitt.ai/api/v1/train/)
+* 用以下方式创建您的个人模型：[website](https://snowboy.kitt.ai) 或者 [hotword API](https://snowboy.kitt.ai/api/v1/train/)
 * 将[Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app)（安装后）的唤醒词模型替换为您的个人模型
+
 ```
 # Please replace YOUR_PERSONAL_MODEL.pmdl with the personal model you just
 # created, and $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
@@ -31,9 +32,9 @@ Snowboy现在为我们带来了解放双手的体验通过运行在Raspberry Pi�
 cp YOUR_PERSONAL_MODEL.pmdl $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/ext/resources/alexa.umdl
 ```
 
-* 在[Alexa AVS sample app code](https://github.com/alexa/alexa-avs-sample-app/blob/master/samples/wakeWordAgent/src/KittAiSnowboyWakeWordEngine.cpp)中设置 'APPLY_FRONTEND' 为 'false' 和更新 'SENSITIVITY'，并重新编译
-```
+* 在[Alexa AVS sample app code](https://github.com/alexa/alexa-avs-sample-app/blob/master/samples/wakeWordAgent/src/KittAiSnowboyWakeWordEngine.cpp)中设置 `APPLY_FRONTEND` 为 `false`，更新 `SENSITIVITY`，并重新编译
 
+```
 # Please replace $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
 # cloned the Alexa AVS sample app repository.
 cd $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/src/
@@ -44,12 +45,12 @@ cd $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/src/
 make
 ```
 
-* 运行这个唤醒词为 'kitt_ai' 的引擎
+* 运行程序，并且把唤醒词引擎设置为`kitt_ai`
 
 
 **通用模型**
 
-* 用您的通用模型替换[Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app)（安装后）中的唤醒词模型
+* 将[Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app)（安装后）的唤醒词模型替换为您的通用模型
 
 ```
 # Please replace YOUR_UNIVERSAL_MODEL.umdl with the personal model you just
@@ -58,9 +59,9 @@ make
 cp YOUR_UNIVERSAL_MODEL.umdl $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/ext/resources/alexa.umdl
 ```
 
-* 在[Alexa AVS sample app code](https://github.com/alexa/alexa-avs-sample-app/blob/master/samples/wakeWordAgent/src/KittAiSnowboyWakeWordEngine.cpp) 中更新 'SENSITIVITY', 并重新编译
-```
+* 在[Alexa AVS sample app code](https://github.com/alexa/alexa-avs-sample-app/blob/master/samples/wakeWordAgent/src/KittAiSnowboyWakeWordEngine.cpp) 中更新 `SENSITIVITY`, 并重新编译
 
+```
 # Please replace $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
 # cloned the Alexa AVS sample app repository.
 cd $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/src/
@@ -69,14 +70,14 @@ cd $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/src/
 make
 ```
 
-* 运行这个唤醒词设置为 'kitt_ai' 的引擎!
+* 运行程序，并且把唤醒词引擎设置为`kitt_ai`
 
 
-## 唤醒词服务
+## 个人唤醒词训练服务
 
-Snowboy现在通过 ``https://snowboy.kitt.ai/api/v1/train/`` 端口提供 **唤醒词服务**, 请查看[Full Documentation](http://docs.kitt.ai/snowboy)和示例[Python/Bash script](examples/REST_API)（非常欢迎贡献其他的语言).
+Snowboy现在通过 `https://snowboy.kitt.ai/api/v1/train/` 端口提供 **个人唤醒词训练服务**, 请查看[Full Documentation](http://docs.kitt.ai/snowboy)和示例[Python/Bash script](examples/REST_API)（非常欢迎贡献其他的语言)。
 
-作为一个快速开始，``POST`` 下面代码到https://snowboy.kitt.ai/api/v1/train：
+简单来说，`POST` 下面代码到https://snowboy.kitt.ai/api/v1/train：
 
         {
             "name": "a word",
@@ -92,31 +93,29 @@ Snowboy现在通过 ``https://snowboy.kitt.ai/api/v1/train/`` 端口提供 **唤
             ]
         }
 
-然后你会获得一个训练完成的个人模型！
+然后您会获得一个训练好的个人模型！
 
 
 ## 介绍
 
-Snowboy是一款可定制的唤醒词检测引擎，可为您创建像 "OK Google" 或 "Alexa" 等自己的唤醒词.
-它由深层神经网络驱动，具有以下特性：
+Snowboy是一款可定制的唤醒词检测引擎，可为您创建像 "OK Google" 或 "Alexa" 这样的唤醒词。Snowboy基于神经网络，具有以下特性：
 
-* **高度可定制**：您可以自由定义自己的魔术短语 - 
-让它成为“open sesame”，“garage door open”或 “hello dreamhouse”，你自己命名它。
+* **高度可定制**：您可以自由定义自己的唤醒词 - 
+比如说“open sesame”，“garage door open”或 “hello dreamhouse”等等。
 
-* **总是在监听** 但保护您的个人隐私：snowboy不使用互联网，不会将您的声音传播到云端.
+* **总是在监听** 但保护您的个人隐私：Snowboy不使用互联网，不会将您的声音传输到云端。
 
-* **轻量级和嵌入式的**：它甚至可以在Raspberry Pi上运行，并且在最弱的Pi（单核700MHz ARMv6）
-上占用少于10％的CPU.
+* **轻量级和嵌入式的**：它可以轻松在Raspberry Pi上运行，甚至在最弱的Pi（单核700MHz ARMv6）上，Snowboy占用的CPU也少于10%。
 
-* Apache授权的!
+* Apache授权!
 
 目前Snowboy支持（查看lib文件夹）：
 
 * 所有版本的Raspberry Pi（Raspbian基于Debian Jessie 8.0）
 * 64位Mac OS X
 * 64位Ubuntu（12.04和14.04）
-* iOS版
-* Android的
+* iOS
+* Android
 * Pine64（Debian Jessie 8.5,3.10.102 BSP2）
 * Nvidia Jetson TX1（使用上面的Pine64包）
 * Nvidia Jetson TX2（使用上面的Pine64包）
@@ -124,12 +123,12 @@ Snowboy是一款可定制的唤醒词检测引擎，可为您创建像 "OK Googl
 * 三星Artik（搭载Fedora 25为ARMv7）
 * ARM64（aarch64，Ubuntu 16.04)
 
-它是以C ++库的形式提供并被swig封装成能在多种操作系统和语言上使用。我们欢迎新语言的封装 - 请随时发送你们的请求！
+Snowboy底层库由C++写成，通过swig被封装成能在多种操作系统和语言上使用的软件库。我们欢迎新语言的封装，请随时发送你们的Pull Request！
 
 目前我们已经现实封装的有:
 
 * Java / Android
-* Go（thanks to @brentnd）
+* Go（thanks to @brentnd and @deadprogram）
 * Node（thanks to @evancohen和@ nekuz0r）
 * Perl（thanks to @iboguslavsky）
 * Python
@@ -138,7 +137,7 @@ Snowboy是一款可定制的唤醒词检测引擎，可为您创建像 "OK Googl
 
 如果您想要支持其他硬件或操作系统，请将您的请求发送至[snowboy@kitt.ai](mailto:snowboy.kitt.ai)
 
-注意：**Snowboy还不支持Windows** .请在* nix平台上编译Snowboy.
+注意：**Snowboy还不支持Windows** 。请在 *nix平台上编译Snowboy。
 
 ## Snowboy模型的定价
 
@@ -155,22 +154,21 @@ Snowboy是一款可定制的唤醒词检测引擎，可为您创建像 "OK Googl
 
 ## 预训练的通用模型
 
-我们提供预训练的通用模型为了测试的目的。当您测试那些模型时，请记住他们可能没有为您的特定设备或环境进行过优化.
+为了测试方便，我们提供一些事先训练好的通用模型。当您测试那些模型时，请记住他们可能没有为您的特定设备或环境进行过优化。
 
 以下是模型列表和您必须使用的参数：
 
-* resources/ snowboy.umdl：唤醒词为“snowboy”的通用模型。将SetSensitivity设置为0.5以获得更好的性能.
-* resources/ alexa.umdl：唤醒词为“Alexa”的通用模型。将SetSensitivity设置为0.5，最好将ApplyFrontend
-（仅适用于Raspberry Pi）设置为true。这种模式是压抑的.
+* resources/ snowboy.umdl：唤醒词为“snowboy”的通用模型。将`SetSensitivity`设置为`0.5`以获得更好的性能。
+* resources/ alexa.umdl：唤醒词为“Alexa”的通用模型。将`SetSensitivity`设置为`0.5`，最好将`ApplyFrontend`
+（仅适用于Raspberry Pi）设置为`true`。这个模型已经不建议使用了。
 * resources/ alexa / alexa_02092017.umdl：唤醒词为“Alexa”的通用模型。这个仍然在优化中。
-将SetSensitivity设置为0.15。
+将`SetSensitivity`设置为`0.15`。
 * resources/ alexa / alexa-avs-sample-app/alexa.umdl：这个是为[Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app)
-优化过的唤醒词为“Alexa”的通用模型，将SetSensitivity设置为0.6，并将ApplyFrontend（仅适用于Raspberry Pi）设置为true。
-当ApplyFrontend设置为true时，这是迄今为止我们公开发布的最好的“Alexa”的模型。
+优化过的唤醒词为“Alexa”的通用模型，将`SetSensitivity`设置为`0.6`，并将`ApplyFrontend`（仅适用于Raspberry Pi）设置为true。当`ApplyFrontend`设置为`true`时，这是迄今为止我们公开发布的最好的“Alexa”的模型。
 
 ## 预编译node模块
 
-Snowboy可以以本机node模块的形式预编译：64位Ubuntu，MacOS X和Raspberry Pi（Raspbian 8.0+）。为了快速安装运行：
+Snowboy为一下平台编译了node模块：64位Ubuntu，MacOS X和Raspberry Pi（Raspbian 8.0+）。快速安装运行：
 
     npm install --save snowboy
 
@@ -185,7 +183,7 @@ Snowboy可以以本机node模块的形式预编译：64位Ubuntu，MacOS X和Ras
 * Pine64 (Debian Jessie 8.5 (3.10.102)), Nvidia Jetson TX1 and Nvidia Jetson TX2 ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/pine64-debian-jessie-1.2.0.tar.bz2))
 * Intel Edison (Ubilinux based on Debian Wheezy 7.8) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/edison-ubilinux-1.2.0.tar.bz2))
 
-如果您要根据自己的环境/语言编译版本，请继续阅读.
+如果您要根据自己的环境/语言编译版本，请继续阅读。
 
 ## 依赖
 
@@ -196,16 +194,16 @@ Snowboy可以以本机node模块的形式预编译：64位Ubuntu，MacOS X和Ras
 * SWIG 3.0.10或以上（针对不同语言/平台编译Snowboy）
 * ATLAS或OpenBLAS（矩阵计算）
 
-在下面您还可以找到在Mac OS X，Ubuntu或Raspberry Pi上安装依赖关系所需的确切命令.
+在下面您还可以找到在Mac OS X，Ubuntu或Raspberry Pi上安装依赖关系所需的确切命令。
 
 ### Mac OS X
 
-'brew' 安装 'swig'，'sox'，'portaudio' 和绑定了 'pyaudio'的Python：
+`brew` 安装 `swig`，`sox`，`portaudio` 和绑定了 `pyaudio`的Python：
 
     brew install swig portaudio sox
     pip install pyaudio
 
-如果您没有安装Homebrew，请在这里[here](http://brew.sh/)下载。如果没有pip，可以在这里[here](https://pip.pypa.io/en/stable/installing/)安装.
+如果您没有安装Homebrew，请在这里[here](http://brew.sh/)下载。如果没有pip，可以在这里[here](https://pip.pypa.io/en/stable/installing/)安装。
 
 确保您可以用麦克风录制音频：
 
@@ -213,12 +211,12 @@ Snowboy可以以本机node模块的形式预编译：64位Ubuntu，MacOS X和Ras
 
 ### Ubuntu / Raspberry Pi / Pine64 / Nvidia Jetson TX1 / Nvidia Jetson TX2
 
-首先 'apt-get' 安装 'swig'，'sox'，'portaudio'和绑定了 'pyaudio' 的 Python：
+首先 `apt-get` 安装 `swig`，`sox`，`portaudio`和绑定了 `pyaudio` 的 Python：
 
     sudo apt-get install swig3.0 python-pyaudio python3-pyaudio sox
     pip install pyaudio
 
-然后安装 'atlas' 矩阵计算库：
+然后安装 `atlas` 矩阵计算库：
 
     sudo apt-get install libatlas-base-dev
 
@@ -226,15 +224,15 @@ Snowboy可以以本机node模块的形式预编译：64位Ubuntu，MacOS X和Ras
 
     rec t.wav
 
-如果您需要额外设置您的音频（特别是Raspberry Pi），请参阅[full documentation](http://docs.kitt.ai/snowboy).
+如果您需要额外设置您的音频（特别是Raspberry Pi），请参阅[full documentation](http://docs.kitt.ai/snowboy)。
 
 ## 编译Node插件
 
-为Linux和Raspberry Pi编译node插件并需要安装以下依赖项:
+为Linux和Raspberry Pi编译node插件需要安装以下依赖项:
 
     sudo apt-get install libmagic-dev libatlas-base-dev
 
-然后编译插件，从snowboy存储库的根目录运行以下内容：
+然后编译插件，从snowboy代码库的根目录运行以下内容：
 
     npm install
     node-pre-gyp clean configure build
@@ -245,9 +243,10 @@ Snowboy可以以本机node模块的形式预编译：64位Ubuntu，MacOS X和Ras
     cd swig/Java
     make
 
-SWIG将生成一个包含转换成Java封装器的'java'目录和一个包含JNI库的'jniLibs'目录.
+SWIG将生成一个包含转换成Java封装的`java`目录和一个包含JNI库的`jniLibs`目录。
 
-去运行Java示例脚本：
+运行Java示例脚本：
+
     cd examples/Java
     make run
 
@@ -256,9 +255,9 @@ SWIG将生成一个包含转换成Java封装器的'java'目录和一个包含JNI
     cd swig/Python
     make
 
-SWIG将生成一个_snowboydetect.so文件和一个简单（但难以阅读）的python 封装snowboydetect.py。我们已经提供了一个更高级的python封装snowboydecoder.py
+SWIG将生成一个_snowboydetect.so文件和一个简单（但难以阅读）的python 封装snowboydetect.py。我们已经提供了一个更容易读懂的python封装snowboydecoder.py。
 
-如果不能make，请自由适配swig/Python 中的Makefile到您自己的系统设置.
+如果不能make，请适配`swig/Python`中的Makefile到您自己的系统设置。
 
 ## 编译GO Warpper
 
@@ -269,21 +268,18 @@ SWIG将生成一个_snowboydetect.so文件和一个简单（但难以阅读）�
 
 期望输出：
 
-```
-
-Snowboy detecting keyword in ../../resources/snowboy.wav
-Snowboy detected keyword  1
-```
+    Snowboy detecting keyword in ../../resources/snowboy.wav
+    Snowboy detected keyword  1
 
 
-更多，请阅读 'examples/Go/readme.md'.
+更多细节，请阅读 'examples/Go/readme.md'。
 
 ## 编译Perl wrapper
 
     cd swig/Perl
     make
 
-Perl示例包括使用KITT.AI RESTful API培训个人唤醒词，在检测到唤醒之后添加Google Speech API等。要运行示例，请执行以下操作
+Perl示例包括使用KITT.AI RESTful API训练个人唤醒词，在检测到唤醒之后添加Google Speech API等。要运行示例，请执行以下操作
 
     cd examples/Perl
 
@@ -307,7 +303,7 @@ Perl示例包括使用KITT.AI RESTful API培训个人唤醒词，在检测到唤
 
 ## 编译iOS wrapper
 
-在Objective-C中使用Snowboy库不需要一个封装. 它与Objective-C中使用C ++库基本相同. 我们为iOS设备编写了一个 "fat" 静态库，请参阅这里的库`lib/ios/libsnowboy-detect.a`.
+在Objective-C中使用Snowboy库不需要封装. 它与Objective-C中使用C++库基本相同. 我们为iOS设备编写了一个 "fat" 静态库，请参阅这里的库`lib/ios/libsnowboy-detect.a`。
 
 在Objective-C中初始化Snowboy检测器：
 
@@ -321,7 +317,7 @@ Perl示例包括使用KITT.AI RESTful API培训个人唤醒词，在检测到唤
 
     int result = snowboyDetector->RunDetection(buffer[0], bufferSize);  // buffer[0] is a float array
 
-您可能需要按照一定的频率调用RunDetection()，从而控制CPU使用率和检测延迟.
+您可能需要按照一定的频率调用RunDetection()，从而控制CPU使用率和检测延迟。
 
 感谢@patrickjquinn和@grimlockrocks，我们现在有了在Objective-C和Swift3中使用Snowboy的例子。看看下面的例子`examples/iOS/`和下面的截图！
 
@@ -333,11 +329,11 @@ Perl示例包括使用KITT.AI RESTful API培训个人唤醒词，在检测到唤
 
 <img src="https://s3-us-west-2.amazonaws.com/kittai-cdn/Snowboy/SnowboyAlexaDemo-Andriod.jpeg" alt="Android Alexa Demo" width=300 />
 
-我们准备了一个可以安装并运行的Android应用程序：[SnowboyAlexaDemo.apk](https://github.com/Kitt-AI/snowboy/raw/master/resources/alexa/SnowboyAlexaDemo.apk)（如果您之前安装了此应用程序，请先卸载它们).
+我们准备了一个可以安装并运行的Android应用程序：[SnowboyAlexaDemo.apk](https://github.com/Kitt-AI/snowboy/raw/master/resources/alexa/SnowboyAlexaDemo.apk)（如果您之前安装了此应用程序，请先卸载它们)。
 
 ## Python demo快速入门
 
-进到 'examples/Python' 文件夹并打开你的python控制台：
+进入 `examples/Python` 文件夹并打开你的python控制台：
 
     In [1]: import snowboydecoder
 
@@ -349,25 +345,25 @@ Perl示例包括使用KITT.AI RESTful API培训个人唤醒词，在检测到唤
 
     In [4]: detector.start(detected_callback)
 
-然后对你的麦克风说"snowboy"，看看是否Snowboy检测到你.
+然后对你的麦克风说"snowboy"，看看是否Snowboy检测到你。
 
-这个 'snowboy.umdl' 文件是一个 "通用" 模型，可以检测不同的人说 "snowboy" . 如果你想要其他的唤醒词，请去[snowboy.kitt.ai](https://snowboy.kitt.ai)录音，训练和下载你自己的个人模型(一个.pmdl文件).
+这个 `snowboy.umdl` 文件是一个 "通用" 模型，可以检测不同的人说 "snowboy" 。 如果你想要其他的唤醒词，请去[snowboy.kitt.ai](https://snowboy.kitt.ai)录音，训练和下载你自己的个人模型(一个.pmdl文件)。
 
-当 'sensitiviy' 设置越高，唤醒越容易触发. 但是你也可能会收到更多的误唤醒.
+当 `sensitiviy` 设置越高，唤醒越容易触发。但是你也可能会收到更多的误唤醒。
 
-'audio_gain' 控制是否增加（> 1）或降低（<1）输入音量.
+`audio_gain` 控制是否增加（> 1）或降低（<1）输入音量。
 
-提供两个演示文件 'demo.py' , 'demo2.py' 以显示更多的用法.
+我们提供了两个演示文件 `demo.py`, `demo2.py` 以显示更多的用法。
 
 注意：如果您看到以下错误：
 
     TypeError: __init__() got an unexpected keyword argument 'model_str'
 
-您可能正在使用旧版本的SWIG. 请升级SWIG. 我们已经使用SWIG 3.0.7和3.0.8测试通过.
+您可能正在使用旧版本的SWIG. 请升级SWIG。我们已经测试过SWIG 3.0.7和3.0.8。
 
 ## 高级用法与演示
 
-请参阅[Full Documentation](http://docs.kitt.ai/snowboy).
+请参阅[Full Documentation](http://docs.kitt.ai/snowboy)。
 
 ## 更改日志
 
@@ -420,4 +416,5 @@ Perl示例包括使用KITT.AI RESTful API培训个人唤醒词，在检测到唤
 * 添加了Raspberry Pi的静态库，以防人们想自己编译而不是使用二进制版本
 
 **v1.0.0, 5/10/2016**
-* 初始发行
+
+* 初始版本
