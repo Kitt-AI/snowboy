@@ -48,8 +48,8 @@ before_install:
 - COMMIT_MESSAGE=$(git show -s --format=%B $TRAVIS_COMMIT | tr -d '\n')
 # put local node-pre-gyp on PATH
 - export PATH=./node_modules/.bin/:$PATH
-# put global node-gyp on PATH
-- npm install node-gyp -g
+# put global node-gyp and nan on PATH
+- npm install nan node-gyp -g
 # install aws-sdk so it is available for publishing
 - npm install aws-sdk
 # figure out if we should publish or republish
