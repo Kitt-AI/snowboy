@@ -49,9 +49,9 @@ before_install:
 # put local node-pre-gyp on PATH
 - export PATH=./node_modules/.bin/:$PATH
 # put global node-gyp and nan on PATH
-- npm install nan node-gyp -g
+- npm install node-gyp -g
 # install aws-sdk so it is available for publishing
-- npm install aws-sdk
+- npm install aws-sdk nan typescript @types/node
 # figure out if we should publish or republish
 - PUBLISH_BINARY=false
 - REPUBLISH_BINARY=false
