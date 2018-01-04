@@ -386,6 +386,10 @@ See [Full Documentation](http://docs.kitt.ai/snowboy).
 
 ## Change Log
 
+**1/4/2018**
+
+* Added `resources/smart_mirror.umdl`. This is trained with voices from https://snowboy.kitt.ai/hotword/47. We suspect that it'll work well with male voices as most of our developers are male.
+
 **v1.2.0, 3/25/2017**
 
 * Added better Alexa model for [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app)
