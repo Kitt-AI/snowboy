@@ -6,8 +6,11 @@ import os
 
 """
 This demo file shows you how to use the new_message_callback to interact with
-the recorded audio after a keyword is spoken. It leverages the
-speech_recognition library in order to convert the recorded audio into text.
+the recorded audio after a keyword is spoken. It uses the speech recognition
+library in order to convert the recorded audio into text.
+
+Information on installing the speech recognition library can be found at:
+https://pypi.python.org/pypi/SpeechRecognition/
 """
 
 
