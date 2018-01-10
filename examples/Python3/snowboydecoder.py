@@ -121,6 +121,15 @@ class HotwordDetector(object):
         :param interrupt_check: a function that returns True if the main loop
                                 needs to stop.
         :param float sleep_time: how much time in second every loop waits.
+        :param new_message_callback: if specified, this will be called after a
+                                     keyword has been spoken and after the
+                                     phrase immediately after the keyword has
+                                     been recorded. The function will be passed
+                                     the name of the file where the phrase was
+                                     recorded.
+        :param silance_count_threshold: indicates how long silence must be heard
+                                        to mark the end of a phrase that is
+                                        being recorded.
         :return: None
         """
         self._running = True
