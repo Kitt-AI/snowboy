@@ -105,7 +105,7 @@ class HotwordDetector(object):
     def start(self, detected_callback=play_audio_file,
               interrupt_check=lambda: False,
               sleep_time=0.03,
-              new_message_callback=None,
+              audio_recorder_callback=None,
               silence_count_threshold = 15):
         """
         Start the voice detector. For every `sleep_time` second it checks the
@@ -121,12 +121,12 @@ class HotwordDetector(object):
         :param interrupt_check: a function that returns True if the main loop
                                 needs to stop.
         :param float sleep_time: how much time in second every loop waits.
-        :param new_message_callback: if specified, this will be called after a
-                                     keyword has been spoken and after the
-                                     phrase immediately after the keyword has
-                                     been recorded. The function will be passed
-                                     the name of the file where the phrase was
-                                     recorded.
+        :param audio_recorder_callback: if specified, this will be called after
+                                        a keyword has been spoken and after the
+                                        phrase immediately after the keyword has
+                                        been recorded. The function will be
+                                        passed the name of the file where the
+                                        phrase was recorded.
         :param silance_count_threshold: indicates how long silence must be heard
                                         to mark the end of a phrase that is
                                         being recorded.
@@ -193,7 +193,7 @@ class HotwordDetector(object):
                     if callback is not None:
                         callback()
 
-                    if new_message_callback is not None:
+                    if audio_recorder_callback is not None:
                         state = "ACTIVE"
                     continue
 
@@ -201,7 +201,7 @@ class HotwordDetector(object):
                 if status == -2: #silence found
                     if silentCount > silence_count_threshold:
                         fname = self.saveMessage()
-                        new_message_callback(fname)
+                        audio_recorder_callback(fname)
                         state = "PASSIVE"
                         continue
                     else:

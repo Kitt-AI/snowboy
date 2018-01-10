@@ -17,7 +17,7 @@ https://pypi.python.org/pypi/SpeechRecognition/
 interrupted = False
 
 
-def newMessageCallback(fname):
+def audioRecorderCallback(fname):
     print("converting audio to text")
     r = sr.Recognizer()
     with sr.AudioFile(fname) as source:
@@ -63,7 +63,10 @@ detector = snowboydecoder.HotwordDetector(model, sensitivity=0.38)
 print('Listening... Press Ctrl+C to exit')
 
 # main loop
-detector.start(detected_callback=detectedCallback, new_message_callback=newMessageCallback, interrupt_check=interrupt_callback, sleep_time=0.01)
+detector.start(detected_callback=detectedCallback,
+               audio_recorder_callback=audioRecorderCallback,
+               interrupt_check=interrupt_callback,
+               sleep_time=0.01)
 
 detector.terminate()
 
