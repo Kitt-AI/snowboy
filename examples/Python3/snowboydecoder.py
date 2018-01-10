@@ -104,7 +104,9 @@ class HotwordDetector(object):
 
     def start(self, detected_callback=play_audio_file,
               interrupt_check=lambda: False,
-              sleep_time=0.03):
+              sleep_time=0.03,
+              new_message_callback=None,
+              silence_count_threshold = 15):
         """
         Start the voice detector. For every `sleep_time` second it checks the
         audio buffer for triggering keywords. If detected, then call
@@ -154,6 +156,7 @@ class HotwordDetector(object):
 
         logger.debug("detecting...")
 
+        state = "PASSIVE"
         while self._running is True:
             if interrupt_check():
                 logger.debug("detect voice break")
@@ -163,19 +166,62 @@ class HotwordDetector(object):
                 time.sleep(sleep_time)
                 continue
 
-            ans = self.detector.RunDetection(data)
-            if ans == -1:
+            status = self.detector.RunDetection(data)
+            if status == -1:
                 logger.warning("Error initializing streams or reading audio data")
-            elif ans > 0:
-                message = "Keyword " + str(ans) + " detected at time: "
-                message += time.strftime("%Y-%m-%d %H:%M:%S",
+
+            #small state machine to handle recording of phrase after keyword
+            if state == "PASSIVE":
+                if status > 0: #key word found
+                    self.recordedData = []
+                    self.recordedData.append(data)
+                    silentCount = 0
+                    message = "Keyword " + str(status) + " detected at time: "
+                    message += time.strftime("%Y-%m-%d %H:%M:%S",
                                          time.localtime(time.time()))
-                logger.info(message)
-                callback = detected_callback[ans - 1]
-                if callback is not None:
-                    callback()
+                    logger.info(message)
+                    callback = detected_callback[0]
+                    if callback is not None:
+                        callback()
+
+                    if new_message_callback is not None:
+                        state = "ACTIVE"
+                    continue
+
+            elif state == "ACTIVE":
+                if status == -2: #silence found
+                    if silentCount > silence_count_threshold:
+                        fname = self.saveMessage()
+                        new_message_callback(fname)
+                        state = "PASSIVE"
+                        continue
+                    else:
+                        silentCount = silentCount + 1
+                elif status == 0: #voice found
+                    silentCount = 0
+
+                self.recordedData.append(data)
 
         logger.debug("finished.")
+
+    def saveMessage(self):
+        """
+        Save the message stored in self.recordedData to a timestamped file.
+        """
+        filename = 'output' + str(int(time.time())) + '.wav'
+        data = b''.join(self.recordedData)
+
+        #use wave to save data
+        wf = wave.open(filename, 'wb')
+        wf.setnchannels(1)
+        wf.setsampwidth(self.audio.get_sample_size(
+            self.audio.get_format_from_width(
+                self.detector.BitsPerSample() / 8)))
+        wf.setframerate(self.detector.SampleRate())
+        wf.writeframes(data)
+        wf.close()
+        logger.debug("finished saving: " + filename)
+        return filename
 
     def terminate(self):
         """
