@@ -106,7 +106,8 @@ class HotwordDetector(object):
               interrupt_check=lambda: False,
               sleep_time=0.03,
               audio_recorder_callback=None,
-              silence_count_threshold = 15):
+              silent_count_threshold=15,
+              recording_timeout=100):
         """
         Start the voice detector. For every `sleep_time` second it checks the
         audio buffer for triggering keywords. If detected, then call
@@ -185,6 +186,7 @@ class HotwordDetector(object):
                     self.recordedData = []
                     self.recordedData.append(data)
                     silentCount = 0
+                    recordingCount = 0
                     message = "Keyword " + str(status) + " detected at time: "
                     message += time.strftime("%Y-%m-%d %H:%M:%S",
                                          time.localtime(time.time()))
@@ -198,17 +200,24 @@ class HotwordDetector(object):
                     continue
 
             elif state == "ACTIVE":
-                if status == -2: #silence found
-                    if silentCount > silence_count_threshold:
-                        fname = self.saveMessage()
-                        audio_recorder_callback(fname)
-                        state = "PASSIVE"
-                        continue
+                stopRecording = False
+                if recordingCount > recording_timeout:
+                    stopRecording = True
+                elif status == -2: #silence found
+                    if silentCount > silent_count_threshold:
+                        stopRecording = True
                     else:
                         silentCount = silentCount + 1
                 elif status == 0: #voice found
                     silentCount = 0
 
+                if stopRecording == True:
+                    fname = self.saveMessage()
+                    audio_recorder_callback(fname)
+                    state = "PASSIVE"
+                    continue
+
+                recordingCount = recordingCount + 1
                 self.recordedData.append(data)
 
         logger.debug("finished.")
