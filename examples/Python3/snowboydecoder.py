@@ -128,9 +128,10 @@ class HotwordDetector(object):
                                         been recorded. The function will be
                                         passed the name of the file where the
                                         phrase was recorded.
-        :param silance_count_threshold: indicates how long silence must be heard
-                                        to mark the end of a phrase that is
-                                        being recorded.
+        :param silent_count_threshold: indicates how long silence must be heard
+                                       to mark the end of a phrase that is
+                                       being recorded.
+        :param recording_timeout: limits the maximum length of a recording.
         :return: None
         """
         self._running = True
