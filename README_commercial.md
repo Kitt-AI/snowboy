@@ -26,17 +26,17 @@ Universal models:
 
 ### FAQ for universal & personal models
 
-Q: If I record multiple times on snowboy.kitt.ai, can I improve the personal models?  
+Q: **If I record multiple times on snowboy.kitt.ai, can I improve the personal models?**  
 A: No. Personal models only take 3 voice samples to build. Each time you record new voices, the previous samples are overwritten and not used in your current model. 
 
 
-Q: How can I get a universal model for free?  
+Q: **How can I get a universal model for free?**  
 A: The *one and only* way: Ask 500 people to log in to snowboy.kitt.ai, contribute their voice samples to a particular hotword, then ask us to build a universal model for that hotword.
 
-Q: Can I use your API to collect voices from 500 people and increment the sample counter from snowboy.kitt.ai?  
+Q: **Can I use your API to collect voices from 500 people and increment the sample counter from snowboy.kitt.ai?**  
 A: No. The [SaaS](https://github.com/kitt-ai/snowboy#hotword-as-a-service) API is separate from the website.
 
-Q: How long does it take to get a universal model?  
+Q: **How long does it take to get a universal model?**  
 A: Usually a month.
 
 ## Licensing
@@ -59,15 +59,17 @@ An evaluation license:
 * gives you a 90 day window to evaluate the universal model we build for you
 * costs you money
 
+**Warning: an evaluation license will expire after 90 days. Make sure you don't use the model with evaluation license in production systems.** Get a commercial license from us for your production system.
+
 #### Evaluation license FAQ
 
-Q: How much does it cost?  
+Q: **How much does it cost?**  
 A: A few thousand dollars.
 
-Q: Can I get a discount as a {startup, student, NGO}?  
+Q: **Can I get a discount as a {startup, student, NGO}?**  
 A: No. Our pricing is already at least half of what others charge.
 
-Q: How can you make sure your universal model works for me?  
+Q: **How can you make sure your universal model works for me?**  
 A: We simply can't. However we have a few sample universal models from our GitHub [repo](https://github.com/Kitt-AI/snowboy/tree/master/resources), including "alexa.umdl", "snowboy.umdl", and "smart_mirror.umdl". The "alexa.umdl" model is enhanced with a lot more data and is not a typical case. So pay attention to test "snowboy.umdl" and "smart_mirror.umdl". They offer similar performance to your model.
 
 
@@ -77,19 +79,19 @@ After evaluation, if you feel want to go with Snowboy, you'll need a commercial 
 
 #### Commercial license FAQ
 
-Q: Is it a one-time license or subscription-based license?  
+Q: **Is it a one-time license or subscription-based license?**  
 A: It's a perpetual license for each device. Since the Snowboy library runs *offline* on your device, you can run it forever without worrying about any broken and dependent web services.
 
-Q: What's your pricing structure?  
+Q: **What's your pricing structure?**  
 A: We have tiered pricing depending on your volume. We charge less if you sell more.
 
-Q: Can you give me one example?  
+Q: **Can you give me one example?**  
 A: For instance, if your product is a talking robot with a $300 price tag, and you sell at least 100,000 units per year, we'll probably charge you $1 per unit once you go over 100,000 units. If your product is a smart speaker with a $30 price tag, we won't charge you $1, but you'll have to sell a lot more to make the business sense to us.
 
-Q: I plan to sell 1000 units a year, can I license your software for $1 per unit?  
+Q: **I plan to sell 1000 units a year, can I license your software for $1 per unit?**  
 A: No. In that way we only make $1000 a year, which is not worth the amount of time we put on your hotword.
 
-Q: I make a cellphone app, not a hardware product, what's the pricing structure?  
+Q: **I make a cellphone app, not a hardware product, what's the pricing structure?**  
 A: Depends on how you generate revenue. For instance, if your app is priced at $1.99, we'll collect cents per paid user, assuming you have a large user base. If you only have 2000 paid users, we'll make a revenue of less than a hundred dollars and it won't make sense to us.
 
 
