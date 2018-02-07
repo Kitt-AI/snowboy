@@ -1,0 +1,102 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:1:1-35:12
+	package
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:3:5-31
+		INJECTED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:5:5-30
+		INJECTED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:2:5-51
+	android:versionCode
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:4:5-28
+		INJECTED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:7:5-67
+	android:name
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:7:22-64
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:8:5-77
+MERGED from [com.facebook.react:react-native:0.52.2] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.52.2/AndroidManifest.xml:11:5-78
+	android:name
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:8:22-75
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:9:5-80
+	android:name
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:9:22-78
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:10:5-70
+	android:name
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:10:22-68
+uses-sdk
+ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.react:react-native:0.52.2] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.52.2/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.0.1] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/AndroidManifest.xml:20:5-43
+MERGED from [com.facebook.fbui.textlayoutbuilder:textlayoutbuilder:1.0.0] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/AndroidManifest.xml:14:5-16:41
+MERGED from [com.facebook.fresco:fresco:1.3.0] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.3.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:1.3.0] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.3.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:1.3.0] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.3.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:1.3.0] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.3.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:1.3.0] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.3.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:1.3.0] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.3.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/AndroidManifest.xml:2:3-70
+	android:targetSdkVersion
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:14:9-38
+		INJECTED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:13:9-35
+		INJECTED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml
+application
+ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:16:5-33:19
+MERGED from [com.facebook.react:react-native:0.52.2] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.52.2/AndroidManifest.xml:13:5-20
+MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.0.1] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/AndroidManifest.xml:22:5-20
+MERGED from [com.facebook.soloader:soloader:0.1.0] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/AndroidManifest.xml:3:3-17
+MERGED from [org.webkit:android-jsc:r174650] /Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/org.webkit/android-jsc/r174650/AndroidManifest.xml:2:3-17
+	android:label
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:19:7-39
+	android:allowBackup
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:18:7-33
+	android:icon
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:20:7-41
+	android:theme
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:21:7-38
+	android:name
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:17:7-38
+activity#com.snowboyreact.MainActivity
+ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:22:7-31:18
+	android:label
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:24:9-41
+	android:windowSoftInputMode
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:26:9-51
+	android:configChanges
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:25:9-79
+	android:name
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:23:9-37
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:27:9-30:25
+action#android.intent.action.MAIN
+ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:28:13-65
+	android:name
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:28:21-62
+category#android.intent.category.LAUNCHER
+ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:29:13-73
+	android:name
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:29:23-70
+activity#com.facebook.react.devsupport.DevSettingsActivity
+ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:32:7-84
+	android:name
+		ADDED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:32:17-81
+android:uses-permission#android.permission.READ_PHONE_STATE
+IMPLIED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:1:1-35:12 reason: org.webkit.android_jsc has a targetSdkVersion < 4
+android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
+IMPLIED from /Users/j.cardwell/apps/SnowboyReact/android/app/src/main/AndroidManifest.xml:1:1-35:12 reason: org.webkit.android_jsc requested WRITE_EXTERNAL_STORAGE

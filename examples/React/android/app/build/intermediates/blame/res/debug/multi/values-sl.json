@@ -1,0 +1,349 @@
+[
+    {
+        "outputFile": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sl/values-sl.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 106,
+                    "endOffset": 157
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 280,
+                        "endColumn": 106,
+                        "endOffset": 382
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 162,
+                    "endColumn": 107,
+                    "endOffset": 265
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 387,
+                        "endColumn": 107,
+                        "endOffset": 490
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 270,
+                    "endColumn": 122,
+                    "endOffset": 388
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 495,
+                        "endColumn": 122,
+                        "endOffset": 613
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 393,
+                    "endColumn": 106,
+                    "endOffset": 495
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 618,
+                        "endColumn": 106,
+                        "endOffset": 720
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 500,
+                    "endColumn": 107,
+                    "endOffset": 603
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 725,
+                        "endColumn": 107,
+                        "endOffset": 828
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 608,
+                    "endColumn": 86,
+                    "endOffset": 690
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 833,
+                        "endColumn": 86,
+                        "endOffset": 915
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 695,
+                    "endColumn": 102,
+                    "endOffset": 793
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 920,
+                        "endColumn": 102,
+                        "endOffset": 1018
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 798,
+                    "endColumn": 118,
+                    "endOffset": 912
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 1023,
+                        "endColumn": 118,
+                        "endOffset": 1137
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 917,
+                    "endColumn": 83,
+                    "endOffset": 996
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 1142,
+                        "endColumn": 83,
+                        "endOffset": 1221
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 1001,
+                    "endColumn": 107,
+                    "endOffset": 1104
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1226,
+                        "endColumn": 107,
+                        "endOffset": 1329
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 1109,
+                    "endColumn": 108,
+                    "endOffset": 1213
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1334,
+                        "endColumn": 108,
+                        "endOffset": 1438
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 1218,
+                    "endColumn": 99,
+                    "endOffset": 1313
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1443,
+                        "endColumn": 99,
+                        "endOffset": 1538
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 1318,
+                    "endColumn": 112,
+                    "endOffset": 1426
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1543,
+                        "endColumn": 112,
+                        "endOffset": 1651
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1431,
+                    "endColumn": 106,
+                    "endOffset": 1533
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1656,
+                        "endColumn": 106,
+                        "endOffset": 1758
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1538,
+                    "endColumn": 103,
+                    "endOffset": 1637
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1763,
+                        "endColumn": 103,
+                        "endOffset": 1862
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 1642,
+                    "endColumn": 116,
+                    "endOffset": 1754
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1867,
+                        "endColumn": 116,
+                        "endOffset": 1979
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 1759,
+                    "endColumn": 96,
+                    "endOffset": 1851
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1984,
+                        "endColumn": 96,
+                        "endOffset": 2076
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1856,
+                    "endColumn": 100,
+                    "endOffset": 1952
+                },
+                "from": {
+                    "file": "/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/values-sl/values-sl.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 2081,
+                        "endColumn": 100,
+                        "endOffset": 2177
+                    }
+                }
+            }
+        ]
+    }
+]

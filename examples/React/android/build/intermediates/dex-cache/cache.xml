@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1_83aaa630d6b343bfe4f8d4295444291660f2d55d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="48c7f54c2515a2312d3a4481d10c43fbb807f3af">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-1.3.0_80044c31065d5551bab249e0aa791a9d9b7f6af6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_c21b2aa117dc0422aed872b93bea045180f6613b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_4508f607f7725a5aab3c0ed3b9bf14dbb6bf56ee.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c03c08c9934b23c8c09c803345ec51a74119127b">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.3.0_a4c902f8a755451e316213d7ec616340a2e15de0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_4f27f3ded59a0047ced22fd1ebe263398f1be18f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="72128af126ddd7d6252da9357fe560d3abcdfb0c">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.3.0_4a896039f39a53440c5c13257236b116fa061f2b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_8f43685ca396f70473dc3937c5b72b1471f77474.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.6.0/69edde9fc4b01c9fd51d25b83428837478c27254/okhttp-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/okhttp-3.6.0_9f2f7e233585f087a49f49658943e21db14f3255.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/okio-1.13.0_405d17f06b599002dc87b5f62c0e3ff59f813eaf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_c4ebd6a0d0cb624ef4beeb88da14d3e7b064360b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_8132b2b698915eba2fc20084652a3b45c64c1a20.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c65a2e39d54023bac3aef64a2f0cff89289c7ff6">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.3.0_19f91cb111151498266239ac1bac2303262bd949.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.0.1_571add46f9d7da30a90ef4dba0e20ed5177a095a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="37345de2ed2772f385eaeec37a9c2ff0fea99ad7">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.3.0_13c15e75d4ff8b6ed77df4361bd1e8effd323da7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.52.2/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="3b7bd52e7b84674c67e424dde64f7b7990d7bc54">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.52.2_042875ef764ff5d7f9c2293830681bbbd8715d23.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.6.0_432e2e789ca2840e5fb0c2404a3ebb6919a2022d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_134d70eba9c08a8f9823cb89f5e37708af7797d9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="fe85b87215e405f5917d40ae4960488ac9224b74">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.3.0_05c1a1ebeceb0f183c116437706e49c492a2c47f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1_2225b87f0c95406af0cb82f960db61b1164cbbc5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.52.2/jars/libs/infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_68732e347855f93c2e129515646e93fca6147a1b.jar" />
+    </item>
+
+</items>

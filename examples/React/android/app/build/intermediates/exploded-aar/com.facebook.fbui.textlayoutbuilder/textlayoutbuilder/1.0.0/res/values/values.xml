@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TextAppearance"><attr name="android:textColor"/><attr name="android:textSize"/><attr name="android:textStyle"/><attr name="android:shadowColor"/><attr name="android:shadowDx"/><attr name="android:shadowDy"/><attr name="android:shadowRadius"/></declare-styleable>
+    <declare-styleable name="TextStyle"><attr name="android:textAppearance"/><attr name="android:textColor"/><attr name="android:textSize"/><attr name="android:textStyle"/><attr name="android:shadowColor"/><attr name="android:shadowDx"/><attr name="android:shadowDy"/><attr name="android:shadowRadius"/><attr name="android:singleLine"/><attr name="android:maxLines"/><attr name="android:ellipsize"/></declare-styleable>
+</resources>
