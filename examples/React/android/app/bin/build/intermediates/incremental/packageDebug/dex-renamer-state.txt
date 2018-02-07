@@ -1,4 +1,0 @@
-#Fri Feb 02 11:31:08 PST 2018
-base.0=/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
-renamed.0=classes.dex
-file.0=/Users/j.cardwell/apps/SnowboyReact/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
