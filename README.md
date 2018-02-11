@@ -8,7 +8,7 @@ by [KITT.AI](http://kitt.ai).
 
 [Discussion Group](https://groups.google.com/a/kitt.ai/forum/#!forum/snowboy-discussion) (or send email to snowboy-discussion@kitt.ai)
 
-(The discussion group is new since September 2016 as we are getting many messages every day. Please send general questions there. For bugs, use Github issues.)
+[Commercial application FAQ](README_commercial.md)
 
 Version: 1.2.0 (3/25/2017)
 
@@ -131,7 +131,7 @@ pull request!
 Currently we have built wrappers for:
 
 * Java/Android
-* Go (thanks to @brentnd)
+* Go (thanks to @brentnd and @deadprogram)
 * Node (thanks to @evancohen and @nekuz0r)
 * Perl (thanks to @iboguslavsky)
 * Python
@@ -385,6 +385,10 @@ You are probably using an old version of SWIG. Please upgrade. We have tested wi
 See [Full Documentation](http://docs.kitt.ai/snowboy).
 
 ## Change Log
+
+**1/4/2018**
+
+* Added `resources/smart_mirror.umdl`. This is trained with voices from https://snowboy.kitt.ai/hotword/47. We suspect that it'll work well with male voices as most of our developers are male.
 
 **v1.2.0, 3/25/2017**
 
