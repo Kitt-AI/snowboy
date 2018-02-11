@@ -13,6 +13,7 @@ namespace snowboy {
 // Forward declaration.
 struct WaveHeader;
 class PipelineDetect;
+class PipelineVad;
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -78,7 +79,7 @@ class SnowboyDetect {
   //
   // @param [in]  data               Small chunk of data to be detected. See
   //                                 above for the supported data format.
-  // @param [in]  array_length       Length of the data array in samples.
+  // @param [in]  array_length       Length of the data array.
   // @param [in]  is_end             Set it to true if it is the end of a
   //                                 utterance or file.
   int RunDetection(const float* const data,
@@ -96,6 +97,7 @@ class SnowboyDetect {
   // Make sure you properly align the sensitivity value to the corresponding
   // hotword.
   void SetSensitivity(const std::string& sensitivity_str);
+  void SetHighSensitivity(const std::string& high_sensitivity_str);
 
   // Returns the sensitivity string for the current hotwords.
   std::string GetSensitivity() const;
@@ -131,6 +133,80 @@ class SnowboyDetect {
  private:
   std::unique_ptr<WaveHeader> wave_header_;
   std::unique_ptr<PipelineDetect> detect_pipeline_;
+};
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// SnowboyVad class interface.
+//
+////////////////////////////////////////////////////////////////////////////////
+class SnowboyVad {
+ public:
+  // Constructor that takes a resource file. It shares the same resource file
+  // with SnowboyDetect.
+  SnowboyVad(const std::string& resource_filename);
+
+  // Resets the VAD.
+  bool Reset();
+
+  // Runs the VAD algorithm. Supported audio format is WAVE (with linear PCM,
+  // 8-bits unsigned integer, 16-bits signed integer or 32-bits signed integer).
+  // See SampleRate(), NumChannels() and BitsPerSample() for the required
+  // sampling rate, number of channels and bits per sample values. You are
+  // supposed to provide a small chunk of data (e.g., 0.1 second) each time you
+  // call RunDetection(). Larger chunk usually leads to longer delay, but less
+  // CPU usage.
+  //
+  // Definition of return values:
+  // -2: Silence.
+  // -1: Error.
+  //  0: Non-silence.
+  //
+  // @param [in]  data               Small chunk of data to be detected. See
+  //                                 above for the supported data format.
+  // @param [in]  is_end             Set it to true if it is the end of a
+  //                                 utterance or file.
+  int RunVad(const std::string& data, bool is_end = false);
+
+  // Various versions of RunVad() that take different format of audio. If
+  // NumChannels() > 1, e.g., NumChannels() == 2, then the array is as follows:
+  //
+  //   d1c1, d1c2, d2c1, d2c2, d3c1, d3c2, ..., dNc1, dNc2
+  //
+  // where d1c1 means data point 1 of channel 1.
+  //
+  // @param [in]  data               Small chunk of data to be detected. See
+  //                                 above for the supported data format.
+  // @param [in]  array_length       Length of the data array.
+  // @param [in]  is_end             Set it to true if it is the end of a
+  //                                 utterance or file.
+  int RunVad(const float* const data,
+             const int array_length, bool is_end = false);
+  int RunVad(const int16_t* const data,
+             const int array_length, bool is_end = false);
+  int RunVad(const int32_t* const data,
+             const int array_length, bool is_end = false);
+
+  // Applied a fixed gain to the input audio. In case you have a very weak
+  // microphone, you can use this function to boost input audio level.
+  void SetAudioGain(const float audio_gain);
+
+  // If <apply_frontend> is true, then apply frontend audio processing;
+  // otherwise turns the audio processing off.
+  void ApplyFrontend(const bool apply_frontend);
+
+  // Returns the required sampling rate, number of channels and bits per sample
+  // values for the audio data. You should use this information to set up your
+  // audio capturing interface.
+  int SampleRate() const;
+  int NumChannels() const;
+  int BitsPerSample() const;
+
+  ~SnowboyVad();
+
+ private:
+  std::unique_ptr<WaveHeader> wave_header_;
+  std::unique_ptr<PipelineVad> vad_pipeline_;
 };
 
 }  // namespace snowboy
