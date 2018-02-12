@@ -10,7 +10,7 @@ by [KITT.AI](http://kitt.ai).
 
 [Commercial application FAQ](README_commercial.md)
 
-Version: 1.2.0 (3/25/2017)
+Version: 1.3.0 (2/14/2018)
 
 ## Alexa support
 
@@ -191,10 +191,10 @@ you use.
 
 ## Precompiled Binaries with Python Demo
 * 64 bit Ubuntu [12.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1204-x86_64-1.2.0.tar.bz2)
-  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.2.0.tar.bz2)
-* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.2.0.tar.bz2)
+  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.3.0.tar.bz2)
+* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.3.0.tar.bz2)
 * Raspberry Pi with Raspbian 8.0, all versions
-  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.2.0.tar.bz2))
+  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.3.0.tar.bz2))
 * Pine64 (Debian Jessie 8.5 (3.10.102)), Nvidia Jetson TX1 and Nvidia Jetson TX2 ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/pine64-debian-jessie-1.2.0.tar.bz2))
 * Intel Edison (Ubilinux based on Debian Wheezy 7.8) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/edison-ubilinux-1.2.0.tar.bz2))
   
@@ -386,9 +386,11 @@ See [Full Documentation](http://docs.kitt.ai/snowboy).
 
 ## Change Log
 
-**1/4/2018**
+**v1.3.0, 2/14/2018**
 
-* Added `resources/smart_mirror.umdl`. This is trained with voices from https://snowboy.kitt.ai/hotword/47. We suspect that it'll work well with male voices as most of our developers are male.
+* Added Frontend processing
+* Added `resources/smart_mirror.umdl` for https://snowboy.kitt.ai/hotword/47
+* Added `resources/jarvis.umdl` for https://snowboy.kitt.ai/hotword/29
 
 **v1.2.0, 3/25/2017**
 
