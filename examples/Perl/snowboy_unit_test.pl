@@ -12,7 +12,7 @@ $data = <WAV>;
 close WAV;
 
 $sb = new Snowboy::SnowboyDetect('resources/common.res',
-                                 'resources/snowboy.umdl');
+                                 'resources/models/snowboy.umdl');
 
 $sb->SetSensitivity ("0.5");
 $sb->SetAudioGain (1);

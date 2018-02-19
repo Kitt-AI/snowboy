@@ -5,7 +5,7 @@ const Models = require('../../').Models;
 const models = new Models();
 
 models.add({
-  file: 'resources/snowboy.umdl',
+  file: 'resources/models/snowboy.umdl',
   sensitivity: '0.5',
   hotwords : 'snowboy'
 });

@@ -21,7 +21,7 @@ public class Demo {
 
     // Sets up Snowboy.
     SnowboyDetect detector = new SnowboyDetect("resources/common.res",
-                                               "resources/snowboy.umdl");
+                                               "resources/models/snowboy.umdl");
     detector.SetSensitivity("0.5");
     detector.SetAudioGain(1);
 

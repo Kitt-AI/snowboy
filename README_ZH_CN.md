@@ -10,7 +10,7 @@
 
 （因为我们每天都会收到很多消息，从2016年9月开始建立了讨论组。请在这里发送一般性的讨论。关于错误，请使用Github问题标签。）
 
-版本：1.2.0（3/25/2017）
+版本：1.3.0（2/19/2018）
 
 ## Alexa支持
 
@@ -113,25 +113,21 @@ Snowboy是一款可定制的唤醒词检测引擎，可为您创建像 "OK Googl
 
 * 所有版本的Raspberry Pi（Raspbian基于Debian Jessie 8.0）
 * 64位Mac OS X
-* 64位Ubuntu（12.04和14.04）
+* 64位Ubuntu 14.04
 * iOS
 * Android
-* Pine64（Debian Jessie 8.5,3.10.102 BSP2）
-* Nvidia Jetson TX1（使用上面的Pine64包）
-* Nvidia Jetson TX2（使用上面的Pine64包）
-* 英特尔Edison（Ubilinux基于Debian Wheezy 7.8）
-* 三星Artik（搭载Fedora 25为ARMv7）
 * ARM64（aarch64，Ubuntu 16.04)
 
 Snowboy底层库由C++写成，通过swig被封装成能在多种操作系统和语言上使用的软件库。我们欢迎新语言的封装，请随时发送你们的Pull Request！
 
 目前我们已经现实封装的有:
 
+* C/C++
 * Java / Android
 * Go（thanks to @brentnd and @deadprogram）
 * Node（thanks to @evancohen和@ nekuz0r）
 * Perl（thanks to @iboguslavsky）
-* Python
+* Python2/Python3
 * iOS / Swift3（thanks to @grimlockrocks）
 * iOS / Object-C（thanks to @patrickjquinn）
 
@@ -158,13 +154,10 @@ Snowboy底层库由C++写成，通过swig被封装成能在多种操作系统和
 
 以下是模型列表和您必须使用的参数：
 
-* resources/ snowboy.umdl：唤醒词为“snowboy”的通用模型。将`SetSensitivity`设置为`0.5`以获得更好的性能。
-* resources/ alexa.umdl：唤醒词为“Alexa”的通用模型。将`SetSensitivity`设置为`0.5`，最好将`ApplyFrontend`
-（仅适用于Raspberry Pi）设置为`true`。这个模型已经不建议使用了。
-* resources/ alexa / alexa_02092017.umdl：唤醒词为“Alexa”的通用模型。这个仍然在优化中。
-将`SetSensitivity`设置为`0.15`。
-* resources/ alexa / alexa-avs-sample-app/alexa.umdl：这个是为[Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app)
-优化过的唤醒词为“Alexa”的通用模型，将`SetSensitivity`设置为`0.6`，并将`ApplyFrontend`（仅适用于Raspberry Pi）设置为true。当`ApplyFrontend`设置为`true`时，这是迄今为止我们公开发布的最好的“Alexa”的模型。
+* **resources/alexa/alexa-avs-sample-app/alexa.umdl**：这个是为[Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app)优化过的唤醒词为“Alexa”的通用模型，将`SetSensitivity`设置为`0.6`，并将`ApplyFrontend`设置为true。当`ApplyFrontend`设置为`true`时，这是迄今为止我们公开发布的最好的“Alexa”的模型。
+* **resources/models/snowboy.umdl**：唤醒词为“snowboy”的通用模型。将`SetSensitivity`设置为`0.5`，`ApplyFrontend`设置为`false`。
+* **resources/models/jarvis.umdl**: 唤醒词为“Jarvis” (https://snowboy.kitt.ai/hotword/29)的通用模型，其中包含了对应于“Jarvis”的两个唤醒词模型，所以需要设置两个`sensitivity`。将`SetSensitivity`设置为`0.8,0.8`，`ApplyFrontend`设置为`true`。
+* **resources/models/smart_mirror.umdl**: 唤醒词为“Smart Mirror” (https://snowboy.kitt.ai/hotword/47)的通用模型。将`SetSensitivity`设置为`0.5`，`ApplyFrontend`设置为`false`。
 
 ## 预编译node模块
 
@@ -176,10 +169,10 @@ Snowboy为一下平台编译了node模块：64位Ubuntu，MacOS X和Raspberry Pi
 
 ## 预编译Python Demo的二进制文件
 * 64 bit Ubuntu [12.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1204-x86_64-1.2.0.tar.bz2)
-  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.2.0.tar.bz2)
-* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.2.0.tar.bz2)
+  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.3.0.tar.bz2)
+* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.3.0.tar.bz2)
 * Raspberry Pi with Raspbian 8.0, all versions
-  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.2.0.tar.bz2))
+  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.3.0.tar.bz2))
 * Pine64 (Debian Jessie 8.5 (3.10.102)), Nvidia Jetson TX1 and Nvidia Jetson TX2 ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/pine64-debian-jessie-1.2.0.tar.bz2))
 * Intel Edison (Ubilinux based on Debian Wheezy 7.8) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/edison-ubilinux-1.2.0.tar.bz2))
 
@@ -366,6 +359,15 @@ Perl示例包括使用KITT.AI RESTful API训练个人唤醒词，在检测到唤
 请参阅[Full Documentation](http://docs.kitt.ai/snowboy)。
 
 ## 更改日志
+
+**v1.3.0, 2/19/2018**
+
+* 添加前端处理到所有平台
+* 添加`resources/models/smart_mirror.umdl` 给 https://snowboy.kitt.ai/hotword/47
+* 添加`resources/models/jarvis.umdl` 给 https://snowboy.kitt.ai/hotword/29
+* 添加中文文档
+* 清理支持的平台
+* 重新定义了模型路径
 
 **v1.2.0, 3/25/2017**
 

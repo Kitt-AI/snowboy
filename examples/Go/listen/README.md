@@ -23,7 +23,7 @@ go build -o listen main.go
 
 ### Examples
 Cmd:
-`./listen ../../../resources/common.res ../../../resources/snowboy.umdl`
+`./listen ../../../resources/common.res ../../../resources/models/snowboy.umdl`
 
 Output:
 ```
