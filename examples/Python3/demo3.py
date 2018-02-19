@@ -4,11 +4,11 @@ import wave
 
 # Demo code for detecting hotword in a .wav file
 # Example Usage:
-#  $ python demo3.py resources/snowboy.wav resources/snowboy.umdl
+#  $ python demo3.py resources/snowboy.wav resources/models/snowboy.umdl
 # Should print:
 #  Hotword Detected!
 #
-#  $ python demo3.py resources/ding.wav resources/snowboy.umdl
+#  $ python demo3.py resources/ding.wav resources/models/snowboy.umdl
 # Should print:
 #  Hotword Not Detected!
 

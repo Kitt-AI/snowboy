@@ -3,7 +3,7 @@
 #include "portaudio.h"
 
 #define resource_filename "resources/common.res"
-#define model_filename "resources/snowboy.umdl"
+#define model_filename "resources/models/snowboy.umdl"
 #define sensitivity_str "0.5"
 
 struct wavHeader { //44 byte HEADER only

@@ -183,10 +183,11 @@ int main(int argc, char* argv[]) {
   // Parameter section.
   // If you have multiple hotword models (e.g., 2), you should set
   // <model_filename> and <sensitivity_str> as follows:
-  //   model_filename = "resources/snowboy.umdl,resources/alexa.pmdl";
-  //   sensitivity_str = "0.4,0.4";
+  //   model_filename =
+  //     "resources/models/snowboy.umdl,resources/models/smart_mirror.umdl";
+  //   sensitivity_str = "0.5,0.5";
   const char resource_filename[] = "resources/common.res";
-  const char model_filename[] = "resources/snowboy.umdl";
+  const char model_filename[] = "resources/models/snowboy.umdl";
   const char sensitivity_str[] = "0.5";
   float audio_gain = 1;
 
