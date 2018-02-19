@@ -166,7 +166,7 @@ Here is the list of the models, and the parameters that you have to use for them
 * **resources/alexa/alexa-avs-sample-app/alexa.umdl**: Universal model for the hotword "Alexa" optimized for [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app). Set SetSensitivity to 0.6, and set ApplyFrontend to true. This is so far the best "Alexa" model we released publicly, when ApplyFrontend is set to true.
 * **resources/models/snowboy.umdl**: Universal model for the hotword "Snowboy". Set SetSensitivity to 0.5 and ApplyFrontend to false.
 * **resources/models/jarvis.umdl**: Universal model for the hotword "Jarvis" (https://snowboy.kitt.ai/hotword/29). It has two different models for the hotword Jarvis, so you have to use two sensitivites. Set sensitivities to "0.8,0.80" and ApplyFrontend to true.
-* **resources/models/smart_mirror.umdl**: Universal model for the hotword "Smart Mirror" (https://snowboy.kitt.ai/hotword/47). Set sensitivity to Sensitivity to 0.5.
+* **resources/models/smart_mirror.umdl**: Universal model for the hotword "Smart Mirror" (https://snowboy.kitt.ai/hotword/47). Set sensitivity to Sensitivity to 0.5, and ApplyFrontend to false.
 
 ## Precompiled node module
 
@@ -377,8 +377,9 @@ See [Full Documentation](http://docs.kitt.ai/snowboy).
 **v1.3.0, 2/19/2018**
 
 * Added Frontend processing for all platforms
-* Added `resources/smart_mirror.umdl` for https://snowboy.kitt.ai/hotword/47
-* Added `resources/jarvis.umdl` for https://snowboy.kitt.ai/hotword/29
+* Added `resources/models/smart_mirror.umdl` for https://snowboy.kitt.ai/hotword/47
+* Added `resources/models/jarvis.umdl` for https://snowboy.kitt.ai/hotword/29
+* Added README for Chinese
 * Cleaned up the supported platforms
 * Re-structured the model path
 
