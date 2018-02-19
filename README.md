@@ -10,7 +10,7 @@ by [KITT.AI](http://kitt.ai).
 
 [Commercial application FAQ](README_commercial.md)
 
-Version: 1.3.0 (2/14/2018)
+Version: 1.3.0 (2/19/2018)
 
 ## Alexa support
 
@@ -18,10 +18,12 @@ Snowboy now brings hands-free experience to the [Alexa AVS sample app](https://g
 
 **Performance**
 
-The performance of hotword detection usually depends on the actually environment, e.g., is it used with a quality microphone, is it used on the street, in a kitchen, or is there any background noise, etc. So we feel it is best for the users to evaluate it in their real environment. For the evaluation purpose, we have prepared an Android app which can be installed and run out of box: [SnowboyAlexaDemo.apk](https://github.com/Kitt-AI/snowboy/raw/master/resources/alexa/SnowboyAlexaDemo.apk) (please uninstall any previous one first if you installed this app before). 
+The performance of hotword detection usually depends on the actual environment, e.g., is it used with a quality microphone, is it used on the street, in a kitchen, or is there any background noise, etc. So we feel it is best for the users to evaluate it in their real environment. For the evaluation purpose, we have prepared an Android app which can be installed and run out of box: [SnowboyAlexaDemo.apk](https://github.com/Kitt-AI/snowboy/raw/master/resources/alexa/SnowboyAlexaDemo.apk) (please uninstall any previous versions first if you have installed this app before). 
 
 **Personal model**
+
 * Create your personal hotword model through our [website](https://snowboy.kitt.ai) or [hotword API](https://snowboy.kitt.ai/api/v1/train/)
+
 * Replace the hotword model in [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) (after installation) with your personal model
 
 ```
@@ -47,6 +49,7 @@ make
 * Run the wake word agent with engine set to `kitt_ai`!
 
 **Universal model**
+
 * Replace the hotword model in [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) (after installation) with your universal model
 
 ```
@@ -114,14 +117,9 @@ Currently Snowboy supports (look into the [lib](lib) folder):
 
 * all versions of Raspberry Pi (with Raspbian based on Debian Jessie 8.0)
 * 64bit Mac OS X
-* 64bit Ubuntu (12.04 and 14.04)
+* 64bit Ubuntu 14.04
 * iOS
 * Android
-* Pine64 (Debian Jessie 8.5, 3.10.102 BSP2)
-* Nvidia Jetson TX1 (use above Pine64 package)
-* Nvidia Jetson TX2 (use above Pine64 package)
-* Intel Edison (Ubilinux based on Debian Wheezy 7.8)
-* Samsung Artik (built with Fedora 25 for ARMv7)
 * ARM64 (aarch64, Ubuntu 16.04)
 
 It ships in the form of a **C++ library** with language-dependent wrappers
@@ -130,11 +128,12 @@ pull request!
 
 Currently we have built wrappers for:
 
+* C/C++
 * Java/Android
 * Go (thanks to @brentnd and @deadprogram)
 * Node (thanks to @evancohen and @nekuz0r)
 * Perl (thanks to @iboguslavsky)
-* Python
+* Python2/Python3
 * iOS/Swift3 (thanks to @grimlockrocks)
 * iOS/Object-C (thanks to @patrickjquinn)
 
@@ -166,16 +165,9 @@ Here is the list of the models, and the parameters that you have to use for them
 
 * **resources/snowboy.umdl**: Universal model for the hotword "Snowboy". Set
 SetSensitivity to 0.5 for better performance.
-* **resources/alexa.umdl**: Universal model for the hotword "Alexa". Set
-SetSensitivity to 0.5, and preferably set ApplyFrontend (only works on Raspberry
-Pi) to true. This model is depressed.
-* **resources/alexa/alexa_02092017.umdl**: Universal model for the hotword
-"Alexa". This is still work in progress. Set SetSensitivity to 0.15.
-* **resources/alexa/alexa-avs-sample-app/alexa.umdl**: Universal model for the
-hotword "Alexa" optimized for [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app).
-Set SetSensitivity to 0.6, and set ApplyFrontend (only works on Raspberry Pi)
-to true. This is so far the best "Alexa" model we released publicly, when
-ApplyFrontend is set to true.
+* **resources/alexa/alexa-avs-sample-app/alexa.umdl**: Universal model for the hotword "Alexa" optimized for [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app).
+Set SetSensitivity to 0.6, and set ApplyFrontend to true. This is so far the best "Alexa" model we released publicly, when ApplyFrontend is set to true.
+* **resources/models/jarvis.umdl**: Universal model for the hotword "Jarvis" (https://snowboy.kitt.ai/hotword/29). It has two different models for the hotword Jarvis, so you have to use two sensitivites. The suggested sensitivities are "0.8,0.80". Please also set ApplyFrontend to true.
 
 ## Precompiled node module
 
@@ -190,13 +182,10 @@ dependencies like `fs`, `wav` or `node-record-lpcm16` depending on which script
 you use.
 
 ## Precompiled Binaries with Python Demo
-* 64 bit Ubuntu [12.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1204-x86_64-1.2.0.tar.bz2)
-  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.3.0.tar.bz2)
+* 64 bit Ubuntu [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.3.0.tar.bz2)
 * [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.3.0.tar.bz2)
 * Raspberry Pi with Raspbian 8.0, all versions
   ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.3.0.tar.bz2))
-* Pine64 (Debian Jessie 8.5 (3.10.102)), Nvidia Jetson TX1 and Nvidia Jetson TX2 ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/pine64-debian-jessie-1.2.0.tar.bz2))
-* Intel Edison (Ubilinux based on Debian Wheezy 7.8) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/edison-ubilinux-1.2.0.tar.bz2))
   
 If you want to compile a version against your own environment/language, read on.
 
