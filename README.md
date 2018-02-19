@@ -166,6 +166,8 @@ Here is the list of the models, and the parameters that you have to use for them
 
 * **resources/snowboy.umdl**: Universal model for the hotword "Snowboy". Set
 SetSensitivity to 0.5 for better performance.
+* **resources/jarvis.umdl**: Universal model for the hotword "Jarvis". This model contains two sub-words. Set
+SetSensitivity to `[0.8,0.8]` (Python) or `"0.8,0.8"` (Java, C++, or other wrappers) for better performance.
 * **resources/alexa.umdl**: Universal model for the hotword "Alexa". Set
 SetSensitivity to 0.5, and preferably set ApplyFrontend (only works on Raspberry
 Pi) to true. This model is depressed.
