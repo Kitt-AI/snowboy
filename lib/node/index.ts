@@ -34,12 +34,14 @@ export interface DetectorOptions {
   models: HotwordModels;
   audioGain?: number;
   applyFrontend?: boolean;
+  highSensitivity?: string;
 }
 
 export interface SnowboyDetectInterface {
   reset(): boolean;
   runDetection(buffer: Buffer): number;
   setSensitivity(sensitivity: string): void;
+  setHighSensitivity(highSensitivity: string): void;
   getSensitivity(): string;
   setAudioGain(gain: number): void;
   updateModel(): void;
@@ -121,6 +123,10 @@ export class SnowboyDetect extends stream.Writable implements SnowboyDetectInter
     if (options.applyFrontend) {
       this.nativeInstance.ApplyFrontend(options.applyFrontend);
     }
+
+    if (options.highSensitivity) {
+      this.nativeInstance.SetHighSensitivity(options.highSensitivity);
+    }
   }
 
   reset(): boolean {
@@ -135,6 +141,10 @@ export class SnowboyDetect extends stream.Writable implements SnowboyDetectInter
 
   setSensitivity(sensitivity: string): void {
     this.nativeInstance.SetSensitivity(sensitivity);
+  }
+
+  setHighSensitivity(highSensitivity: string): void {
+    this.nativeInstance.SetHighSensitivity(highSensitivity);
   }
 
   getSensitivity(): string {
