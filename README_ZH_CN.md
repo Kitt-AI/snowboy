@@ -228,7 +228,7 @@ Snowboy为一下平台编译了node模块：64位Ubuntu，MacOS X和Raspberry Pi
 然后编译插件，从snowboy代码库的根目录运行以下内容：
 
     npm install
-    node-pre-gyp clean configure build
+    ./node_modules/node-pre-gyp/bin/node-pre-gyp clean configure build
 
 ## 编译Java Wrapper
 
