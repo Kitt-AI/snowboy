@@ -39,7 +39,7 @@ class SnowboyBuild(build):
 
 setup(
     name='snowboy',
-    version='1.2.0b1',
+    version='1.3.0',
     description='Snowboy is a customizable hotword detection engine',
     maintainer='KITT.AI',
     maintainer_email='snowboy@kitt.ai',
