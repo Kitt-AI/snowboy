@@ -35,7 +35,7 @@ else
   CXX := g++
   PYINC := $(shell python-config --cflags)
   PYLIBS := $(shell python-config --ldflags)
-  SWIGFLAGS := -shared
+  SWIGFLAGS := -Wl,-O1,--as-needed -shared
   CXXFLAGS += -std=c++0x
   # Make sure you have Atlas installed. You can statically link Atlas if you
   # would like to be able to move the library to a machine without Atlas.
