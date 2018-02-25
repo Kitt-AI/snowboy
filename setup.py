@@ -7,13 +7,13 @@ from subprocess import call
 
 
 py_dir = 'Python' if sys.version_info[0] < 3 else 'Python3'
+swig_dir = os.path.join('swig', py_dir)
 
 class SnowboyBuild(build):
 
     def run(self):
 
         cmd = ['make']
-        swig_dir = os.path.join('swig', py_dir)
         def compile():
             call(cmd, cwd=swig_dir)
 
@@ -39,14 +39,14 @@ class SnowboyBuild(build):
 
 setup(
     name='snowboy',
-    version='1.2.0b1',
+    version='1.3.1',
     description='Snowboy is a customizable hotword detection engine',
     maintainer='KITT.AI',
     maintainer_email='snowboy@kitt.ai',
     license='Apache-2.0',
     url='https://snowboy.kitt.ai',
-    packages=find_packages(os.path.join('examples', py_dir)),
-    package_dir={'snowboy': os.path.join('examples', py_dir)},
+    packages=find_packages(swig_dir),
+    package_dir={'snowboy': swig_dir},
     py_modules=['snowboy.snowboydecoder', 'snowboy.snowboydetect'],
     package_data={'snowboy': ['resources/*']},
     zip_safe=False,
