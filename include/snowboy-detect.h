@@ -97,6 +97,12 @@ class SnowboyDetect {
   // Make sure you properly align the sensitivity value to the corresponding
   // hotword.
   void SetSensitivity(const std::string& sensitivity_str);
+
+  // Similar to the sensitivity setting above. When set higher than the above
+  // sensitivity, the algorithm automatically chooses between the normal
+  // sensitivity set above and the higher sensitivity set here, to maximize the
+  // performance. By default, it is not set, which means the algorithm will
+  // stick with the sensitivity set above.
   void SetHighSensitivity(const std::string& high_sensitivity_str);
 
   // Returns the sensitivity string for the current hotwords.
