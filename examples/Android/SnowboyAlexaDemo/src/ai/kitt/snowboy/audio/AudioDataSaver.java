@@ -15,6 +15,19 @@ public class AudioDataSaver implements AudioDataReceivedListener {
 
     private static final String TAG = AudioDataSaver.class.getSimpleName();
 
+    // file size of when to delete and create a new recording file
+    private float MAX_RECORDING_FILE_SIZE_IN_MB = 50f;
+
+    // initial file size of recording file
+    private final float INITIAL_FILE_SIZE_IN_MB = 1.3f;
+
+    // converted max file size
+    private float MAX_RECORDING_FILE_SIZE_IN_BYTES
+            = (MAX_RECORDING_FILE_SIZE_IN_MB - INITIAL_FILE_SIZE_IN_MB) * 1024 * 1024;
+
+    // keeps track of recording file size
+    private int recordingFileSizeCounterInBytes = 0;
+
     private File saveFile = null;
     private DataOutputStream dataOutputStreamInstance = null;
 
@@ -25,7 +38,7 @@ public class AudioDataSaver implements AudioDataReceivedListener {
 
     @Override
     public void start() {
-        if(null != saveFile) {
+        if (null != saveFile) {
             if (saveFile.exists()) {
                 saveFile.delete();
             }
@@ -36,7 +49,7 @@ public class AudioDataSaver implements AudioDataReceivedListener {
             }
 
             try {
-                BufferedOutputStream bufferedStreamInstance  = new BufferedOutputStream(
+                BufferedOutputStream bufferedStreamInstance = new BufferedOutputStream(
                         new FileOutputStream(this.saveFile));
                 dataOutputStreamInstance = new DataOutputStream(bufferedStreamInstance);
             } catch (FileNotFoundException e) {
@@ -48,8 +61,14 @@ public class AudioDataSaver implements AudioDataReceivedListener {
     @Override
     public void onAudioDataReceived(byte[] data, int length) {
         try {
-            if(null != dataOutputStreamInstance) {
+            if (null != dataOutputStreamInstance) {
+                if (recordingFileSizeCounterInBytes >= MAX_RECORDING_FILE_SIZE_IN_BYTES) {
+                    stop();
+                    start();
+                    recordingFileSizeCounterInBytes = 0;
+                }
                 dataOutputStreamInstance.write(data, 0, length);
+                recordingFileSizeCounterInBytes += length;
             }
         } catch (IOException e) {
             Log.e(TAG, "IO Exception on saving audio file " + saveFile.toString(), e);
@@ -58,7 +77,7 @@ public class AudioDataSaver implements AudioDataReceivedListener {
 
     @Override
     public void stop() {
-        if(null != dataOutputStreamInstance) {
+        if (null != dataOutputStreamInstance) {
             try {
                 dataOutputStreamInstance.close();
             } catch (IOException e) {
