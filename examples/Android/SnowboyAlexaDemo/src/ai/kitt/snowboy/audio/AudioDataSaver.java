@@ -16,13 +16,13 @@ public class AudioDataSaver implements AudioDataReceivedListener {
     private static final String TAG = AudioDataSaver.class.getSimpleName();
 
     // file size of when to delete and create a new recording file
-    private float MAX_RECORDING_FILE_SIZE_IN_MB = 50f;
+    private final float MAX_RECORDING_FILE_SIZE_IN_MB = 50f;
 
     // initial file size of recording file
     private final float INITIAL_FILE_SIZE_IN_MB = 1.3f;
 
     // converted max file size
-    private float MAX_RECORDING_FILE_SIZE_IN_BYTES
+    private final float MAX_RECORDING_FILE_SIZE_IN_BYTES
             = (MAX_RECORDING_FILE_SIZE_IN_MB - INITIAL_FILE_SIZE_IN_MB) * 1024 * 1024;
 
     // keeps track of recording file size
