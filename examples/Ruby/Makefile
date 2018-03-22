@@ -11,6 +11,7 @@ all: $(SHAREDLIB)
 
 # We have to use the C++ compiler to link.
 $(SHAREDLIB): $(PORTAUDIOLIBS) $(SNOWBOYDETECTLIBFILE) $(OBJFILES)
+	-mkdir -p lib/snowboy/ext
 	$(CXX) $(OBJFILES) $(SNOWBOYDETECTLIBFILE) $(PORTAUDIOLIBS) $(LDLIBS) -shared -o $(SHAREDLIB)
 
 $(PORTAUDIOLIBS):
