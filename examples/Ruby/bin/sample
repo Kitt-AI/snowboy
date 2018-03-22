@@ -17,4 +17,4 @@ detector.run do |result|
   end
 end
 
-while true; end
+while detector.running?; end

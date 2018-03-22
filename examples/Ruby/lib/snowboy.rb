@@ -27,11 +27,11 @@ module Snowboy
     def initialize resource: nil, model: nil, sensitivity: 0.5, gain: 1
       @ptr = Lib::SnowboyDetectConstructor(resource, model)
     
+      @resource = resource
+      @model    = model
+    
       self.sensitivity  = sensitivity;
-      self.audio_gain   = gain;
-
-      # Initializes PortAudio
-      capture();    
+      self.audio_gain   = gain;  
     end
     
     def run &b
@@ -41,21 +41,23 @@ module Snowboy
   
       @thread = Thread.new do
         begin
-        while @run    
-          if (length = load_audio_data) > 0
-            b.call run_detection(g_data, length, false)
+          while @run    
+            if (length = load_audio_data) > 0
+              b.call run_detection(g_data, length, false)
+            end
           end
-        end
         rescue => e
           puts e
           puts e.backtrace.join("\n")
         end
+        
+        @run = false
       end
     end
 
     def stop
       @run = false
-      @thread.kill
+      @thread.kill if @thread
       stop_capture
     end
     
@@ -88,6 +90,10 @@ module Snowboy
     def reset
       Lib::SnowboyDetectReset(ptr)
     end    
+    
+    def running?
+      @run
+    end
     
     private
     def capture
