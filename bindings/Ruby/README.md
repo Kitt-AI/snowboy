@@ -2,12 +2,12 @@ Ruby bindings for `snowboy`
 
 Dependencies
 ===
-snowboy shared lib
+snowboy shared lib  
 `cd ../C && make`
 
 Extra
 ===
-A simple audio capture tool is provided in `./ext/capture/port-audio`
+A simple audio capture tool is provided in `./ext/capture/port-audio`  
 `cd ./ext/capture/port-audio && make`
 
 Usage
