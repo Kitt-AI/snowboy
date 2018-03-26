@@ -5,6 +5,9 @@ Dependencies
 snowboy shared lib  
 `cd ../C && make`
 
+FFI for ruby.  
+`sudo gem i ffi`
+
 Extra
 ===
 A simple audio capture tool is provided in `./ext/capture/port-audio`  
