@@ -20,6 +20,8 @@ module Snowboy
     attach_function :SnowboyDetectNumChannels, [:pointer], :int
     attach_function :SnowboyDetectNumHotwords, [:pointer], :int                
     attach_function :SnowboyDetectReset, [:pointer], :bool  
+    attach_function :SnowboyDetectUpdateModel, [:pointer], :void
+    attach_function :SnowboyDetectApplyFrontend, [:pointer, :bool], :void    
     attach_function :SnowboyDetectRunDetection, [:pointer, :pointer, :int, :bool], :int
     attach_function :SnowboyDetectSetAudioGain, [:pointer, :float], :void
     attach_function :SnowboyDetectSetSensitivity, [:pointer, :string], :void 
@@ -66,6 +68,14 @@ module Snowboy
     def reset
       Lib::SnowboyDetectReset(ptr)
     end    
+    
+    def apply_frontend bool
+      Lib::SnowboyDetectApplyFrontend(ptr, bool)
+    end
+    
+    def update_model
+      Lib::SnowboyDetectUpdateModel(ptr)
+    end   
     
     def run_detection *o
       Lib::SnowboyDetectRunDetection(ptr, *o)
