@@ -31,6 +31,16 @@
                         '<(module_root_dir)/lib/rpi/libsnowboy-detect.a',
                     ]
                 }
+            }],
+            ['OS=="linux" and target_arch=="arm64"', {
+                'link_settings': {
+                    'ldflags': [
+                        '-Wl,--no-as-needed',
+                    ],
+                    'libraries': [
+                        '<(module_root_dir)/lib/aarch64-ubuntu1604/libsnowboy-detect.a',
+                    ]
+                }
             }]
         ],
         'cflags': [
