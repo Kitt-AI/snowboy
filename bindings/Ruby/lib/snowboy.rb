@@ -29,7 +29,12 @@ module Snowboy
   
   class Detector
     attr_reader :resource, :model, :sensitivity, :audio_gain, :ptr
+    
+    # @param +model+ <Array|String> pointing to the model file(s)
+    #                               
     def initialize resource: nil, model: nil, sensitivity: 0.5, gain: 1
+      model = value2str(model)
+    
       @ptr = Lib::SnowboyDetectConstructor(resource, model)
            
       @resource = resource
@@ -45,8 +50,12 @@ module Snowboy
       Lib::SnowboyDetectSetAudioGain(ptr, audio_gain)
     end
     
+    # @param +lvl+ <Array|String> specifying levels per model
+    #
     def sensitivity= lvl
-      Lib::SnowboyDetectSetSensitivity(ptr, lvl.to_s)
+      @sensitivity = o=value2str(lvl)
+      
+      Lib::SnowboyDetectSetSensitivity(ptr, o)
     end
     
     def sample_rate
@@ -79,6 +88,21 @@ module Snowboy
     
     def run_detection *o
       Lib::SnowboyDetectRunDetection(ptr, *o)
+    end
+    
+    private
+    def value2str obj
+      if obj.is_a?(String)
+        obj
+      elsif obj.is_a?(Array)
+        obj.map do |o|
+          o.to_s
+        end.join(",")
+      elsif obj.is_a?(Numeric)
+        obj.to_s
+      else
+        obj.to_s
+      end
     end
   end
 end
