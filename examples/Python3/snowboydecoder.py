@@ -7,6 +7,8 @@ import time
 import wave
 import os
 import logging
+from ctypes import *
+from contextlib import contextmanager
 
 logging.basicConfig()
 logger = logging.getLogger("snowboy")
@@ -17,6 +19,19 @@ RESOURCE_FILE = os.path.join(TOP_DIR, "resources/common.res")
 DETECT_DING = os.path.join(TOP_DIR, "resources/ding.wav")
 DETECT_DONG = os.path.join(TOP_DIR, "resources/dong.wav")
 
+ERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)
+
+def py_error_handler(filename, line, function, err, fmt):
+    pass
+
+c_error_handler = ERROR_HANDLER_FUNC(py_error_handler)
+
+@contextmanager
+def no_alsa_error():
+    asound = cdll.LoadLibrary('libasound.so')
+    asound.snd_lib_error_set_handler(c_error_handler)
+    yield
+    asound.snd_lib_error_set_handler(None)
 
 class RingBuffer(object):
     """Ring buffer to hold audio from PortAudio"""
@@ -44,7 +59,8 @@ def play_audio_file(fname=DETECT_DING):
     """
     ding_wav = wave.open(fname, 'rb')
     ding_data = ding_wav.readframes(ding_wav.getnframes())
-    audio = pyaudio.PyAudio()
+    with no_alsa_error():
+        audio = pyaudio.PyAudio()
     stream_out = audio.open(
         format=audio.get_format_from_width(ding_wav.getsampwidth()),
         channels=ding_wav.getnchannels(),
@@ -141,7 +157,8 @@ class HotwordDetector(object):
             play_data = chr(0) * len(in_data)
             return play_data, pyaudio.paContinue
 
-        self.audio = pyaudio.PyAudio()
+        with no_alsa_error():
+            self.audio = pyaudio.PyAudio()
         self.stream_in = self.audio.open(
             input=True, output=False,
             format=self.audio.get_format_from_width(
