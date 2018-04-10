@@ -88,11 +88,13 @@ class HotwordDetector(object):
                               decoder. If an empty list is provided, then the
                               default sensitivity in the model will be used.
     :param audio_gain: multiply input volume by this factor.
+    :param apply_frontend: applies the frontend processing algorithm if True.
     """
     def __init__(self, decoder_model,
                  resource=RESOURCE_FILE,
                  sensitivity=[],
-                 audio_gain=1):
+                 audio_gain=1,
+                 apply_frontend=False):
 
         def audio_callback(in_data, frame_count, time_info, status):
             self.ring_buffer.extend(in_data)
@@ -110,6 +112,7 @@ class HotwordDetector(object):
         self.detector = snowboydetect.SnowboyDetect(
             resource_filename=resource.encode(), model_str=model_str.encode())
         self.detector.SetAudioGain(audio_gain)
+        self.detector.ApplyFrontend(apply_frontend)
         self.num_hotwords = self.detector.NumHotwords()
 
         if len(decoder_model) > 1 and len(sensitivity) == 1:

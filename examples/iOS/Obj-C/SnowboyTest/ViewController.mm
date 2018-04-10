@@ -31,6 +31,7 @@
                                                 std::string([[[NSBundle mainBundle]pathForResource:@"alexa" ofType:@"umdl"] UTF8String]));
     _snowboyDetect->SetSensitivity("0.5");
     _snowboyDetect->SetAudioGain(1.0);
+    _snowboyDetect->ApplyFrotnend(false);
 }
 
 - (void) initMic {
