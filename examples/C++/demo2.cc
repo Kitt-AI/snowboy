@@ -5,6 +5,8 @@
 #define resource_filename "resources/common.res"
 #define model_filename "resources/models/snowboy.umdl"
 #define sensitivity_str "0.5"
+#define audio_gain 1.0
+#define apply_frontend false
 
 struct wavHeader { //44 byte HEADER only
   char  RIFF[4];
@@ -136,6 +138,8 @@ int main(int argc, char * argv[]) {
   // Initializes Snowboy detector.
   snowboy::SnowboyDetect detector(resource_filename, model_filename);
   detector.SetSensitivity(sensitivity_str);
+  detector.SetAudioGain(audio_gain);
+  detector.ApplyFrontend(apply_frontend);
 
   int result = detector.RunDetection(&data_buffer[0], fsize/sizeof(short));
   std::cout << ">>>>> Result: " << result << " <<<<<" << std::endl;

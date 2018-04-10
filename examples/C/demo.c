@@ -190,12 +190,14 @@ int main(int argc, char* argv[]) {
   const char model_filename[] = "resources/models/snowboy.umdl";
   const char sensitivity_str[] = "0.5";
   float audio_gain = 1;
+  bool apply_frontend = false;
 
   // Initializes Snowboy detector.
   SnowboyDetect* detector = SnowboyDetectConstructor(resource_filename,
                                                      model_filename);
   SnowboyDetectSetSensitivity(detector, sensitivity_str);
   SnowboyDetectSetAudioGain(detector, audio_gain);
+  SnowboyDetectApplyFrontend(detector, apply_frontend);
 
   // Initializes PortAudio. You may use other tools to capture the audio.
   StartAudioCapturing(SnowboyDetectSampleRate(detector),

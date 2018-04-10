@@ -13,7 +13,8 @@ models.add({
 const detector = new Detector({
   resource: "resources/common.res",
   models: models,
-  audioGain: 2.0
+  audioGain: 2.0,
+  applyFrontend: true
 });
 
 detector.on('silence', function () {

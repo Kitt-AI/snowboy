@@ -133,6 +133,7 @@ print "Done (Silence Threshold: $maxdev, DC Offset: $dcoffset)\n";
 $sb = new Snowboy::SnowboyDetect('resources/common.res', $model);
 $sb->SetSensitivity('0.5');
 $sb->SetAudioGain(1.0);
+$sb->ApplyFrontend(0);
 
 # Running the detection forever.
 print "\n";
