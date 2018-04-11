@@ -124,7 +124,13 @@ class SnowboyDetect {
   int NumHotwords() const;
 
   // If <apply_frontend> is true, then apply frontend audio processing;
-  // otherwise turns the audio processing off.
+  // otherwise turns the audio processing off. Frontend audio processing
+  // includes algorithms such as automatic gain control (AGC), noise suppression
+  // (NS) and so on. Generally adding frontend audio processing helps the
+  // performance, but if the model is not trained with frontend audio
+  // processing, it may decrease the performance. The general rule of thumb is:
+  //   1. For personal models, set it to false.
+  //   2. For universal models, follow the instruction of each published model
   void ApplyFrontend(const bool apply_frontend);
 
   // Returns the required sampling rate, number of channels and bits per sample
