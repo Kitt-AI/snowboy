@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import snowboydecoder
 import sys
 import signal
@@ -69,7 +71,3 @@ detector.start(detected_callback=detectedCallback,
                sleep_time=0.01)
 
 detector.terminate()
-
-
-
-
