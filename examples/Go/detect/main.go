@@ -18,6 +18,7 @@ func main() {
 	detector := snowboydetect.NewSnowboyDetect("../../../resources/common.res", os.Args[1])
 	detector.SetSensitivity("0.5")
 	detector.SetAudioGain(1)
+	detector.ApplyFrontend(false)
 	defer snowboydetect.DeleteSnowboyDetect(detector)
 
 	dat, err := ioutil.ReadFile(os.Args[2])

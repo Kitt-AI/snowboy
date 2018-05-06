@@ -24,6 +24,7 @@ public class Demo {
                                                "resources/models/snowboy.umdl");
     detector.SetSensitivity("0.5");
     detector.SetAudioGain(1);
+    detector.ApplyFrontend(false);
 
     try {
       TargetDataLine targetLine =
