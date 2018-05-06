@@ -258,6 +258,8 @@ To run the Java example script:
 
     cd swig/Python
     make
+    # Set temporary python path to load the compiled module instead of the currently installed one.
+    PYTHONPATH=$(pwd)
 
 SWIG will generate a `_snowboydetect.so` file and a simple (but hard-to-read) python wrapper `snowboydetect.py`. We have provided a higher level python wrapper `snowboydecoder.py` on top of that.
     
