@@ -1,4 +1,4 @@
-import snowboydecoder
+from snowboy import snowboydecoder
 import sys
 import signal
 
