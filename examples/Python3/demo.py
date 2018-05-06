@@ -30,8 +30,7 @@ def main():
     # capture SIGINT signal, e.g., Ctrl+C
     signal.signal(signal.SIGINT, signal_handler)
 
-    detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
-    detector.detector.ApplyFrontend(False)
+    detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5, apply_frontend=True)
     print('Listening... Press Ctrl+C to exit')
 
     # main loop
