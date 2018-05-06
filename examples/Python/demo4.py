@@ -1,4 +1,5 @@
-import snowboydecoder
+#!/usr/bin/env python2
+from snowboy import snowboydecoder
 import sys
 import signal
 import speech_recognition as sr
@@ -70,7 +71,3 @@ detector.start(detected_callback=detectedCallback,
                sleep_time=0.01)
 
 detector.terminate()
-
-
-
-

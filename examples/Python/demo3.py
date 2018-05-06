@@ -1,4 +1,5 @@
-import snowboydecoder
+#!/usr/bin/env python2
+from snowboy import snowboydecoder
 import sys
 import wave
 
@@ -37,4 +38,3 @@ if ans == 1:
     print('Hotword Detected!')
 else:
     print('Hotword Not Detected!')
-
