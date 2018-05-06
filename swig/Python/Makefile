@@ -42,7 +42,7 @@ else
   ifneq ("$(ldconfig -p | grep lapack_atlas)","")
     LDLIBS := -lm -ldl -lf77blas -lcblas -llapack_atlas -latlas
   else
-    LDLIBS := -lm -ldl -lf77blas -lcblas -llapack -latlas
+    LDLIBS := -lm -lcblas
   endif
   SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/ubuntu64/libsnowboy-detect.a
   ifneq (,$(findstring arm,$(shell uname -m)))
