@@ -16,13 +16,17 @@ def interrupt_callback():
     global interrupted
     return interrupted
 
-if len(sys.argv) != 2:
-    print("Error: need to specify 1 model name")
-    print("Usage: python demo.py your.model")
-    sys.exit(-1)
-
 def main():
-    model = sys.argv[1]
+    if len(sys.argv) < 2:
+        print("Using default alexa model.")
+        model = os.path.join(snowboydecoder.TOP_DIR, 'resources/alexa/alexa-avs-sample-app/alexa.umdl')
+    elif len(sys.argv) > 2:
+        print("Error: need to specify 1 model name")
+        print("Usage: python demo.py your.model")
+        sys.exit(-1)
+    else:
+        model = sys.argv[1]
+
     if not os.path.isfile(model):
         print("Error: Not a valid model.")
         sys.exit(-1)
