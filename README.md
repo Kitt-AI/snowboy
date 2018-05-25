@@ -216,10 +216,22 @@ Make sure that you can record audio with your microphone:
 
 ### Ubuntu/Raspberry Pi/Pine64/Nvidia Jetson TX1/Nvidia Jetson TX2
 
-First `apt-get` install `swig`, `sox`, `portaudio` and its Python binding `pyaudio`:
+First `apt-get` install `sox`, `portaudio` and its Python binding `pyaudio`:
 
-    sudo apt-get install swig3.0 python-pyaudio python3-pyaudio sox
+    sudo apt-get install python-pyaudio python3-pyaudio sox
     pip install pyaudio
+    
+Compile a supported swig version (3.0.10 or above)
+
+    wget http://downloads.sourceforge.net/swig/swig-3.0.10.tar.gz
+    sudo apt-get install libpcre3 libpcre3-dev
+    ./configure --prefix=/usr                  \
+            --without-clisp                    \
+            --without-maximum-compile-warnings &&
+    make
+    make install &&
+    install -v -m755 -d /usr/share/doc/swig-3.0.10 &&
+    cp -v -R Doc/* /usr/share/doc/swig-3.0.10
     
 Then install the `atlas` matrix computing library:
 
