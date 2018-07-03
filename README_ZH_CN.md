@@ -169,10 +169,10 @@ Snowboy为一下平台编译了node模块：64位Ubuntu，MacOS X和Raspberry Pi
 
 ## 预编译Python Demo的二进制文件
 * 64 bit Ubuntu [12.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1204-x86_64-1.2.0.tar.bz2)
-  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.3.0.tar.bz2)
-* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.3.0.tar.bz2)
+  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.4.0.tar.bz2)
+* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.4.0.tar.bz2)
 * Raspberry Pi with Raspbian 8.0, all versions
-  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.3.0.tar.bz2))
+  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.4.0.tar.bz2))
 * Pine64 (Debian Jessie 8.5 (3.10.102)), Nvidia Jetson TX1 and Nvidia Jetson TX2 ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/pine64-debian-jessie-1.2.0.tar.bz2))
 * Intel Edison (Ubilinux based on Debian Wheezy 7.8) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/edison-ubilinux-1.2.0.tar.bz2))
 
