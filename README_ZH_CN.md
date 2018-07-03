@@ -10,7 +10,7 @@
 
 （因为我们每天都会收到很多消息，从2016年9月开始建立了讨论组。请在这里发送一般性的讨论。关于错误，请使用Github问题标签。）
 
-版本：1.3.0（2/19/2018）
+版本：1.4.0（7/2/2018）
 
 ## Alexa支持
 
@@ -359,6 +359,11 @@ Perl示例包括使用KITT.AI RESTful API训练个人唤醒词，在检测到唤
 请参阅[Full Documentation](http://docs.kitt.ai/snowboy)。
 
 ## 更改日志
+
+**v1.4.0, 7/2/2018**
+
+* 添加查看唤醒词的起止帧ID的API
+* 添加 `resources/models/neo_ya.umdl` 给 https://snowboy.kitt.ai/hotword/22171
 
 **v1.3.0, 2/19/2018**
 

@@ -88,6 +88,7 @@ class SnowboyDetect {
                    const int array_length, bool is_end = false);
   int RunDetection(const int32_t* const data,
                    const int array_length, bool is_end = false);
+  int ResetSamplePointer();
 
   // Sets the sensitivity string for the loaded hotwords. A <sensitivity_str> is
   // a list of floating numbers between 0 and 1, and separated by comma. For
@@ -97,12 +98,6 @@ class SnowboyDetect {
   // Make sure you properly align the sensitivity value to the corresponding
   // hotword.
   void SetSensitivity(const std::string& sensitivity_str);
-
-  // Similar to the sensitivity setting above. When set higher than the above
-  // sensitivity, the algorithm automatically chooses between the normal
-  // sensitivity set above and the higher sensitivity set here, to maximize the
-  // performance. By default, it is not set, which means the algorithm will
-  // stick with the sensitivity set above.
   void SetHighSensitivity(const std::string& high_sensitivity_str);
 
   // Returns the sensitivity string for the current hotwords.
@@ -123,14 +118,11 @@ class SnowboyDetect {
   // index of the hotwords.
   int NumHotwords() const;
 
+  // Returns the hotword name of the model_id and hotword_id specified
+  std::string GetHotwordName(const int32_t hotword_id) const;
+
   // If <apply_frontend> is true, then apply frontend audio processing;
-  // otherwise turns the audio processing off. Frontend audio processing
-  // includes algorithms such as automatic gain control (AGC), noise suppression
-  // (NS) and so on. Generally adding frontend audio processing helps the
-  // performance, but if the model is not trained with frontend audio
-  // processing, it may decrease the performance. The general rule of thumb is:
-  //   1. For personal models, set it to false.
-  //   2. For universal models, follow the instruction of each published model
+  // otherwise turns the audio processing off.
   void ApplyFrontend(const bool apply_frontend);
 
   // Returns the required sampling rate, number of channels and bits per sample
@@ -139,6 +131,9 @@ class SnowboyDetect {
   int SampleRate() const;
   int NumChannels() const;
   int BitsPerSample() const;
+
+  int64_t KwdSampleStart() const;
+  int64_t KwdSampleEnd() const;
 
   ~SnowboyDetect();
 
