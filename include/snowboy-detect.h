@@ -98,6 +98,12 @@ class SnowboyDetect {
   // Make sure you properly align the sensitivity value to the corresponding
   // hotword.
   void SetSensitivity(const std::string& sensitivity_str);
+
+  // Similar to the sensitivity setting above. When set higher than the above
+  // sensitivity, the algorithm automatically chooses between the normal
+  // sensitivity set above and the higher sensitivity set here, to maximize the
+  // performance. By default, it is not set, which means the algorithm will
+  // stick with the sensitivity set above.
   void SetHighSensitivity(const std::string& high_sensitivity_str);
 
   // Returns the sensitivity string for the current hotwords.
@@ -122,7 +128,13 @@ class SnowboyDetect {
   std::string GetHotwordName(const int32_t hotword_id) const;
 
   // If <apply_frontend> is true, then apply frontend audio processing;
-  // otherwise turns the audio processing off.
+  // otherwise turns the audio processing off. Frontend audio processing
+  // includes algorithms such as automatic gain control (AGC), noise suppression
+  // (NS) and so on. Generally adding frontend audio processing helps the
+  // performance, but if the model is not trained with frontend audio
+  // processing, it may decrease the performance. The general rule of thumb is:
+  //   1. For personal models, set it to false.
+  //   2. For universal models, follow the instruction of each published model
   void ApplyFrontend(const bool apply_frontend);
 
   // Returns the required sampling rate, number of channels and bits per sample
