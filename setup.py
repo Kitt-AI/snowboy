@@ -5,6 +5,14 @@ from distutils.command.build import build
 from distutils.dir_util import copy_tree
 from subprocess import call
 
+try:
+    from wheel.bdist_wheel import bdist_wheel as _bdist_wheel
+    class bdist_wheel(_bdist_wheel):
+        def finalize_options(self):
+            _bdist_wheel.finalize_options(self)
+            self.root_is_pure = False
+except ImportError:
+    bdist_wheel = None
 
 py_dir = 'Python' if sys.version_info[0] < 3 else 'Python3'
 
@@ -56,6 +64,7 @@ setup(
         'PyAudio',
     ],
     cmdclass={
+        'bdist_wheel': bdist_wheel,
         'build': SnowboyBuild
     }
 )
