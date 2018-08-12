@@ -16,7 +16,7 @@ def get_libsnowboy_folder():
     uname = os.uname()
     machine = uname.machine
     folder = ''
-    if machine == 'armhf':
+    if machine.startswith('arm'):
         folder = 'rpi'
     elif machine == 'x86_64':
         folder = 'ubuntu64'
@@ -28,7 +28,7 @@ def get_libsnowboy_folder():
 
 
 swig_opts=['-c++']
-cxx_flags = ['-D_GLIBCXX_USE_CXX11_ABI=0']
+cxx_flags = ['-O3', '-D_GLIBCXX_USE_CXX11_ABI=0']
 libraries = ['m', 'dl', 'snowboy-detect']
 link_args = []
 
