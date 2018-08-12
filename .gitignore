@@ -1,5 +1,6 @@
 /lib/libsnowboy-detect.a
 snowboy-detect-swig.cc
+snowboy-detect-swig_wrap.cpp
 snowboydetect.py
 Snowboy.pm
 .DS_Store
