@@ -1,17 +1,57 @@
 import os
 import sys
+import ctypes.util
 from setuptools import setup, find_packages, Extension
 from distutils.command.build import build
 
 
 py_dir = 'Python' if sys.version_info[0] < 3 else 'Python3'
 
+
+def get_libsnowboy_folder():
+    if sys.platform == 'darwin':
+        return 'lib/osx/libsnowboy-detect.a'
+    uname = os.uname()
+    machine = uname.machine
+    folder = ''
+    if machine == 'armhf':
+        folder = 'rpi'
+    elif machine == 'x86_64':
+        folder = 'ubuntu64'
+    elif machine == 'aarch64':
+        folder = 'aarch64-ubuntu1604'
+    else:
+        raise ValueError("Unsupported platform")
+    return os.path.join('lib', folder)
+
+
+swig_opts=['-c++']
+cxx_flags = ['-D_GLIBCXX_USE_CXX11_ABI=0']
+libraries = ['m', 'dl', 'snowboy-detect']
+link_args = []
+
+if sys.platform == 'darwin':
+    swig_opts.extend(['-bundle', '-flat_namespace', '-undefined', 'suppress'])
+    link_args = ['-framework Accelerate']
+else:
+    cxx_flags.append('-std=c++0x')
+    libraries.extend(['f77blas', 'cblas', 'atlas'])
+
+    if ctypes.util.find_library('lapack_atlas'):
+        libraries.append('lapack_atlas')
+    else:
+        libraries.append('lapack')
+
 ext_modules = [
     Extension(
         '_snowboydetect',
         ['swig/{}/snowboy-detect-swig.i'.format(py_dir)],
-        swig_opts=['-c++'],
+        swig_opts=swig_opts,
         include_dirs=['.'],
+        libraries=libraries,
+        extra_compile_args=cxx_flags,
+        extra_link_args=link_args,
+        library_dirs=[get_libsnowboy_folder()]
     )
 ]
 
