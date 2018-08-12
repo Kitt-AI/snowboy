@@ -12,9 +12,8 @@ SNOWBOY_PACKAGE_DIR = os.path.join(PACKAGES_SEARCH, 'snowboy')
 
 def get_libsnowboy_folder():
     if sys.platform == 'darwin':
-        return 'lib/osx/libsnowboy-detect.a'
-    uname = os.uname()
-    machine = uname.machine
+        return 'lib/osx'
+    machine = os.uname().machine
     folder = ''
     if machine.startswith('arm'):
         folder = 'rpi'
@@ -27,14 +26,12 @@ def get_libsnowboy_folder():
     return os.path.join('lib', folder)
 
 
-swig_opts=['-c++']
 cxx_flags = ['-O3', '-D_GLIBCXX_USE_CXX11_ABI=0']
 libraries = ['m', 'dl', 'snowboy-detect']
 link_args = []
 
 if sys.platform == 'darwin':
-    swig_opts.extend(['-bundle', '-flat_namespace', '-undefined', 'suppress'])
-    link_args = ['-framework Accelerate']
+    link_args = ['-framework', 'Accelerate', '-bundle', '-flat_namespace', '-undefined', 'suppress']
 else:
     cxx_flags.append('-std=c++0x')
     libraries.extend(['f77blas', 'cblas', 'atlas'])
@@ -48,7 +45,7 @@ ext_modules = [
     Extension(
         '_snowboydetect',
         ['swig/{}/snowboy-detect-swig.i'.format(PY_DIR)],
-        swig_opts=swig_opts,
+        swig_opts=['-c++'],
         include_dirs=['.'],
         libraries=libraries,
         extra_compile_args=cxx_flags,
