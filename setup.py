@@ -5,7 +5,9 @@ from setuptools import setup, find_packages, Extension
 from distutils.command.build import build
 
 
-py_dir = 'Python' if sys.version_info[0] < 3 else 'Python3'
+PY_DIR = 'Python' if sys.version_info[0] < 3 else 'Python3'
+PACKAGES_SEARCH = os.path.join('examples', PY_DIR)
+SNOWBOY_PACKAGE_DIR = os.path.join(PACKAGES_SEARCH, 'snowboy')
 
 
 def get_libsnowboy_folder():
@@ -21,7 +23,7 @@ def get_libsnowboy_folder():
     elif machine == 'aarch64':
         folder = 'aarch64-ubuntu1604'
     else:
-        raise ValueError("Unsupported platform")
+        raise OSError("Unsupported platform {}".format(machine))
     return os.path.join('lib', folder)
 
 
@@ -45,7 +47,7 @@ else:
 ext_modules = [
     Extension(
         '_snowboydetect',
-        ['swig/{}/snowboy-detect-swig.i'.format(py_dir)],
+        ['swig/{}/snowboy-detect-swig.i'.format(PY_DIR)],
         swig_opts=swig_opts,
         include_dirs=['.'],
         libraries=libraries,
@@ -64,10 +66,10 @@ setup(
     license='Apache-2.0',
     url='https://snowboy.kitt.ai',
     ext_modules=ext_modules,
-    packages=find_packages(os.path.join('examples', py_dir)),
-    package_dir={'snowboy': os.path.join('examples', py_dir, 'snowboy')},
+    packages=find_packages(PACKAGES_SEARCH),
+    package_dir={'snowboy': SNOWBOY_PACKAGE_DIR},
     py_modules=['snowboy.snowboydecoder', 'snowboy.snowboydetect'],
-    package_data={'snowboy': ['resources/*']},
+    package_data={'snowboy': ['resources/*', 'resources/models/*']},
     zip_safe=False,
     long_description="",
     classifiers=[],
