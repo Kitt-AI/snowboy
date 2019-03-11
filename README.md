@@ -167,8 +167,8 @@ Here is the list of the models, and the parameters that you have to use for them
 * **resources/models/snowboy.umdl**: Universal model for the hotword "Snowboy". Set SetSensitivity to 0.5 and ApplyFrontend to false.
 * **resources/models/jarvis.umdl**: Universal model for the hotword "Jarvis" (https://snowboy.kitt.ai/hotword/29). It has two different models for the hotword Jarvis, so you have to use two sensitivites. Set sensitivities to "0.8,0.80" and ApplyFrontend to true.
 * **resources/models/smart_mirror.umdl**: Universal model for the hotword "Smart Mirror" (https://snowboy.kitt.ai/hotword/47). Set sensitivity to Sensitivity to 0.5, and ApplyFrontend to false.
-* **resources/models/subex.umdl**: Universal model for the hotword "Subex". Set sensitivity to Sensitivity to 0.5, and ApplyFrontend to true.
-* **resources/models/neoya.umdl**: Universal model for the hotword "Neoya". It has two different models for the hotword Neoya, so you have to use two sensitivites. Set sensitivities to "0.7,0.7", and ApplyFrontend to true.
+* **resources/models/subex.umdl**: Universal model for the hotword "Subex" (https://snowboy.kitt.ai/hotword/22014). Set sensitivity to Sensitivity to 0.5, and ApplyFrontend to true.
+* **resources/models/neoya.umdl**: Universal model for the hotword "Neo ya" (https://snowboy.kitt.ai/hotword/22171). It has two different models for the hotword "Neo ya", so you have to use two sensitivites. Set sensitivities to "0.7,0.7", and ApplyFrontend to true.
 
 ## Precompiled node module
 
