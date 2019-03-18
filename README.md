@@ -166,9 +166,8 @@ Here is the list of the models, and the parameters that you have to use for them
 * **resources/alexa/alexa-avs-sample-app/alexa.umdl**: Universal model for the hotword "Alexa" optimized for [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app). Set SetSensitivity to 0.6, and set ApplyFrontend to true. This is so far the best "Alexa" model we released publicly, when ApplyFrontend is set to true.
 * **resources/models/snowboy.umdl**: Universal model for the hotword "Snowboy". Set SetSensitivity to 0.5 and ApplyFrontend to false.
 * **resources/models/jarvis.umdl**: Universal model for the hotword "Jarvis" (https://snowboy.kitt.ai/hotword/29). It has two different models for the hotword Jarvis, so you have to use two sensitivites. Set sensitivities to "0.8,0.80" and ApplyFrontend to true.
-* **resources/models/smart_mirror.umdl**: Universal model for the hotword "Smart Mirror" (https://snowboy.kitt.ai/hotword/47). Set Sensitivity to 0.5, and ApplyFrontend to false.
-* **resources/models/subex.umdl**: Universal model for the hotword "Subex". Set Sensitivity to 0.5, and ApplyFrontend to true.
-* **resources/models/view_glass.umdl**: Universal model for the hotword "View Glass" (https://snowboy.kitt.ai/hotword/7868). Set  Sensitivity to 0.7, and ApplyFrontend to true.
+* **resources/models/smart_mirror.umdl**: Universal model for the hotword "Smart Mirror" (https://snowboy.kitt.ai/hotword/47). Set sensitivity to Sensitivity to 0.5, and ApplyFrontend to false.
+* **resources/models/subex.umdl**: Universal model for the hotword "Subex". Set sensitivity to Sensitivity to 0.5, and ApplyFrontend to true.
 
 ## Precompiled node module
 
