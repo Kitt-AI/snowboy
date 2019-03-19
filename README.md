@@ -171,6 +171,7 @@ Here is the list of the models, and the parameters that you have to use for them
 * **resources/models/neoya.umdl**: Universal model for the hotword "Neo ya" (https://snowboy.kitt.ai/hotword/22171). It has two different models for the hotword "Neo ya", so you have to use two sensitivites. Set sensitivities to "0.7,0.7", and ApplyFrontend to true.
 * **resources/models/hey_extreme.umdl**: Universal model for the hotword "Hey Extreme" (https://snowboy.kitt.ai/hotword/15428). Set sensitivity to Sensitivity to 0.6, and ApplyFrontend to true.
 * **resources/models/computer.umdl**: Universal model for the hotword "Computer" (https://snowboy.kitt.ai/hotword/46). Set sensitivity to Sensitivity to 0.6, and ApplyFrontend to true.
+* **resources/models/view_glass.umdl**: Universal model for the hotword "View Glass" (https://snowboy.kitt.ai/hotword/7868). Set Sensitivity to 0.7, and ApplyFrontend to true.
 
 ## Precompiled node module
 
