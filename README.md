@@ -138,7 +138,7 @@ Currently we have built wrappers for:
 * iOS/Object-C (thanks to @patrickjquinn)
 
 If you want support on other hardware/OS, please send your request to
-[snowboy@kitt.ai](mailto:snowboy.kitt.ai)
+[snowboy@kitt.ai](mailto:snowboy@kitt.ai)
 
 Note: **Snowboy does not support Windows** yet. Please build Snowboy on *nix platforms.
 
