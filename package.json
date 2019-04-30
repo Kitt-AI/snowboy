@@ -28,7 +28,7 @@
   "gypfile": true,
   "license": "Apache-2.0",
   "dependencies": {
-    "node-pre-gyp": "^0.12.0"
+    "node-pre-gyp": "^0.13.0"
   },
   "devDependencies": {
     "@types/node": "^6.0.38",
