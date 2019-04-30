@@ -40,6 +40,7 @@ env:
     - NODE_VERSION="9"
     - NODE_VERSION="10"
     - NODE_VERSION="11"
+    - NODE_VERSION="12"
 
 before_install:
 # use the correct version of node
