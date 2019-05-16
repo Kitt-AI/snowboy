@@ -1,0 +1,71 @@
+diff -Naur avs-sensory/pi.sh avs-kitt/pi.sh
+--- pi.sh	2019-05-03 18:09:18.063849909 -0700
++++ pi.sh	2019-05-03 18:09:39.273744305 -0700
+@@ -20,18 +20,19 @@
+ 
+ SOUND_CONFIG="$HOME/.asoundrc"
+ START_SCRIPT="$INSTALL_BASE/startsample.sh"
+-CMAKE_PLATFORM_SPECIFIC=(-DSENSORY_KEY_WORD_DETECTOR=ON \
++CMAKE_PLATFORM_SPECIFIC=(-DKITTAI_KEY_WORD_DETECTOR=ON \
+     -DGSTREAMER_MEDIA_PLAYER=ON -DPORTAUDIO=ON \
+     -DPORTAUDIO_LIB_PATH="$THIRD_PARTY_PATH/portaudio/lib/.libs/libportaudio.$LIB_SUFFIX" \
+     -DPORTAUDIO_INCLUDE_DIR="$THIRD_PARTY_PATH/portaudio/include" \
+-    -DSENSORY_KEY_WORD_DETECTOR_LIB_PATH=$THIRD_PARTY_PATH/alexa-rpi/lib/libsnsr.a \
+-    -DSENSORY_KEY_WORD_DETECTOR_INCLUDE_DIR=$THIRD_PARTY_PATH/alexa-rpi/include)
++    -DKITTAI_KEY_WORD_DETECTOR_LIB_PATH=$THIRD_PARTY_PATH/snowboy/lib/rpi/libsnowboy-detect.a \
++    -DKITTAI_KEY_WORD_DETECTOR_INCLUDE_DIR=$THIRD_PARTY_PATH/snowboy/include \
++    -DCMAKE_BUILD_TYPE=MINSIZEREL)
+ 
+ GSTREAMER_AUDIO_SINK="alsasink"
+ 
+ install_dependencies() {
+   sudo apt-get update
+-  sudo apt-get -y install git gcc cmake build-essential libsqlite3-dev libcurl4-openssl-dev libssl1.0-dev libfaad-dev libsoup2.4-dev libgcrypt20-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-good libasound2-dev sox gedit vim python3-pip
++  sudo apt-get -y install git gcc cmake build-essential libsqlite3-dev libcurl4-openssl-dev libssl1.0-dev libfaad-dev libsoup2.4-dev libgcrypt20-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-good libasound2-dev sox gedit vim python3-pip libatlas-base-dev
+   pip install flask commentjson
+ }
+ 
+@@ -64,18 +65,18 @@
+ build_kwd_engine() {
+   #get sensory and build
+   echo
+-  echo "==============> CLONING AND BUILDING SENSORY =============="
++  echo "==============> CLONING AND BUILDING KITTAI =============="
+   echo
+ 
+   cd $THIRD_PARTY_PATH
+-  git clone git://github.com/Sensory/alexa-rpi.git
+-  bash ./alexa-rpi/bin/license.sh
++  git clone https://github.com/Kitt-AI/snowboy.git 
++  cp snowboy/resources/alexa/alexa-avs-sample-app/alexa.umdl snowboy/resources/alexa.umdl
+ }
+ 
+ generate_start_script() {
+   cat << EOF > "$START_SCRIPT"
+   cd "$BUILD_PATH/SampleApp/src"
+ 
+-  ./SampleApp "$OUTPUT_CONFIG_FILE" "$THIRD_PARTY_PATH/alexa-rpi/models" DEBUG9
++  ./SampleApp "$OUTPUT_CONFIG_FILE" "$THIRD_PARTY_PATH/snowboy/resources" DEBUG9
+ EOF
+ }
+diff -Naur avs-sensory/setup.sh avs-kitt/setup.sh
+--- setup.sh	2019-05-03 18:09:24.383818365 -0700
++++ setup.sh	2019-05-03 18:09:35.193764563 -0700
+@@ -50,6 +50,8 @@
+ LIB_SUFFIX="a"
+ ANDROID_CONFIG_FILE=""
+ 
++BUIDTYPE="MINSIZEREL"
++
+ # Default device serial number if nothing is specified
+ DEVICE_SERIAL_NUMBER="123456"
+ 
+@@ -242,7 +244,7 @@
+   cmake "$SOURCE_PATH/avs-device-sdk" \
+       -DCMAKE_BUILD_TYPE=DEBUG \
+       "${CMAKE_PLATFORM_SPECIFIC[@]}"
+-
++  sed -E -i "s:CXX_PLATFORM_DEPENDENT_FLAGS_"$BUILDTYPE"\s+\"(.*)\":CXX_PLATFORM_DEPENDENT_FLAGS_"$BUILDTYPE" \"\1 -D_GLIBCXX_USE_CXX11_ABI=0 -pg\":" ../avs-device-sdk/build/cmake/BuildOptions.cmake
+   cd $BUILD_PATH
+   make SampleApp -j1
+ 
