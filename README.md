@@ -45,7 +45,7 @@ sudo bash setup.sh config.json
 sudo bash startsample.sh
 ```
 
-Here is a [demo video]() for how to use Snowboy hotword engine in Alexa Voice Service.
+Here is a [demo video](https://www.youtube.com/watch?v=wiLEr6TeE58) for how to use Snowboy hotword engine in Alexa Voice Service.
 
 **Personal model**
 
@@ -72,7 +72,7 @@ sudo bash setup.sh config.json
 
 * Run the wake word agent with engine set to `kitt_ai`!
 
-Here is a [demo video]() for how to use a personal model in Alexa Voice Service.
+Here is a [demo video](https://www.youtube.com/watch?v=9Bj8kdfwG7I) for how to use a personal model in Alexa Voice Service.
 
 **Universal model**
 
