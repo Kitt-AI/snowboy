@@ -6,7 +6,6 @@ cache:
     - node_modules
 
 # Ubuntu 14.04 Trusty support
-sudo: required
 dist: trusty
 
 addons:
