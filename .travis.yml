@@ -69,6 +69,9 @@ install:
 - node lib/node/index.js
 
 before_script:
+- pyenv install --force 3.6.3  # detect Python 3 syntax errors...
+- $(pyenv root)/versions/3.6.3/bin/python -m pip install flake8
+- $(pyenv root)/versions/3.6.3/bin/python -m flake8 --include=E9 --show-source
 # if publishing, do it
 - if [[ $REPUBLISH_BINARY == true ]]; then node-pre-gyp package unpublish; fi;
 - if [[ $PUBLISH_BINARY == true ]]; then node-pre-gyp package publish; fi;
