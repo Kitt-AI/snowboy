@@ -20,14 +20,15 @@ diff -Naur avs-sensory/pi.sh avs-kitt/pi.sh
  
  install_dependencies() {
    sudo apt-get update
--  sudo apt-get -y install git gcc cmake build-essential libsqlite3-dev libcurl4-openssl-dev libssl1.0-dev libfaad-dev libsoup2.4-dev libgcrypt20-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-good libasound2-dev sox gedit vim python3-pip
-+  sudo apt-get -y install git gcc cmake build-essential libsqlite3-dev libcurl4-openssl-dev libssl1.0-dev libfaad-dev libsoup2.4-dev libgcrypt20-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-good libasound2-dev sox gedit vim python3-pip libatlas-base-dev
+-  sudo apt-get -y install git gcc cmake build-essential libsqlite3-dev libcurl4-openssl-dev libssl-dev libfaad-dev libsoup2.4-dev libgcrypt20-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-good libasound2-dev sox gedit vim python3-pip
++  sudo apt-get -y install git gcc cmake build-essential libsqlite3-dev libcurl4-openssl-dev libssl-dev libfaad-dev libsoup2.4-dev libgcrypt20-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-good libasound2-dev sox gedit vim python3-pip python-pip libatlas-base-dev
    pip install flask commentjson
  }
  
 @@ -64,18 +65,18 @@
  build_kwd_engine() {
-   #get sensory and build
+-  #get sensory and build
++  #get kittai and build
    echo
 -  echo "==============> CLONING AND BUILDING SENSORY =============="
 +  echo "==============> CLONING AND BUILDING KITTAI =============="
@@ -55,7 +56,7 @@ diff -Naur avs-sensory/setup.sh avs-kitt/setup.sh
  LIB_SUFFIX="a"
  ANDROID_CONFIG_FILE=""
  
-+BUIDTYPE="MINSIZEREL"
++BUILDTYPE="MINSIZEREL"
 +
  # Default device serial number if nothing is specified
  DEVICE_SERIAL_NUMBER="123456"

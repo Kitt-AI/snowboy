@@ -1,4 +1,4 @@
-# Snowboy Demo on Adroid
+# Snowboy Demo on Android
 
 Note:
 

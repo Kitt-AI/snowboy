@@ -162,6 +162,7 @@ Snowboy底层库由C++写成，通过swig被封装成能在多种操作系统和
 * **resources/models/neoya.umdl**: 唤醒词为“Neo ya”(https://snowboy.kitt.ai/hotword/22171) 的通用模型。其中包含了对应于“Neo ya”的两个>唤醒词模型，所以需要设置两个`sensitivity`。将`SetSensitivity`设置为`0.7,0.7`，`ApplyFrontend`设置为`true`。
 * **resources/models/hey_extreme.umdl**: 唤醒词为“Hey Extreme” (https://snowboy.kitt.ai/hotword/15428)的通用模型。将`SetSensitivity`设置为`0.6`，`ApplyFrontend`设置为`true`。
 * **resources/models/computer.umdl**: 唤醒词为“Computer” (https://snowboy.kitt.ai/hotword/46) 的通用模型。将`SetSensitivity`设置为`0.6`，`ApplyFrontend`设置为`true`。
+* **resources/models/view_glass.umdl**: 唤醒词为“View Glass” (https://snowboy.kitt.ai/hotword/7868) 的通用模型。将`SetSensitivity`设置为`0.7`，`ApplyFrontend`设置为`true`。
 
 ## 预编译node模块
 
