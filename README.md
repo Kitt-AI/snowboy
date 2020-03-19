@@ -1,3 +1,16 @@
+*Dear KITT.AI users,*
+
+*We are writing this update to let you know that we plan to shut down all KITT.AI products (Snowboy, NLU and Chatflow) by Dec. 31st, 2020.*
+
+*we launched our first product Snowboy in 2016, and then NLU and Chatflow later that year. Since then, we have served more than 85,000 developers, worldwide, accross all our products. It has been 4 extraordinary years in our life, and we appreciate the opportunity to be able to serve the community.*
+
+*The field of artificial intelligence is moving rapidly. As much as we like our products, we still see that they are getting outdated and are becoming difficult to maintain. All official websites/APIs for our products will be taken down by Dec. 31st, 2020. Our github repositories will remain open, but only community support will be available from this point beyond.*
+
+*Thank you all, and goodbye!*
+
+*The KITT.AI Team  
+Mar. 18th, 2020*
+
 # Snowboy Hotword Detection
 
 by [KITT.AI](http://kitt.ai).
