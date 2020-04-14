@@ -10,6 +10,8 @@ import logging
 from ctypes import *
 from contextlib import contextmanager
 
+import io #look
+
 logging.basicConfig()
 logger = logging.getLogger("snowboy")
 logger.setLevel(logging.INFO)
@@ -84,6 +86,9 @@ class HotwordDetector(object):
 
     :param decoder_model: decoder model file path, a string or a list of strings
     :param resource: resource file path.
+    :param device_index: pyaudio index of recording device
+                              must be None or an integer
+                              integer must be in the range of available recording devices
     :param sensitivity: decoder sensitivity, a float of a list of floats.
                               The bigger the value, the more senstive the
                               decoder. If an empty list is provided, then the
@@ -94,10 +99,23 @@ class HotwordDetector(object):
 
     def __init__(self, decoder_model,
                  resource=RESOURCE_FILE,
+                 device_index=None,
                  sensitivity=[],
                  audio_gain=1,
                  apply_frontend=False):
-
+        
+        assert device_index is None or isinstance(device_index, int), "Device index must be None or an integer"
+        with no_alsa_error():
+            self.audio = pyaudio.PyAudio()
+        try:
+            device_count = self.audio.get_device_count()  # obtain device count
+            if device_index is not None:  # ensure device index is in range
+                assert 0 <= device_index < device_count, "Device index out of range ({} devices available; device index should be between 0 and {} inclusive)".format(device_count, device_count - 1)
+        except Exception:
+            self.audio.terminate()
+            raise
+        self.device_index = device_index
+        
         tm = type(decoder_model)
         ts = type(sensitivity)
         if tm is not list:
@@ -164,9 +182,8 @@ class HotwordDetector(object):
             play_data = chr(0) * len(in_data)
             return play_data, pyaudio.paContinue
 
-        with no_alsa_error():
-            self.audio = pyaudio.PyAudio()
         self.stream_in = self.audio.open(
+            input_device_index=self.device_index,
             input=True, output=False,
             format=self.audio.get_format_from_width(
                 self.detector.BitsPerSample() / 8),
@@ -237,8 +254,8 @@ class HotwordDetector(object):
                     silentCount = 0
 
                 if stopRecording == True:
-                    fname = self.saveMessage()
-                    audio_recorder_callback(fname)
+                    wav_data = self.saveMessage()
+                    audio_recorder_callback(wav_data)
                     state = "PASSIVE"
                     continue
 
@@ -275,3 +292,4 @@ class HotwordDetector(object):
         self.stream_in.close()
         self.audio.terminate()
         self._running = False
+
