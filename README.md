@@ -222,10 +222,10 @@ dependencies like `fs`, `wav` or `node-record-lpcm16` depending on which script
 you use.
 
 ## Precompiled Binaries with Python Demo
-* 64 bit Ubuntu [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.3.0.tar.bz2)
-* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.3.0.tar.bz2)
+* 64 bit Ubuntu [14.04](https://s3-us-west-2.amazonaws.com/snowboy2/snowboy-releases/ubuntu1404-x86_64-1.3.0.tar.bz2)
+* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy2/snowboy-releases/osx-x86_64-1.3.0.tar.bz2)
 * Raspberry Pi with Raspbian 8.0, all versions
-  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.3.0.tar.bz2))
+  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy2/snowboy-releases/rpi-arm-raspbian-8.0-1.3.0.tar.bz2))
   
 If you want to compile a version against your own environment/language, read on.
 
@@ -380,14 +380,14 @@ You may want to play with the frequency of the calls to `RunDetection()`, which 
 
 Thanks to @patrickjquinn and @grimlockrocks, we now have examples of using Snowboy in both Objective-C and Swift3. Check out the examples at `examples/iOS/`, and the screenshots below!
 
-<img src=https://s3-us-west-2.amazonaws.com/kittai-cdn/Snowboy/Obj-C_Demo_02172017.png alt="Obj-C Example" width=300 /> <img src=https://s3-us-west-2.amazonaws.com/kittai-cdn/Snowboy/Swift3_Demo_02172017.png alt="Swift3 Example" width=300 />
+<img src=https://s3-us-west-2.amazonaws.com/seasalt-cdn/Snowboy/Obj-C_Demo_02172017.png alt="Obj-C Example" width=300 /> <img src=https://s3-us-west-2.amazonaws.com/seasalt-cdn/Snowboy/Swift3_Demo_02172017.png alt="Swift3 Example" width=300 />
 
 
 ## Compile an Android Wrapper
 
 Full README and tutorial is in [Android README](examples/Android/README.md) and here's a screenshot:
 
-<img src="https://s3-us-west-2.amazonaws.com/kittai-cdn/Snowboy/SnowboyAlexaDemo-Andriod.jpeg" alt="Android Alexa Demo" width=300 />
+<img src="https://s3-us-west-2.amazonaws.com/seasalt-cdn/Snowboy/SnowboyAlexaDemo-Andriod.jpeg" alt="Android Alexa Demo" width=300 />
 
 We have prepared an Android app which can be installed and run out of box: [SnowboyAlexaDemo.apk](https://github.com/Kitt-AI/snowboy/raw/master/resources/alexa/SnowboyAlexaDemo.apk) (please uninstall any previous one first if you installed this app before).
 

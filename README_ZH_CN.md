@@ -173,13 +173,13 @@ Snowboy为一下平台编译了node模块：64位Ubuntu，MacOS X和Raspberry Pi
 有关示例用法，请参阅examples/Node文件夹。根据您使用的脚本，可能需要安装依赖关系库例如fs，wav或node-record-lpcm16。
 
 ## 预编译Python Demo的二进制文件
-* 64 bit Ubuntu [12.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1204-x86_64-1.2.0.tar.bz2)
-  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.3.0.tar.bz2)
-* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.3.0.tar.bz2)
+* 64 bit Ubuntu [12.04](https://s3-us-west-2.amazonaws.com/snowboy2/snowboy-releases/ubuntu1204-x86_64-1.2.0.tar.bz2)
+  / [14.04](https://s3-us-west-2.amazonaws.com/snowboy2/snowboy-releases/ubuntu1404-x86_64-1.3.0.tar.bz2)
+* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy2/snowboy-releases/osx-x86_64-1.3.0.tar.bz2)
 * Raspberry Pi with Raspbian 8.0, all versions
-  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.3.0.tar.bz2))
-* Pine64 (Debian Jessie 8.5 (3.10.102)), Nvidia Jetson TX1 and Nvidia Jetson TX2 ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/pine64-debian-jessie-1.2.0.tar.bz2))
-* Intel Edison (Ubilinux based on Debian Wheezy 7.8) ([download](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/edison-ubilinux-1.2.0.tar.bz2))
+  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy2/snowboy-releases/rpi-arm-raspbian-8.0-1.3.0.tar.bz2))
+* Pine64 (Debian Jessie 8.5 (3.10.102)), Nvidia Jetson TX1 and Nvidia Jetson TX2 ([download](https://s3-us-west-2.amazonaws.com/snowboy2/snowboy-releases/pine64-debian-jessie-1.2.0.tar.bz2))
+* Intel Edison (Ubilinux based on Debian Wheezy 7.8) ([download](https://s3-us-west-2.amazonaws.com/snowboy2/snowboy-releases/edison-ubilinux-1.2.0.tar.bz2))
 
 如果您要根据自己的环境/语言编译版本，请继续阅读。
 
@@ -319,13 +319,13 @@ Perl示例包括使用KITT.AI RESTful API训练个人唤醒词，在检测到唤
 
 感谢@patrickjquinn和@grimlockrocks，我们现在有了在Objective-C和Swift3中使用Snowboy的例子。看看下面的例子`examples/iOS/`和下面的截图！
 
-<img src=https://s3-us-west-2.amazonaws.com/kittai-cdn/Snowboy/Obj-C_Demo_02172017.png alt="Obj-C Example" width=300 /> <img src=https://s3-us-west-2.amazonaws.com/kittai-cdn/Snowboy/Swift3_Demo_02172017.png alt="Swift3 Example" width=300 />
+<img src=https://s3-us-west-2.amazonaws.com/seasalt-cdn/Snowboy/Obj-C_Demo_02172017.png alt="Obj-C Example" width=300 /> <img src=https://s3-us-west-2.amazonaws.com/seasalt-cdn/Snowboy/Swift3_Demo_02172017.png alt="Swift3 Example" width=300 />
 
 # 编译Android Wrapper
 
 完整的README和教程在[Android README](examples/Android/README.md)，这里是一个截图：
 
-<img src="https://s3-us-west-2.amazonaws.com/kittai-cdn/Snowboy/SnowboyAlexaDemo-Andriod.jpeg" alt="Android Alexa Demo" width=300 />
+<img src="https://s3-us-west-2.amazonaws.com/seasalt-cdn/Snowboy/SnowboyAlexaDemo-Andriod.jpeg" alt="Android Alexa Demo" width=300 />
 
 我们准备了一个可以安装并运行的Android应用程序：[SnowboyAlexaDemo.apk](https://github.com/Kitt-AI/snowboy/raw/master/resources/alexa/SnowboyAlexaDemo.apk)（如果您之前安装了此应用程序，请先卸载它们)。
 

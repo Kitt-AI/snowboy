@@ -43,7 +43,7 @@ Note:
 
 Screenshot (say "Alexa" after clicking "Start"):
 
-<img src="https://s3-us-west-2.amazonaws.com/kittai-cdn/Snowboy/SnowboyAlexaDemo-Andriod.jpeg" alt="Android Alexa Demo" width=300 />
+<img src="https://s3-us-west-2.amazonaws.com/seasalt-cdn/Snowboy/SnowboyAlexaDemo-Andriod.jpeg" alt="Android Alexa Demo" width=300 />
 
 
 Don't forget to disable the "debug" option when releasing your Android App!
