@@ -2,7 +2,7 @@
 
 import collections
 import pyaudio
-from . import snowboydetect
+import snowboydetect
 import time
 import wave
 import os
@@ -215,6 +215,9 @@ class HotwordDetector(object):
                     message = "Keyword " + str(status) + " detected at time: "
                     message += time.strftime("%Y-%m-%d %H:%M:%S",
                                          time.localtime(time.time()))
+                    message += "\n\tstart frame: %s, end frame: %s" % \
+                               (str(self.detector.KwdSampleStart().__int__()),
+                                str(self.detector.KwdSampleEnd().__int__()))
                     logger.info(message)
                     callback = detected_callback[status-1]
                     if callback is not None:

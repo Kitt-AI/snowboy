@@ -88,6 +88,7 @@ class SnowboyDetect {
                    const int array_length, bool is_end = false);
   int RunDetection(const int32_t* const data,
                    const int array_length, bool is_end = false);
+  int ResetSamplePointer();
 
   // Sets the sensitivity string for the loaded hotwords. A <sensitivity_str> is
   // a list of floating numbers between 0 and 1, and separated by comma. For
@@ -123,6 +124,9 @@ class SnowboyDetect {
   // index of the hotwords.
   int NumHotwords() const;
 
+  // Returns the hotword name of the model_id and hotword_id specified
+  std::string GetHotwordName(const int32_t hotword_id) const;
+
   // If <apply_frontend> is true, then apply frontend audio processing;
   // otherwise turns the audio processing off. Frontend audio processing
   // includes algorithms such as automatic gain control (AGC), noise suppression
@@ -139,6 +143,9 @@ class SnowboyDetect {
   int SampleRate() const;
   int NumChannels() const;
   int BitsPerSample() const;
+
+  int64_t KwdSampleStart() const;
+  int64_t KwdSampleEnd() const;
 
   ~SnowboyDetect();
 

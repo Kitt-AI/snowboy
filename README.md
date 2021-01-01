@@ -23,7 +23,7 @@ by [KITT.AI](http://kitt.ai).
 
 [Commercial application FAQ](README_commercial.md)
 
-Version: 1.3.0 (2/19/2018)
+Version: 1.4.0 (7/2/2018)
 
 ## Alexa support
 
@@ -222,10 +222,10 @@ dependencies like `fs`, `wav` or `node-record-lpcm16` depending on which script
 you use.
 
 ## Precompiled Binaries with Python Demo
-* 64 bit Ubuntu [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.3.0.tar.bz2)
-* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.3.0.tar.bz2)
+* 64 bit Ubuntu [14.04](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/ubuntu1404-x86_64-1.4.0.tar.bz2)
+* [MacOS X](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/osx-x86_64-1.4.0.tar.bz2)
 * Raspberry Pi with Raspbian 8.0, all versions
-  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.3.0.tar.bz2))
+  ([1/2/3/Zero](https://s3-us-west-2.amazonaws.com/snowboy/snowboy-releases/rpi-arm-raspbian-8.0-1.4.0.tar.bz2))
   
 If you want to compile a version against your own environment/language, read on.
 
@@ -426,6 +426,11 @@ You are probably using an old version of SWIG. Please upgrade. We have tested wi
 See [Full Documentation](http://docs.kitt.ai/snowboy).
 
 ## Change Log
+
+**v1.4.0, 7/2/2018**
+
+* Added API for start and end frame ID
+* Added `resources/models/neo_ya.umdl` for https://snowboy.kitt.ai/hotword/22171
 
 **v1.3.0, 2/19/2018**
 
