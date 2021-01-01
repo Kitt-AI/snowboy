@@ -1,1 +1,0 @@
-../../swig/Perl/Snowboy.pm
