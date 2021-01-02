@@ -34,7 +34,16 @@
     _snowboyDetect->ApplyFrontend(false);
 }
 
+- (void) configureAudioSession
+{
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:NO error:NULL];
+    [session setCategory:AVAudioSessionCategoryRecord error:NULL];
+    [session setPreferredSampleRate:16000 error:NULL];
+    [session setActive:YES error:NULL];
+}
 - (void) initMic {
+    [self configureAudioSession];
     AudioStreamBasicDescription audioStreamBasicDescription = [EZAudioUtilities monoFloatFormatWithSampleRate:16000];
     audioStreamBasicDescription.mFormatID = kAudioFormatLinearPCM;
     audioStreamBasicDescription.mSampleRate = 16000;
@@ -49,6 +58,7 @@
     NSArray *inputs = [EZAudioDevice inputDevices];
     [self.microphone setDevice:[inputs lastObject]];
     self.microphone = [EZMicrophone microphoneWithDelegate:self withAudioStreamBasicDescription:audioStreamBasicDescription];
+    
     [self.microphone startFetchingAudio];
 }
 
