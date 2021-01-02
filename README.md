@@ -321,7 +321,7 @@ Feel free to adapt the `Makefile` in `swig/Python` to your own system's setting 
 	cd examples/Go
 	go get github.com/Kitt-AI/snowboy/swig/Go
 	go build -o snowboy main.go
-	./snowboy ../../resources/snowboy.umdl ../../resources/snowboy.wav
+	./snowboy ../../resources/models/snowboy.umdl ../../resources/snowboy.wav
 	
 Expected Output:
 
@@ -401,7 +401,7 @@ Go to the `examples/Python` folder and open your python console:
        ....:     print "hotword detected"
        ....:
     
-    In [3]: detector = snowboydecoder.HotwordDetector("resources/snowboy.umdl", sensitivity=0.5, audio_gain=1)
+    In [3]: detector = snowboydecoder.HotwordDetector("resources/models/snowboy.umdl", sensitivity=0.5, audio_gain=1)
     
     In [4]: detector.start(detected_callback)
     
