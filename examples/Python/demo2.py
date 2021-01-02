@@ -1,6 +1,7 @@
-import snowboydecoder
 import sys
 import signal
+
+from snowboy import snowboydecoder
 
 # Demo code for listening to two hotwords at the same time
 

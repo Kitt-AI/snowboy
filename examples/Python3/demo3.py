@@ -1,6 +1,7 @@
-import snowboydecoder
 import sys
 import wave
+
+from snowboy import snowboydecoder
 
 # Demo code for detecting hotword in a .wav file
 # Example Usage:

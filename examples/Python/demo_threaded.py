@@ -1,7 +1,8 @@
-import snowboythreaded
 import sys
 import signal
 import time
+
+from snowboy import snowboythreaded
 
 stop_program = False
 

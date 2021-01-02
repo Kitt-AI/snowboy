@@ -1,41 +1,58 @@
 import os
 import sys
-from setuptools import setup, find_packages
+import ctypes.util
+from setuptools import setup, find_packages, Extension
 from distutils.command.build import build
-from distutils.dir_util import copy_tree
-from subprocess import call
 
 
-py_dir = 'Python' if sys.version_info[0] < 3 else 'Python3'
+PY_DIR = 'Python' if sys.version_info[0] < 3 else 'Python3'
+PACKAGES_SEARCH = os.path.join('examples', PY_DIR)
+SNOWBOY_PACKAGE_DIR = os.path.join(PACKAGES_SEARCH, 'snowboy')
 
-class SnowboyBuild(build):
 
-    def run(self):
+def get_libsnowboy_folder():
+    if sys.platform == 'darwin':
+        return 'lib/osx'
+    machine = os.uname().machine
+    folder = ''
+    if machine.startswith('arm'):
+        folder = 'rpi'
+    elif machine == 'x86_64':
+        folder = 'ubuntu64'
+    elif machine == 'aarch64':
+        folder = 'aarch64-ubuntu1604'
+    else:
+        raise OSError("Unsupported platform {}".format(machine))
+    return os.path.join('lib', folder)
 
-        cmd = ['make']
-        swig_dir = os.path.join('swig', py_dir)
-        def compile():
-            call(cmd, cwd=swig_dir)
 
-        self.execute(compile, [], 'Compiling snowboy...')
+cxx_flags = ['-O3', '-D_GLIBCXX_USE_CXX11_ABI=0']
+libraries = ['m', 'dl', 'snowboy-detect']
+link_args = []
 
-        # copy generated .so to build folder
-        self.mkpath(self.build_lib)
-        snowboy_build_lib = os.path.join(self.build_lib, 'snowboy')
-        self.mkpath(snowboy_build_lib)
-        target_file = os.path.join(swig_dir, '_snowboydetect.so')
-        if not self.dry_run:
-            self.copy_file(target_file,
-                           snowboy_build_lib)
+if sys.platform == 'darwin':
+    link_args = ['-framework', 'Accelerate', '-bundle', '-flat_namespace', '-undefined', 'suppress']
+else:
+    cxx_flags.append('-std=c++0x')
+    libraries.extend(['f77blas', 'cblas', 'atlas'])
 
-            # copy resources too since it is a symlink
-            resources_dir = 'resources'
-            resources_dir_on_build = os.path.join(snowboy_build_lib,
-                                                  'resources')
-            copy_tree(resources_dir, resources_dir_on_build)
+    if ctypes.util.find_library('lapack_atlas'):
+        libraries.append('lapack_atlas')
+    else:
+        libraries.append('lapack')
 
-        build.run(self)
-
+ext_modules = [
+    Extension(
+        '_snowboydetect',
+        ['swig/{}/snowboy-detect-swig.i'.format(PY_DIR)],
+        swig_opts=['-c++'],
+        include_dirs=['.'],
+        libraries=libraries,
+        extra_compile_args=cxx_flags,
+        extra_link_args=link_args,
+        library_dirs=[get_libsnowboy_folder()]
+    )
+]
 
 setup(
     name='snowboy',
@@ -45,17 +62,15 @@ setup(
     maintainer_email='snowboy@kitt.ai',
     license='Apache-2.0',
     url='https://snowboy.kitt.ai',
-    packages=find_packages(os.path.join('examples', py_dir)),
-    package_dir={'snowboy': os.path.join('examples', py_dir)},
+    ext_modules=ext_modules,
+    packages=find_packages(PACKAGES_SEARCH),
+    package_dir={'snowboy': SNOWBOY_PACKAGE_DIR},
     py_modules=['snowboy.snowboydecoder', 'snowboy.snowboydetect'],
-    package_data={'snowboy': ['resources/*']},
+    package_data={'snowboy': ['resources/*', 'resources/models/*']},
     zip_safe=False,
     long_description="",
     classifiers=[],
     install_requires=[
         'PyAudio',
     ],
-    cmdclass={
-        'build': SnowboyBuild
-    }
 )

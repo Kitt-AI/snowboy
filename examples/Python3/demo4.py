@@ -1,8 +1,9 @@
-import snowboydecoder
 import sys
 import signal
-import speech_recognition as sr
 import os
+
+import speech_recognition as sr
+from snowboy import snowboydecoder
 
 """
 This demo file shows you how to use the new_message_callback to interact with
