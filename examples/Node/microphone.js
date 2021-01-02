@@ -1,4 +1,4 @@
-const record = require('node-record-lpcm16');
+const recorder = require('node-record-lpcm16');
 const Detector = require('../../').Detector;
 const Models = require('../../').Models;
 
@@ -40,9 +40,10 @@ detector.on('hotword', function (index, hotword, buffer) {
   console.log('hotword', index, hotword);
 });
 
-const mic = record.start({
+recorder.record({
   threshold: 0,
   verbose: true
-});
+})
+.stream()
+.pipe(detector)
 
-mic.pipe(detector);
