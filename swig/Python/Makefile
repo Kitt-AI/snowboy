@@ -35,14 +35,14 @@ else
   CXX := g++
   PYINC := $(shell python-config --cflags)
   PYLIBS := $(shell python-config --ldflags)
-  SWIGFLAGS := -shared
+  SWIGFLAGS := -Wl,-O1,--as-needed -shared
   CXXFLAGS += -std=c++0x
   # Make sure you have Atlas installed. You can statically link Atlas if you
   # would like to be able to move the library to a machine without Atlas.
   ifneq ("$(ldconfig -p | grep lapack_atlas)","")
     LDLIBS := -lm -ldl -lf77blas -lcblas -llapack_atlas -latlas
   else
-    LDLIBS := -lm -ldl -lf77blas -lcblas -llapack -latlas
+    LDLIBS := -lm -lcblas
   endif
   SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/ubuntu64/libsnowboy-detect.a
   ifneq (,$(findstring arm,$(shell uname -m)))

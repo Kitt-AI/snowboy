@@ -1,4 +1,6 @@
-import snowboydecoder
+#!/usr/bin/env python2
+from snowboy import snowboydecoder
+from __future__ import print_function
 import sys
 import signal
 import speech_recognition as sr
@@ -18,7 +20,7 @@ interrupted = False
 
 
 def audioRecorderCallback(fname):
-    print "converting audio to text"
+    print("converting audio to text")
     r = sr.Recognizer()
     with sr.AudioFile(fname) as source:
         audio = r.record(source)  # read the entire audio file
@@ -29,9 +31,9 @@ def audioRecorderCallback(fname):
         # instead of `r.recognize_google(audio)`
         print(r.recognize_google(audio))
     except sr.UnknownValueError:
-        print "Google Speech Recognition could not understand audio"
+        print("Google Speech Recognition could not understand audio")
     except sr.RequestError as e:
-        print "Could not request results from Google Speech Recognition service; {0}".format(e)
+        print("Could not request results from Google Speech Recognition service; {0}".format(e))
 
     os.remove(fname)
 
@@ -51,8 +53,8 @@ def interrupt_callback():
     return interrupted
 
 if len(sys.argv) == 1:
-    print "Error: need to specify model name"
-    print "Usage: python demo.py your.model"
+    print("Error: need to specify model name")
+    print("Usage: python demo.py your.model")
     sys.exit(-1)
 
 model = sys.argv[1]
@@ -61,7 +63,7 @@ model = sys.argv[1]
 signal.signal(signal.SIGINT, signal_handler)
 
 detector = snowboydecoder.HotwordDetector(model, sensitivity=0.38)
-print "Listening... Press Ctrl+C to exit"
+print("Listening... Press Ctrl+C to exit")
 
 # main loop
 detector.start(detected_callback=detectedCallback,
@@ -70,7 +72,3 @@ detector.start(detected_callback=detectedCallback,
                sleep_time=0.01)
 
 detector.terminate()
-
-
-
-

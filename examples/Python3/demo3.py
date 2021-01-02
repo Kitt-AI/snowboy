@@ -1,4 +1,6 @@
-import snowboydecoder
+#!/usr/bin/env python3
+from __future__ import print_function
+from snowboy import snowboydecoder
 import sys
 import wave
 
@@ -12,29 +14,31 @@ import wave
 # Should print:
 #  Hotword Not Detected!
 
+def main():
+    if len(sys.argv) != 3:
+        print("Error: need to specify wave file name and model name")
+        print("Usage: python demo3.py wave_file model_file")
+        sys.exit(-1)
 
-if len(sys.argv) != 3:
-    print("Error: need to specify wave file name and model name")
-    print("Usage: python demo3.py wave_file model_file")
-    sys.exit(-1)
+    wave_file = sys.argv[1]
+    model_file = sys.argv[2]
 
-wave_file = sys.argv[1]
-model_file = sys.argv[2]
+    f = wave.open(wave_file)
+    assert f.getnchannels() == 1, "Error: Snowboy only supports 1 channel of audio (mono, not stereo)"
+    assert f.getframerate() == 16000, "Error: Snowboy only supports 16K sampling rate"
+    assert f.getsampwidth() == 2, "Error: Snowboy only supports 16bit per sample"
+    data = f.readframes(f.getnframes())
+    f.close()
 
-f = wave.open(wave_file)
-assert f.getnchannels() == 1, "Error: Snowboy only supports 1 channel of audio (mono, not stereo)"
-assert f.getframerate() == 16000, "Error: Snowboy only supports 16K sampling rate"
-assert f.getsampwidth() == 2, "Error: Snowboy only supports 16bit per sample"
-data = f.readframes(f.getnframes())
-f.close()
+    sensitivity = 0.5
+    detection = snowboydecoder.HotwordDetector(model_file, sensitivity=sensitivity)
 
-sensitivity = 0.5
-detection = snowboydecoder.HotwordDetector(model_file, sensitivity=sensitivity)
+    ans = detection.detector.RunDetection(data)
 
-ans = detection.detector.RunDetection(data)
+    if ans == 1:
+        print('Hotword Detected!')
+    else:
+        print('Hotword Not Detected!')
 
-if ans == 1:
-    print('Hotword Detected!')
-else:
-    print('Hotword Not Detected!')
-
+if __name__ == "__main__":
+    main()

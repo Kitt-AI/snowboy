@@ -1,4 +1,5 @@
-import snowboydecoder
+#!/usr/bin/env python2
+from snowboy import snowboydecoder
 import sys
 import signal
 
