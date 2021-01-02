@@ -19,6 +19,8 @@ Note:
 	
 		 make BIT=64
 
+	For different Android phones, for example Android 4.4.4 and Android 8.0, if you don't know whether you should add BIT=64 parameter, then do make first, and then make BIT=64. 
+	
 	Ths will generate a cross-compiled library for ARM:
 	
 		jniLibs/
@@ -70,6 +72,11 @@ To run hotword detection in Java:
     int result = snowboyDetector.RunDetection(buffer, buffer.length);   // buffer is a short array.
 
 You may want to play with the frequency of the calls to `RunDetection()`, which controls the CPU usage and the detection latency.
+
+To use jarvis.umdl in Android demo:
+
+    public static final String ACTIVE_UMDL = "jarvis.umdl";   // Modify this line in Constants.java
+    detector.SetSensitivity("0.6, 0.6");    // Modify this line in RecordingThread.java
 
 
 ## Common Asks
