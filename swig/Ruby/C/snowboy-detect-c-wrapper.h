@@ -1,0 +1,1 @@
+../../../examples/C/snowboy-detect-c-wrapper.h
