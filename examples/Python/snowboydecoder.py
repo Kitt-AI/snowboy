@@ -144,7 +144,8 @@ class HotwordDetector(object):
               sleep_time=0.03,
               audio_recorder_callback=None,
               silent_count_threshold=15,
-              recording_timeout=100):
+              recording_timeout=100,
+              verbose=True):
         """
         Start the voice detector. For every `sleep_time` second it checks the
         audio buffer for triggering keywords. If detected, then call
@@ -208,10 +209,11 @@ class HotwordDetector(object):
                     self.recordedData.append(data)
                     silentCount = 0
                     recordingCount = 0
-                    message = "Keyword " + str(status) + " detected at time: "
-                    message += time.strftime("%Y-%m-%d %H:%M:%S",
-                                         time.localtime(time.time()))
-                    logger.info(message)
+                    if verbose:
+                        message = "Keyword " + str(status) + " detected at time: "
+                        message += time.strftime("%Y-%m-%d %H:%M:%S",
+                                             time.localtime(time.time()))
+                        logger.info(message)
                     callback = detected_callback[status-1]
                     if callback is not None:
                         callback()
