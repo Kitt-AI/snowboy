@@ -265,6 +265,8 @@ First `apt-get` install `sox`, `portaudio` and its Python binding `pyaudio`:
 Compile a supported swig version (3.0.10 or above)
 
     wget http://downloads.sourceforge.net/swig/swig-3.0.10.tar.gz
+    tar -zxvf swig-3.0.10.tar.gz
+    cd swig-3.0.10
     sudo apt-get install libpcre3 libpcre3-dev
     ./configure --prefix=/usr                  \
             --without-clisp                    \
