@@ -1,3 +1,16 @@
+*Dear KITT.AI users,*
+
+*We are writing this update to let you know that we plan to shut down all KITT.AI products (Snowboy, NLU and Chatflow) by Dec. 31st, 2020.*
+
+*we launched our first product Snowboy in 2016, and then NLU and Chatflow later that year. Since then, we have served more than 85,000 developers, worldwide, accross all our products. It has been 4 extraordinary years in our life, and we appreciate the opportunity to be able to serve the community.*
+
+*The field of artificial intelligence is moving rapidly. As much as we like our products, we still see that they are getting outdated and are becoming difficult to maintain. All official websites/APIs for our products will be taken down by Dec. 31st, 2020. Our github repositories will remain open, but only community support will be available from this point beyond.*
+
+*Thank you all, and goodbye!*
+
+*The KITT.AI Team  
+Mar. 18th, 2020*
+
 # Snowboy Hotword Detection
 
 by [KITT.AI](http://kitt.ai).
@@ -14,60 +27,83 @@ Version: 1.3.0 (2/19/2018)
 
 ## Alexa support
 
-Snowboy now brings hands-free experience to the [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) on Raspberry Pi! See more info below regarding the performance and how you can use other hotword models.
+Snowboy now brings hands-free experience to the [Alexa AVS sample app](https://github.com/alexa/avs-device-sdk/wiki/Raspberry-Pi-Quick-Start-Guide-with-Script) on Raspberry Pi! See more info below regarding the performance and how you can use other hotword models. The following instructions currently support AVS sdk Version 1.12.1.
 
 **Performance**
 
 The performance of hotword detection usually depends on the actual environment, e.g., is it used with a quality microphone, is it used on the street, in a kitchen, or is there any background noise, etc. So we feel it is best for the users to evaluate it in their real environment. For the evaluation purpose, we have prepared an Android app which can be installed and run out of box: [SnowboyAlexaDemo.apk](https://github.com/Kitt-AI/snowboy/raw/master/resources/alexa/SnowboyAlexaDemo.apk) (please uninstall any previous versions first if you have installed this app before). 
 
+**Kittai KWD Engine**
+
+* Set up [Alexa AVS sample app](https://github.com/alexa/avs-device-sdk/wiki/Raspberry-Pi-Quick-Start-Guide-with-Script) following the official AVS instructions
+
+* Apply patch to replace the Sensory KWD engine with Kittai engine
+```
+# Copy the patch file to the root directory of Alexa AVS sample app. Please replace $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
+# cloned the Alexa AVS sample app repository, and replace $SNOWBOY_ROOT_PATH with the actual path where you clone the Snowboy repository
+cd $ALEXA_AVS_SAMPLE_APP_PATH
+cp $SNOWBOY_PATH/resource/alexa/alexa-avs-sample-app/avs-kittai.patch ./
+
+# Apply the patch, this will modify the scripts setup.sh and pi.sh
+patch < avs-kittai.patch
+```
+
+* Re-compile the avs-device-sdk and sample app
+```
+sudo bash setup.sh config.json
+```
+
+* Run the sample app
+```
+sudo bash startsample.sh
+```
+
+Here is a [demo video](https://www.youtube.com/watch?v=wiLEr6TeE58) for how to use Snowboy hotword engine in Alexa Voice Service.
+
 **Personal model**
 
 * Create your personal hotword model through our [website](https://snowboy.kitt.ai) or [hotword API](https://snowboy.kitt.ai/api/v1/train/)
 
-* Replace the hotword model in [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) (after installation) with your personal model
+
+* Put your personal model in [snowboy/resources](https://github.com/Kitt-AI/snowboy/tree/master/resources)
+```
+# Please put YOUR_PERSONAL_MODEL.pmdl in $ALEXA_AVS_SAMPLE_APP_PATH/third-party/snowboy/resources,
+# and $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you put the Alexa AVS sample app repository.
+
+cp YOUR_PERSONAL_MODEL.pmdl $ALEXA_AVS_SAMPLE_APP_PATH/third-party/snowboy/resources/
 
 ```
-# Please replace YOUR_PERSONAL_MODEL.pmdl with the personal model you just
-# created, and $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
-# cloned the Alexa AVS sample app repository.
-cp YOUR_PERSONAL_MODEL.pmdl $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/ext/resources/alexa.umdl
+
+* Replace the model name 'alexa.umdl' with your personal model name, update `KITT_AI_SENSITIVITY`, set `KITT_AI_APPLY_FRONT_END_PROCESSING` to `false` in the [Alexa AVS sample app code](https://github.com/alexa/avs-device-sdk/blob/master/KWD/KWDProvider/src/KeywordDetectorProvider.cpp) and re-compile
 ```
-
-* Set `APPLY_FRONTEND` to `false` and update `SENSITIVITY` in the [Alexa AVS sample app code](https://github.com/alexa/alexa-avs-sample-app/blob/master/samples/wakeWordAgent/src/KittAiSnowboyWakeWordEngine.cpp) and re-compile
-
-```
-# Please replace $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
-# cloned the Alexa AVS sample app repository.
-cd $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/src/
-
-# Modify KittAiSnowboyWakeWordEngine.cpp and update SENSITIVITY at line 28.
-# Modify KittAiSnowboyWakeWordEngine.cpp and set APPLY_FRONTEND to false at
-# line 30.
-make
+# Modify $ALEXA_AVS_SAMPLE_APP_PATH/avs-device-sdk/blob/master/KWD/KWDProvider/src/KeywordDetectorProvider.cpp:
+#     Replace the model name 'alexa.umdl' with your personal model name 'YOUR_PERSONAL_MODEL.pmdl' at line 52
+#     Update `KITT_AI_SENSITIVITY` at line 26
+#     Set `KITT_AI_APPLY_FRONT_END_PROCESSING` to `false` at line 32
+sudo bash setup.sh config.json
 ```
 
 * Run the wake word agent with engine set to `kitt_ai`!
 
+Here is a [demo video](https://www.youtube.com/watch?v=9Bj8kdfwG7I) for how to use a personal model in Alexa Voice Service.
+
 **Universal model**
 
-* Replace the hotword model in [Alexa AVS sample app](https://github.com/alexa/alexa-avs-sample-app) (after installation) with your universal model
+* Put your personal model in [snowboy/resources](https://github.com/Kitt-AI/snowboy/tree/master/resources)
+```
+# Please put YOUR_UNIVERSAL_MODEL.umdl in $ALEXA_AVS_SAMPLE_APP_PATH/third-party/snowboy/resources,
+# and $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you put the Alexa AVS sample app repository.
+
+cp YOUR_UNIVERSAL_MODEL.umdl $ALEXA_AVS_SAMPLE_APP_PATH/third-party/snowboy/resources/
 
 ```
-# Please replace YOUR_UNIVERSAL_MODEL.umdl with the personal model you just
-# created, and $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
-# cloned the Alexa AVS sample app repository.
-cp YOUR_UNIVERSAL_MODEL.umdl $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/ext/resources/alexa.umdl
+
+* Replace the model name 'alexa.umdl' with your universal model name, update `KITT_AI_SENSITIVITY` in the [Alexa AVS sample app code](https://github.com/alexa/avs-device-sdk/blob/master/KWD/KWDProvider/src/KeywordDetectorProvider.cpp) and re-compile
 ```
-
-* Update `SENSITIVITY` in the [Alexa AVS sample app code](https://github.com/alexa/alexa-avs-sample-app/blob/master/samples/wakeWordAgent/src/KittAiSnowboyWakeWordEngine.cpp) and re-compile
-
-```
-# Please replace $ALEXA_AVS_SAMPLE_APP_PATH with the actual path where you
-# cloned the Alexa AVS sample app repository.
-cd $ALEXA_AVS_SAMPLE_APP_PATH/samples/wakeWordAgent/src/
-
-# Modify KittAiSnowboyWakeWordEngine.cpp and update SENSITIVITY at line 28.
-make
+# Modify $ALEXA_AVS_SAMPLE_APP_PATH/avs-device-sdk/blob/master/KWD/KWDProvider/src/KeywordDetectorProvider.cpp:
+#     Replace the model name 'alexa.umdl' with your universal model name 'YOUR_UNIVERSAL_MODEL.umdl' at line 52
+#     Update `KITT_AI_SENSITIVITY` at line 26
+sudo bash setup.sh config.json
 ```
 
 * Run the wake word agent with engine set to `kitt_ai`!
@@ -167,6 +203,11 @@ Here is the list of the models, and the parameters that you have to use for them
 * **resources/models/snowboy.umdl**: Universal model for the hotword "Snowboy". Set SetSensitivity to 0.5 and ApplyFrontend to false.
 * **resources/models/jarvis.umdl**: Universal model for the hotword "Jarvis" (https://snowboy.kitt.ai/hotword/29). It has two different models for the hotword Jarvis, so you have to use two sensitivites. Set sensitivities to "0.8,0.80" and ApplyFrontend to true.
 * **resources/models/smart_mirror.umdl**: Universal model for the hotword "Smart Mirror" (https://snowboy.kitt.ai/hotword/47). Set sensitivity to Sensitivity to 0.5, and ApplyFrontend to false.
+* **resources/models/subex.umdl**: Universal model for the hotword "Subex" (https://snowboy.kitt.ai/hotword/22014). Set sensitivity to Sensitivity to 0.5, and ApplyFrontend to true.
+* **resources/models/neoya.umdl**: Universal model for the hotword "Neo ya" (https://snowboy.kitt.ai/hotword/22171). It has two different models for the hotword "Neo ya", so you have to use two sensitivites. Set sensitivities to "0.7,0.7", and ApplyFrontend to true.
+* **resources/models/hey_extreme.umdl**: Universal model for the hotword "Hey Extreme" (https://snowboy.kitt.ai/hotword/15428). Set sensitivity to Sensitivity to 0.6, and ApplyFrontend to true.
+* **resources/models/computer.umdl**: Universal model for the hotword "Computer" (https://snowboy.kitt.ai/hotword/46). Set sensitivity to Sensitivity to 0.6, and ApplyFrontend to true.
+* **resources/models/view_glass.umdl**: Universal model for the hotword "View Glass" (https://snowboy.kitt.ai/hotword/7868). Set Sensitivity to 0.7, and ApplyFrontend to true.
 
 ## Precompiled node module
 
