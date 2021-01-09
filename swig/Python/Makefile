@@ -51,6 +51,8 @@ else
       SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/fedora25-armv7/libsnowboy-detect.a
       LDLIBS := -L/usr/lib/atlas -lm -ldl -lsatlas
     endif
+  else ifeq ($(shell uname -m), aarch64)
+    SNOWBOYDETECTLIBFILE = $(TOPDIR)/lib/aarch64-ubuntu1604/libsnowboy-detect.a
   endif
 endif
 
